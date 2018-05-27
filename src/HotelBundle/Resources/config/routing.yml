@@ -1,0 +1,107 @@
+hotel_homepage:
+    path:     /
+    defaults: { _controller: HotelBundle:Hotel:index }
+
+hotel_contacts:
+    path:     /contacts
+    defaults: { _controller: HotelBundle:Hotel:contacts }
+
+hotel_rooms:
+    path:     /rooms
+    defaults: { _controller: HotelBundle:Hotel:rooms }
+
+hotel_room:
+    path:     /room/{roomId}
+    defaults: { _controller: HotelBundle:Hotel:room }
+
+hotel_room_book:
+    path:     /room_book
+    defaults: { _controller: HotelBundle:Hotel:bookRoom }
+
+# hotel_post:
+#     path:     /room/{postId}
+#     defaults: { _controller: HotelBundle:Hotel:room }
+
+hotel_gallery:
+    path:     /gallery
+    defaults: { _controller: HotelBundle:Hotel:gallery }
+
+
+hotel_callback:
+    path:     /callback
+    defaults: { _controller: HotelBundle:Hotel:callBack }
+
+
+# Если что-то неправильно работает - может виноват этот роут
+hotel_post:
+    path:     /post/{postSlug}
+    defaults: { _controller: HotelBundle:Hotel:post }
+
+#
+#
+# # Admin Rooms
+# admin_index:
+#     path:     /admin_dashboard
+#     defaults: { _controller: HotelBundle:Admin:index }
+#
+# admin_room_editor:
+#     path:     /admin_dashboard/room_editor/{roomId}
+#     defaults: { _controller: HotelBundle:Admin:roomEditor }
+#
+# admin_room_create:
+#     path:     /admin_dashboard/room_editor
+#     defaults: { _controller: HotelBundle:Admin:roomEditor }
+#
+# admin_rooms:
+#     path:     /admin_dashboard/rooms
+#     defaults: { _controller: HotelBundle:Admin:rooms }
+#
+# # Posts
+# admin_posts:
+#     path:     /admin_dashboard/posts
+#     defaults: { _controller: HotelBundle:Admin:posts }
+# admin_post_editor:
+#     path:     /admin_dashboard/post_editor/{postId}
+#     defaults: { _controller: HotelBundle:Admin:postEditor }
+#
+# # Posts
+# admin_feedbacks:
+#     path:     /admin_dashboard/feedbacks
+#     defaults: { _controller: HotelBundle:Admin:feedbacks }
+#
+# admin_site_setting:
+#     path:     /admin_dashboard/site_settings
+#     defaults: { _controller: HotelBundle:Admin:siteSettings }
+#
+#
+#
+# # Admin Images
+# admin_images_upload:
+#     path:     /admin_dashboard/images_upload
+#     defaults: { _controller: HotelBundle:Admin:imagesUpload }
+#
+# # Admin Images
+# admin_login:
+#     path:     /admin_dashboard/login
+#     defaults: { _controller: HotelBundle:Admin:login }
+#
+# # Admin Images
+# admin_images_box:
+#     path:     /admin_dashboard/images_box
+#     defaults: { _controller: HotelBundle:Admin:imagesBox }
+#
+# admin_images_modal:
+#     path:     /admin_dashboard/images_modal
+#     defaults: { _controller: HotelBundle:Admin:imagesModal }
+#
+# admin_image_remove:
+#     path:     /admin_dashboard/image_remove/{imageId}
+#     defaults: { _controller: HotelBundle:Admin:imageRemove }
+#
+# admin_image_editor:
+#     path:     /admin_dashboard/image_editor/{imageId}
+#     defaults: { _controller: HotelBundle:Admin:imageEditor }
+#
+# admin_images:
+#     path:     /admin_dashboard/images
+#     defaults: { _controller: HotelBundle:Admin:images }

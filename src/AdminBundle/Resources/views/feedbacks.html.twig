@@ -1,0 +1,64 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Feedbacks{% endblock %}
+{% block styles %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block header_breadcrumb %}
+<li class="breadcrumb-item">Сообщения</li>
+{% endblock %}
+{% block header_title %}Список сообщений{% endblock %}
+
+
+{% block content %}
+<div class="col-md-12">
+  <div class="tile">
+    <div class="tile-title-w-btn">
+        <h3 class="title">Сообщения ({{ feedbacks | length }})</h3>
+    </div>
+
+    {% if feedbacks | length > 0 %}
+    <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Имя</th>
+          <th>Телефон</th>
+          <th>Дата заеда</th>
+          <th>Дата выезда</th>
+          <th>E-Mail</th>
+          <th>Комментарий</th>
+          <th>IP-адрес</th>
+          <th>Прочитано</th>
+          <th></th>
+
+        </thead>
+        <tbody>
+        {% for feedback in feedbacks %}
+        <tr class="{{ feedback.isReaded ? '' : 'table-info' }}" >
+            <td>{{ feedback.id }}</td>
+            <td>{{ feedback.name }}</td>
+            <td>{{ feedback.phone }}</td>
+            <td>{{ feedback.dateCome }}</td>
+            <td>{{ feedback.dateLeft }}</td>
+            <td>{{ feedback.email }}</td>
+            <td>{{ feedback.comment }}</td>
+            <td>{{ feedback.ipAddress }}</td>
+
+            <td>{{ feedback.isReaded ? "Да" : "Нет" }}</td>
+
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-danger" onclick="return confirm('Удалить сообщение?');" href="{{ path('admin_feedback_remove', {'feedbackId': feedback.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+              </div>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет сообщений</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

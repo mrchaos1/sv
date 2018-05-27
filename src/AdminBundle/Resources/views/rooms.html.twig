@@ -1,0 +1,66 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Rooms{% endblock %}
+{% block styles %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block header_breadcrumb %}
+<li class="breadcrumb-item">Номера</li>
+{% endblock %}
+{% block header_title %}Список номеров{% endblock %}
+
+
+{% block content %}
+<div class="col-md-12">
+  <div class="tile">
+    <div class="tile-title-w-btn">
+        <h3 class="title">Номера ({{ rooms | length }})</h3>
+        <p><a class="btn btn-primary icon-btn" href="{{ path('admin_room_create') }}"><i class="fa fa-plus"></i>Добавить номер</a></p>
+    </div>
+
+    {% if rooms | length > 0 %}
+    <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Заголовок</th>
+          <th>Цена</th>
+          <th>Этаж</th>
+          <th>Площадь</th>
+          <th>Кол.во гостей</th>
+          <th>Порядок</th>
+          <th>Опубликовано</th>
+          <th></th>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+        <tr class="{{ room.isPublished ? '' : 'table-secondary' }}" >
+            <td>{{ room.id }}</td>
+            <td>{{ room.title }}</td>
+            <td>
+                {{ room.priceFrom }}
+                {{ room.priceTo }}
+            </td>
+            <td>{{ room.floor }}</td>
+            <td>{{ room.areaSize }}м²</td>
+            <td>{{ room.personsNumber }}</td>
+            <td>{{ room.sortOrder }}</td>
+            <td>{{ room.isPublished ? "Да" : "Нет" }}</td>
+
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-primary" href="{{ path('admin_room_editor', {'roomId': room.id}) }}"><i class="fa fa-lg fa-edit"></i></a>
+                <a class="btn btn-primary" target="_blank" href="{{ path('hotel_room', {'roomId': room.id}) }}"><i class="fa fa-lg fa-eye"></i></a>
+                <a class="btn btn-danger" onclick="return confirm('Удалить номер?');" href="{{ path('admin_room_remove', {'roomId': room.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+              </div>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет номеров</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

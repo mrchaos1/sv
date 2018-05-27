@@ -1,0 +1,145 @@
+{% extends "@Hotel/Admin/layout.html.twig" %}
+{% block title %}Room Editor{% endblock %}
+{% block styles %}
+{{ parent() }}
+<style media="screen">
+
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div>
+  <h1>Room edit</h1>
+
+  {{ form_start(form) }}
+
+    <div class="">
+        <button type="button" data-toggle="modal" data-target="#imagesModal" name="button" class="btn btn-info">Добавить изображение</button>
+    </div>
+    <br />
+    <div id="imagesArea">
+        {{ render(controller('HotelBundle\\Controller\\AdminController::imagesBoxRender', { 'providers' : room.images  } )) }}
+    </div>
+
+
+
+
+    {% for image in form.images.vars.data %}
+
+    {% endfor %}
+
+    {#
+    <div class="form-group">
+        <div class="row">
+            {% for image in form.images.vars.data %}
+            <div class="col-3 col-md-3 col-xs-3">
+                <div class="" style="width:100%; height:150px; background:url({{ image.image.provider.image|thumbnail('preview') }}) no-repeat; background-position:center;"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <br />
+    </div>
+    #}
+  {{ form_end(form) }}
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="imagesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imagesModalLabel">Выберите изображения</h5>
+        <button data-add-images="" type="button" style="margin-left:10px" class="btn btn-sm btn-primary">+Добавить выбранные</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button data-add-images="" type="button" class="btn btn-primary">+Добавить выбранные</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+{% block script %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/hotel/js/jquery.sortable.min.js') }}"></script>
+<script type="text/javascript">
+
+    $('#imagesModal').on('show.bs.modal', function (e)
+    {
+        var modal           = $(this);
+        var modal_content   = modal.find('.modal-body');
+
+        $.ajax({
+
+            url: '{{ path("admin_images_modal") }}',
+            success: function(data)
+            {
+                modal_content.html(data);
+            }
+
+        });
+    });
+
+    $.fn.resortProviderInputs = function()
+    {
+        return this.each(function(i)
+        {
+            var input = $(this);;
+            input.attr('name', "providers["+i+"]");
+        });
+    };
+
+    $("body").on('click', 'button[data-add-images]', function()
+    {
+        var button  = $(this);
+        var images  = $("#imagesModal .image-selectable.selected");
+
+        if(!(images.length > 0))
+        {
+            alert('Выберите изображения');
+            return false;
+        }
+
+        $('#imagesModal').modal('toggle');
+
+        var providers = [];
+        $.each(images, function( index, value )
+        {
+            var image       = $(this);
+            var providerId  = image.attr('data-provider-id');
+            providers.push(providerId);
+        });
+
+        $.ajax
+        ({
+            method  : 'POST',
+            data    : { 'providers' : providers, 'exclude_room' : '{{ room.id }}' },
+            url     : '{{ path("admin_images_box") }}',
+            success : function(data)
+            {
+                console.log(data);
+                var images  = $(data).find('.image-provider');
+                $("#imagesArea .row").append(images);
+                $('.provider-input').resortProviderInputs();
+            }
+        });
+
+        console.log(providers);
+    });
+
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Room Editor{% endblock %}
+{% block stylesheet %}
+{{ parent() }}
+<style media="screen">
+    .table th { width: 20%; }
+</style>
+{% endblock %}
+
+
+{% block header_title %}Сообщение{% endblock %}
+
+{% block header_breadcrumb %}
+{{ parent() }}
+  <li class="breadcrumb-item"><a href="{{ path('admin_feedbacks') }}">Сообщения</a></li>
+  <li class="breadcrumb-item">Сообщение {{ feedback.datetime | date("d.m.Y") }}</li>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="col-md-12">
+    <div class="tile">
+        <div class="tile-title-w-btn">
+              <h3>Сообщение {{ feedback.datetime | date("d.m.Y") }}</h3>
+              <div class="btn-group">
+                  <a class="btn btn-danger" onclick="return confirm('Удалить сообщение?');" href="{{ path('admin_feedback_remove', {'feedbackId' : feedback.id }) }}"><i class="fa fa-lg fa-trash"></i></a>
+              </div>
+          </div>
+
+
+        <table class="table text-left">
+            <tr>
+                <th>ID</th>
+                <td>{{ feedback.id }}</td>
+            </tr>
+            <tr>
+                <th>Сообщение оставлено</th>
+                <td>{{ feedback.datetime | date("d.m.Y") }}</td>
+            </tr>
+            <tr>
+                <th>Имя</th>
+                <td>{{ feedback.name }}</td>
+            </tr>
+            <tr>
+                <th>E-Mail</th>
+                <td>{{ feedback.email }}</td>
+            </tr>
+            <tr>
+                <th>Телефон</th>
+                <td>{{ feedback.phone }}</td>
+            </tr>
+            <tr>
+                <th>Дата заезда</th>
+                <td>{{ feedback.dateCome }}</td>
+            </tr>
+            <tr>
+                <th>Дата выезда</th>
+                <td>{{ feedback.dateLeft }}</td>
+            </tr>
+            <tr>
+                <th>Номер</th>
+                <td>
+                    {% if feedback.room %}
+                        <a target="_blank" href="{{ path('hotel_room', { 'roomId' : feedback.room.id }) }}">{{ feedback.room.title }}</a>
+                    {% else %}
+                      Не указан
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Комментарий</th>
+                <td>{{ feedback.comment }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

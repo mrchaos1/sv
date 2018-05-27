@@ -1,0 +1,208 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Room Editor{% endblock %}
+{% block styles %}
+{{ parent() }}
+<style media="screen">
+
+</style>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+{% endblock %}
+{% block header_title %}Редактор номера{% endblock %}
+
+{% block header_breadcrumb %}
+{{ parent() }}
+  <li class="breadcrumb-item"><a href="{{ path('admin_rooms') }}">Номера</a></li>
+  <li class="breadcrumb-item">Редактировать номер</li>
+{% endblock %}
+
+
+{% form_theme form _self %}
+{% block integer_widget %}
+    <div class="integer_widget" style="border: 2px solid red">
+        {% set type = type|default('number') %}
+        {{ block('form_widget_simple') }}
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+    <div class="tile">
+
+
+        {{ form_start(form) }}
+
+
+
+        <div class="tile-title-w-btn">
+            <h3 class="title">Редактировать номер</h3>
+            <div class="btn-group">
+
+                <button type="submit" class="btn btn-primary" name="submit">Сохранить</button>
+
+                {% if room.id  > 0 %}
+                <a class="btn btn-danger" onclick="return confirm('Удалить номер?');"  href="{{ path('admin_room_remove', {'roomId': room.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+                <a class="btn btn-primary icon-btn" href="{{ path('admin_room_create') }}"><i class="fa fa-plus"></i> Новый номер</a>
+                {% endif %}
+            </div>
+        </div>
+
+          {% form_theme form '@Admin/form/fields.html.twig' %}
+          <div class="row">
+              <div class="col-10">{{ form_row(form.title, { 'label' : 'Заголовок' }) }}</div>
+              <div class="col-2">{{ form_row(form.sortOrder, { 'label' : 'Порядок сортировки' }) }}</div>
+          </div>
+          <div class="row">
+              <div class="col-2">
+                  {{ form_row(form.priceFrom, { 'label' : 'Цена от (руб.)' }) }}
+              </div>
+              <div class="col-2">
+                  {{ form_row(form.priceTo, { 'label' : 'Цена до (руб.)' }) }}
+              </div>
+              <div class="col-2">
+                  {{ form_row(form.floor, { 'label' : 'Этаж' }) }}
+              </div>
+              <div class="col-2">
+                  {{ form_row(form.areaSize, { 'label' : 'Площадь (м²)' }) }}
+              </div>
+              <div class="col-2">
+                  {{ form_row(form.personsNumber, { 'label' : 'Количество гостей' }) }}
+              </div>
+          </div>
+          {{ form_row(form.includes, { 'label' : 'Включено' }) }}
+
+          {{ form_row(form.text, { 'label' : 'Описание', "attr" : {"class" : "form-control", "rows" : "5"}}) }}
+          {{ form_row(form.shortText, { 'label' : 'Краткое описание', "attr" : {"class" : "form-control", "rows" : "3"}}) }}
+
+          {{ form_row(form.isPublished, { 'label' : ' Опубликовать ', "attr" : {  "style" : "float:left; margin-right:5px;margin-top:4px; "} } ) }}
+
+
+          <div class="">
+              <button type="button" data-toggle="modal" data-target="#imagesModal" name="button" class="btn btn-info"><i class="fa fa-plus"></i> Добавить изображение</button>
+          </div>
+          <br />
+          <div id="imagesArea">
+              {{ render(controller('AdminBundle\\Controller\\AdminController::imagesBoxRender', { 'providers' : room.images  } )) }}
+          </div>
+
+          {{ form_row(form.metaTitle, { 'label' : 'META Заголовок' }) }}
+          {{ form_row(form.metaDescription, { 'label' : 'META Описание', "attr" : {"class" : "form-control", "rows" : "2"}}) }}
+          {{ form_row(form.metaKeywords, { 'label' : 'META ключевые слова', "attr" : {"class" : "form-control", "rows" : "2"}}) }}
+
+
+          {{ form_row(form.save, { "label" : room.id > 0 ? "Сохранить" , "attr" : {"class" : "btn btn-primary btn-block", "rows" : "2"}}) }}
+      </div>
+      {{ form_end(form) }}
+
+      <!-- Modal -->
+      <div class="modal fade" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="imagesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="imagesModalLabel">Выберите изображения</h5>
+              <button data-add-images="" type="button" style="margin-left:10px" class="btn btn-sm btn-primary">+Добавить</button>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+              <button data-add-images="" type="button" class="btn btn-primary">+Добавить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}
+{% block script %}
+{{ parent() }}
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+    $( "#imagesBox" ).sortable
+    ({
+        beforeStop: function( event, ui )
+        {
+            $('.provider-input').resortProviderInputs();
+        }
+    });
+
+    $( "#imagesBox" ).disableSelection();
+
+    $('#imagesModal').on('show.bs.modal', function (e)
+    {
+        var ids = [];
+        var images =
+        $.each($('#imagesArea .il-col-image'), function(index, value)
+        {
+            var providerId = $(this).attr('data-provider-id');
+            ids.push(providerId);
+        });
+
+        var modal           = $(this);
+        var modal_content   = modal.find('.modal-body');
+
+
+        $.ajax({
+
+            url: '{{ path("admin_images_modal") }}',
+            data: { 'providersIds' : ids, 'roomId': '{{ room.id }}'  },
+            success: function(data)
+            {
+                modal_content.html(data);
+            }
+
+        });
+    });
+
+
+
+    $.fn.resortProviderInputs = function()
+    {
+        return this.each(function(i)
+        {
+            var input = $(this);
+            input.attr('name', "providers["+i+"]");
+        });
+    };
+
+    $("body").on('click', 'button[data-add-images]', function()
+    {
+        var button  = $(this);
+        var images  = $("#imagesModal .image-selectable.selected");
+
+        if(!(images.length > 0))
+        {
+            alert('Выберите изображения');
+            return false;
+        }
+
+        $('#imagesModal').modal('toggle');
+
+        var providers = [];
+        $.each(images, function( index, value )
+        {
+            var image       = $(this);
+            var providerId  = image.attr('data-provider-id');
+            providers.push(providerId);
+        });
+
+        $.ajax
+        ({
+            data    : { 'providers' : providers },
+            url     : '{{ path("admin_images_box") }}',
+            success : function(data)
+            {
+                console.log(data);
+                var images  = $(data).find('.image-provider');
+                $("#imagesArea .row").append(images);
+                $('.provider-input').resortProviderInputs();
+            }
+        });
+
+        console.log(providers);
+    });
+
+</script>
+{% endblock %}

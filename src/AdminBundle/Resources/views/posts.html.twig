@@ -1,0 +1,23 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Posts{% endblock %}
+{% block styles %}
+{{ parent() }}
+<style media="screen">
+
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>Rooms</h1>
+{% for room in rooms %}
+
+    {{ include('include/roomItem.html.twig', { 'room': room }) }}
+
+{% endfor %}
+
+
+{% endblock %}

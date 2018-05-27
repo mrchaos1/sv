@@ -1,0 +1,496 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Oranienbaum&subset=cyrillic')
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&subset=cyrillic-ext')
+
+$font-content:  'Montserrat'
+//$font-title: 'Oranienbaum', serif
+$font-title:  'Roboto Slab', serif
+
+$link-color: red
+$theme-color-1: #8f2a31
+$theme-color-2: #c4bf7b
+$theme-color-3: #a09994
+
+$background-image-1: url('../images/background/dust_scratches.png')
+
+
+
+
+.form-control
+  border-radius: 0
+  border: none
+  padding: 10px 20px
+  height: 44px
+
+select
+  height: 44px !important
+
+
+.bg-1
+  background: $background-image-1
+
+.bg-white
+  background-color: #fff
+
+body
+  font-family: $font-content
+  background-color: #fafafa
+  font-size: 14px
+
+.font-content
+    font-family: $font-content
+
+section
+  padding-top: 50px
+  padding-bottom: 50px
+
+h1, h2, h3, h4, h5, h6
+  font-weight: 300
+  font-family: $font-title
+h1, h2
+  margin-bottom: 50px
+
+hr
+  &.star-light, &.star-dark
+    max-width: 15rem
+    padding: 0
+    text-align: center
+    border: none
+    border-top: solid 0.25rem
+    margin-top: 2.5rem
+    margin-bottom: 2.5rem
+  &.star-light:after, &.star-dark:after
+    position: relative
+    top: -.8em
+    display: inline-block
+    padding: 0 0.25em
+    content: '\f005'
+    font-family: FontAwesome
+    font-size: 2em
+  &.star-light
+    border-color: #fff
+    &:after
+      color: #fff
+      background-color: #18BC9C
+  &.star-dark
+    border-color: #2C3E50
+    &:after
+      color: #2C3E50
+      background-color: white
+
+  h2
+    font-size: 2.25rem
+    line-height: 2rem
+
+@media (min-width: 992px)
+  section h2
+    font-size: 3rem
+    line-height: 2.5rem
+
+.btn-xl
+  padding: 1rem 1.75rem
+  font-size: 1.25rem
+
+.btn-social
+  width: 3.25rem
+  height: 3.25rem
+  font-size: 1.25rem
+  line-height: 2rem
+
+.input-group-append
+  .input-group-text
+    background-color: #ffffff54
+    color: #fff
+
+.scroll-to-top
+  z-index: 1042
+  right: 1rem
+  bottom: 1rem
+  display: none
+  a
+    width: 3.5rem
+    height: 3.5rem
+    background-color: rgba(33, 37, 41, 0.5)
+    line-height: 3.1rem
+
+#mainNav
+  z-index: 1
+  font-family: $font-title
+  background-color: $theme-color-1
+  padding-top: 1rem
+  padding-bottom: 1rem
+  font-weight: 400
+  font-size: 16px
+
+  .navbar-brand
+    color: #000
+  .navbar-nav
+    margin-top: 1rem
+    letter-spacing: 0.0625rem
+    li.nav-item a.nav-link
+      color: #fff
+      &:hover
+        color: #fff
+        background-color: #8b5050
+      &:active, &:focus
+        color: #fff
+      &.active
+        color: #18BC9C
+  .navbar-toggler
+    font-size: 80%
+    padding: 0.8rem
+  .navbar-nav li.nav-item a.nav-link
+
+textarea, input
+  border-radius: 25px
+  border: none
+  padding-left: 5px
+  padding-right: 5px
+
+textarea:focus, input:focus
+  outline: none
+
+@media (min-width: 992px)
+  #mainNav
+    padding-top: 0
+    padding-bottom: 0
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s
+    -moz-transition: padding-top 0.3s, padding-bottom 0.3s
+    transition: padding-top 0.3s, padding-bottom 0.3s
+
+    .logo
+      margin: -1rem
+      height: 70px
+    .navbar-brand
+      font-size: 2em
+      -webkit-transition: font-size 0.3s
+      -moz-transition: font-size 0.3s
+      transition: font-size 0.3s
+    .navbar-nav
+      margin-top: 0
+      > li.nav-item > a.nav-link.active
+        color: #fff
+        background: #18BC9C
+        &:active, &:focus, &:hover
+          color: #fff
+          background: #18BC9C
+    &.navbar-shrink
+      padding-top: 0
+      padding-bottom: 0
+      .navbar-brand
+        font-size: 1.5em
+
+
+@media (min-width: 992px)
+  header.masthead
+    padding-top: calc(6rem + 106px)
+    padding-bottom: 6rem
+    h1
+      font-size: 4.75em
+      line-height: 4rem
+    h2
+      font-size: 1.75em
+
+
+
+
+.portfolio-modal .portfolio-modal-dialog
+  padding: 3rem 1rem
+  min-height: calc(100vh - 2rem)
+  margin: 1rem calc(1rem - 8px)
+  position: relative
+  z-index: 2
+  -moz-box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.5)
+  -webkit-box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.5)
+  box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.5)
+  .close-button
+    position: absolute
+    top: 2rem
+    right: 2rem
+    i
+      line-height: 38px
+  h2
+    font-size: 2rem
+
+@media (min-width: 768px)
+  .portfolio-modal .portfolio-modal-dialog
+    min-height: 100vh
+    padding: 5rem
+    margin: 3rem calc(3rem - 8px)
+    h2
+      font-size: 3rem
+
+.floating-label-form-group
+  position: relative
+  border-bottom: 1px solid #e9ecef
+  input, textarea
+    font-size: 1.5em
+    position: relative
+    z-index: 1
+    padding-right: 0
+    padding-left: 0
+    resize: none
+    border: none
+    border-radius: 0
+    background: none
+    box-shadow: none !important
+  label
+    font-size: 0.85em
+    line-height: 1.764705882em
+    position: relative
+    z-index: 0
+    top: 2em
+    display: block
+    margin: 0
+    -webkit-transition: top 0.3s ease, opacity 0.3s ease
+    -moz-transition: top 0.3s ease, opacity 0.3s ease
+    -ms-transition: top 0.3s ease, opacity 0.3s ease
+    transition: top 0.3s ease, opacity 0.3s ease
+    vertical-align: middle
+    vertical-align: baseline
+    opacity: 0
+  &:not(:first-child)
+    padding-left: 14px
+    border-left: 1px solid #e9ecef
+
+.floating-label-form-group-with-value label
+  top: 0
+  opacity: 1
+
+.floating-label-form-group-with-focus label
+  color: #18BC9C
+
+form .row:first-child .floating-label-form-group
+  border-top: 1px solid #e9ecef
+
+.footer
+  padding-top: 5rem
+  padding-bottom: 5rem
+  background-color: $theme-color-1
+  color: #fff
+
+.copyright
+  background-color: #1a252f
+
+a
+  .to-modal
+
+  color: #8b5050
+  &:focus, &:hover, &:active
+    color: #128f76
+
+.btn
+  border-width: 2px
+
+.bg-primary
+  background-color: #18BC9C !important
+
+.navbar
+  background-color: #fff
+
+.text-primary
+  color: #18BC9C !important
+
+.text-secondary
+  color: #2C3E50 !important
+
+.btn-primary
+  background-color: #8f2a31
+  border: none
+  &:hover, &:focus, &:active
+    background-color: #8b5050
+    border: none
+    outline: none
+    box-shadow: none
+
+
+.btn-secondary
+  background-color: #2C3E50
+  border-color: #2C3E50
+  &:hover, &:focus, &:active
+    background-color: #1a252f
+    border-color: #1a252f
+
+.well
+  background-color: white
+  border-radius: 4px
+  padding: 30px
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.2)
+
+.well-container
+  margin: 30px 0 0
+
+.logo
+  height: 50px
+
+.right-col-most-popular
+
+.right-col-most-popular-header
+  background-color: #f7ca00
+  text-align: center
+  &::after
+    content: ''
+    position: absolute
+    left: 50%
+    margin-left: -25px
+    width: 0
+    height: 0
+    border-top: solid 17px #f7ca00
+    border-left: solid 25px transparent
+    border-right: solid 25px transparent
+  h4
+    margin: 0
+    font-weight: 300
+    padding: 15px 10px
+
+.right-col-most-popular-content
+  border: 2px solid #f7ca00
+  padding: 25px 20px
+  margin-top: -2px
+
+.right-col-most-popular-description
+  font-size: 16px
+  font-weight: 700
+  margin-bottom: 20px
+
+.right-col-most-popular-image
+  width: 100%
+
+.right-col-most-popular-footer
+  font-size: 14px
+  color: #6e6e6e
+
+.right-col-most-popular-category
+  float: right
+
+.mp-item
+  margin-bottom: 20px
+
+.mp-item-title
+  font-size: 20px
+  margin-top: 10px
+
+.mp-item-image-link
+  height: 200px
+  width: 100%
+  display: block
+  overflow: hidden
+
+.navbar-brand
+  color: #000
+
+
+#mp-slider
+  height: 500px
+  div
+    height: 500px
+    width: 100%
+
+
+#top
+  padding-top: 30px
+  padding-bottom: 30px
+
+  .location
+    ul
+      margin-bottom: 0
+      margin-top: 0
+      text-align: right
+      font-size: 16px
+      li
+        margin-right: 20px
+        span
+          color: #7b7b7b
+
+
+#mp-order-form-section
+  padding-top: 40px
+  padding-bottom: 40px
+  position: absolute
+  background-color: rgba(167, 162, 162, 0.54)
+  width: 100%
+  bottom: 0
+
+#mp-slider-section
+  padding: 0
+  position: relative
+
+
+
+
+.btn
+  padding: 10px 20px
+  height: 44px
+  border-radius: 0
+
+.input-group-text
+  border-radius: 0
+  border: none
+  background-color: #ccc
+
+
+.mp-carousel-slider
+  .slider-item
+    height: 100px
+#mp-description-section
+  .include-item
+
+    a
+      &:hover
+        .include-item-image-border
+          background-color: rgba(0,0,0,0.4)
+      text-decoration: none
+    .include-item-image
+      padding: 9px
+      .include-item-image-border
+        border: 1px solid $theme-color-2
+        width: 100%
+        height: 100%
+        background-color: rgba(0,0,0,0.2)
+        .title
+          font-size: 16px
+          color: #fff
+          line-height: 200px
+          text-align: center
+          text-transform: uppercase
+          font-family: $font-title
+
+
+
+#mp-rooms-section
+  .room-item
+    border: 1px solid $theme-color-2
+    &:hover
+      box-shadow: 2px 2px 20px rgba(0,0,0,0.2)
+      a
+        text-decoration: none
+
+
+  .room-item-image
+
+    height: 400px
+    margin-bottom: 10px
+
+#mp-gallery-section
+  .slick-slide
+    margin: 5px
+  .slick-arrow
+    &:before
+      color: #ccc
+
+::-webkit-scrollbar
+    width: 7px
+
+::-webkit-scrollbar-track
+    border-radius: 0px
+
+::-webkit-scrollbar-thumb
+    background: #995f63
+    border-radius: 0px
+
+::-webkit-scrollbar-thumb
+    &:hover
+      background: #be898d

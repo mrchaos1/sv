@@ -1,0 +1,18 @@
+  <div class="row" id="imagesBox">
+  {% for k, provider in providers %}
+  <div id="providerId{{ provider.id }}" class="image-provider col-3 text-center il-col">
+      <div class="il-col-container" >
+        <div class="il-col-area" style="">
+            {% if provider.image %}
+            {% set image = provider.image %}
+            <div data-provider-id="{{ provider.id }}" class="il-col-image" style="background:url({{ asset(image.publicSrc) }}) no-repeat; background-color:#fff; {{ image.width > image.height ? 'background-size: auto 100%;background-position: center;' : 'background-size: 100% auto;'  }}"></div>
+            {% else %}
+              <div class="">Изображение удалено</div>
+            {% endif %}
+            <input type="hidden" class="provider-input" name="providers[{{ k }}]" value="{{ provider.id }}">
+            <span data-remove="#providerId{{ provider.id }}" class="remove-icon"></span>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+  </div>

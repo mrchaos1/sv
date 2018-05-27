@@ -1,0 +1,37 @@
+{% extends "@Hotel/Admin/layout.html.twig" %}
+{% block styles %}
+{{ parent() }}
+
+
+{% endblock %}
+{% block content %}
+
+<div>
+  <h1>Images</h1>
+  <div class="row">
+    {% for image in images %}
+    <div class="col-3 text-center il-col">
+
+        {{ image|thumbnail('preview') }}
+
+        <div class="il-col-container" >
+            <a target="_blank" href="{{ asset(image.publicSrc) }}">
+              <div class="il-col-area" style="">
+
+                  <div class="il-col-image" style="background:url({{ asset(image.publicSrc) }}) no-repeat; background-size: auto 100%; background-position: center;"></div>
+              </div>
+            </a>
+            <div class="il-col-description">
+                {{ image.width }}x{{ image.height }}
+                <div class="">
+                  <a href="{{ path('admin_image_remove', { 'imageId': image.id  }) }}">Remove</a> /
+                  <a href="{{ path('admin_image_editor', { 'imageId': image.id  }) }}">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

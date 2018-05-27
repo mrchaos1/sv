@@ -1,0 +1,45 @@
+{% extends "@Hotel/Default/layout.html.twig" %}
+
+{% block content %}
+<section class="bg-1">
+  <div class="container">
+      <h1 class="text-center">Контакты</h1>
+
+      <div class="row">
+          <div class="col-6">
+          <h3>Гостиница «SV-Отель»</h3>
+          <br />
+          <p class=""><b>Телефон: </b> +7 (3854) 36–48–36</p>
+          <p class=""><b>E-Mail: </b> <a href="">sv-hotel@inbox.ru</a></p>
+          <p class=""><b>Адрес: </b> г. Бийск, Советская, 212/2</p>
+
+          </div>
+          <div class="col-6">
+            {{ form_start(form) }}
+              <div class="form-group">
+                  {{ form_label(form.name) }}
+                  {{ form_widget(form.name, {'attr' : {'class': 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                  {{ form_label(form.email) }}
+                  {{ form_widget(form.email, {'attr' : {'class': 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                  {{ form_label(form.phone) }}
+                  {{ form_widget(form.phone, { 'attr' : {'class': 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                  {{ form_label(form.comment) }}
+                  {{ form_widget(form.comment, {'attr' : {'class': 'form-control', 'rows': '3', 'style': 'height:auto' }}) }}
+              </div>
+              {{ form_widget(form.submit, {'attr' : {'class': 'btn btn-success btn-block' }}) }}
+
+            {{ form_end(form) }}
+          </div>
+      </div>
+  </div>
+</section>
+<section style="padding-bottom:0px;padding-top:0px;">
+  <a class="dg-widget-link" href="http://2gis.ru/biysk/firm/2815278048084196/center/85.17374038696289,52.514823658921216/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Бийска</a><div class="dg-widget-link"><a href="http://2gis.ru/biysk/firm/2815278048084196/photos/2815278048084196/center/85.17374038696289,52.514823658921216/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">Фотографии компании</a></div><div class="dg-widget-link"><a href="http://2gis.ru/biysk/center/85.173733,52.514339/zoom/16/routeTab/rsType/bus/to/85.173733,52.514339╎SV-отель, гостиничный комплекс?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти проезд до SV-отель, гостиничный комплекс</a></div><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":'100%',"height":600,"borderColor":"#a3a3a3","pos":{"lat":52.514823658921216,"lon":85.17374038696289,"zoom":16},"opt":{"city":"biysk"},"org":[{"id":"2815278048084196"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
+</section>
+{% endblock %}

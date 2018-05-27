@@ -1,0 +1,11 @@
+<table style="width:100%;text-align:left;">
+
+  <h1>Сообщение с сайта <b>{{ server.SERVER_NAME }}</b></h1>
+  {% for key, item in data %}
+  <tr>
+      <th>{{ key }}</th>
+      <td>{{ item }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p>Страница: <b>{{ server.HTTP_REFERER }}</b></p>

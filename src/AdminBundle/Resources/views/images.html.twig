@@ -1,0 +1,68 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block styles %}
+{{ parent() }}
+{% endblock %}
+{% block header_title %}Галлерея{% endblock %}
+
+{% block content %}
+
+
+{{ form_start(form) }}
+
+<div class="col-md-12">
+    <div class="tile">
+        <div class="tile-title-w-btn" style="margin-bottom:0;">
+            <h3 class="title">Изображения</h3>
+            <div class="btn-group">
+                <span class="btn btn-primary btn-file">
+                    Загрузить {{ form_widget(form.file, { 'attr' : { 'accept' : 'image/x-png,image/gif,image/jpeg', 'class' : '' }, 'label' : ' ' }) }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ form_end(form) }}
+
+
+<div class="col-md-12">
+      <div class="row">
+        {% if images %}
+        {% for image in images %}
+        <div class="col-3 text-center il-col">
+            <div class="il-col-container" >
+                <a target="_blank" href="{{ asset(image.publicSrc) }}">
+                  <div class="il-col-area" style="">
+                      <div class="il-col-image" style="background:url({{ image|thumbnail('preview') }}) no-repeat; {{ image.width > image.height ? "background-size: auto 100%;background-position: center;" : "background-size: 100% auto" }}; background-color: #fff;"></div>
+                  </div>
+                </a>
+                <div class="il-col-description">
+                    {{ image.width }}x{{ image.height }}
+                    <div class="">
+                      <a onclick="return confirm('Удалить изображение?');" href="{{ path('admin_image_remove', { 'imageId': image.id  }) }}">Удалить</a> /
+                      <a href="{{ path('admin_image_editor', { 'imageId': image.id  }) }}">Редактировать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div style="width: 100%;text-align:center;">Чтобы добавить фото, нажимте на кнопку "Загрузить" и выберите изображения</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        $("input:file").change(function ()
+        {
+            $(this).closest('form').submit();
+        });
+
+
+
+    </script>
+{% endblock %}
