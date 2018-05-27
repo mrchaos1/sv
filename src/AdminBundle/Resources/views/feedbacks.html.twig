@@ -31,6 +31,7 @@
           <th>IP-адрес</th>
           <th>Прочитано</th>
           <th></th>
+          <th></th>
 
         </thead>
         <tbody>
@@ -46,7 +47,7 @@
             <td>{{ feedback.ipAddress }}</td>
 
             <td>{{ feedback.isReaded ? "Да" : "Нет" }}</td>
-
+            <td><a href="{{ path('admin_feedback', {'feedbackId' : feedback.id }) }}"> <i class="fa fa-eye"></i> </a></td>
             <td>
               <div class="btn-group">
                 <a class="btn btn-danger" onclick="return confirm('Удалить сообщение?');" href="{{ path('admin_feedback_remove', {'feedbackId': feedback.id}) }}"><i class="fa fa-lg fa-trash"></i></a>

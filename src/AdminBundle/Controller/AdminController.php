@@ -123,7 +123,11 @@ class AdminController extends Controller
           ->getQuery()
           ->getResult();
 
-        #dump($feedbacks); die;
+        $qb   = $em->createQueryBuilder();
+        $q    = $qb->update('HotelBundle:Feedback', 'f')
+          ->set('f.isReaded', '1')
+          ->getQuery()
+          ->execute();
 
         return $this->render('@Admin/feedbacks.html.twig', [ 'feedbacks' => $feedbacks ]);
 

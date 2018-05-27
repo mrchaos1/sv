@@ -23,6 +23,7 @@
                 <th>Телефон</th>
                 <th>E-Mail</th>
                 <th>Номер</th>
+                <th></th>
               </thead>
               <tbody>
                   {% for feedback in feedbacks %}
@@ -43,6 +44,7 @@
 
 
                       </td>
+                      <td> <a href="{{ path('admin_feedback', {'feedbackId' : feedback.id }) }}"> <i class="fa fa-eye"></i> </a> </td>
                   </tr>
                   {% endfor %}
               </tbody>
