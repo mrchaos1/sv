@@ -15,7 +15,7 @@
       <div class="tile">
 
           <h3><i class="fa fa-comments"></i> <a href="{{path('admin_feedbacks')}}">Новые сообщения </a>({{ feedbacksCount }})</h3>
-          {% if rooms | length > 0 %}
+          {% if feedbacks | length > 0 %}
           <table class="table">
               <thead>
                 <th>Время</th>
@@ -49,6 +49,8 @@
                   {% endfor %}
               </tbody>
           </table>
+          {% else %}
+          <p class="">Нет новых сообщений</p>
           {% endif %}
       </div>
   </div>

@@ -106,6 +106,14 @@ class AdminController extends Controller
 
         if($feedback = $em->getRepository(Feedback::class)->findOneBy(['id' => $feedbackId]))
         {
+            $qb   = $em->createQueryBuilder();
+            $q    = $qb->update('HotelBundle:Feedback', 'f')
+              ->set('f.isReaded', '1')
+              ->where('f.id = :id')
+              ->setParameter(':id', $feedback->getId())
+              ->getQuery()
+              ->execute();
+
             return $this->render('@Admin/feedbackView.html.twig', ['feedback' => $feedback ]);
         }
     }
