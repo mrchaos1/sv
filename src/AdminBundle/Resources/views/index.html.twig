@@ -41,8 +41,6 @@
 
                             Не указан
                           {% endif %}
-
-
                       </td>
                       <td> <a href="{{ path('admin_feedback', {'feedbackId' : feedback.id }) }}"> <i class="fa fa-eye"></i> </a> </td>
                   </tr>
@@ -112,6 +110,42 @@
   </div>
 
 
+  <div class="col-md-12">
+      <div class="tile">
+            <h3><i class="fa fa-home"></i> <a href="{{path('admin_posts')}}">Публикации</a> ({{ postsCount }})</h3>
+            {% if posts | length > 0 %}
+            <table class="table">
+                <thead>
+                  <th>Последнее изменение</th>
+                  <th>Заголовок</th>
+                  <th>Опубликовано</th>
+                  <th></th>
+
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{ post.datetimeModifed | date("d.m.Y H:i:s") }}</td>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.isPublished ? "Да" : "Нет" }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="{{ path('admin_post_editor', {'postId': post.id}) }}"><i class="fa fa-lg fa-edit"></i></a>
+                                <a class="btn btn-primary" target="_blank" href="{{ path('hotel_post', {'slug': post.slug }) }}"><i class="fa fa-lg fa-eye"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p class=""> <a href="{{ path('admin_posts') }}">Все публикации</a> </p>
+
+            {% else %}
+            <p class="">Нет публикаций</p>
+            {% endif %}
+
+      </div>
+ </div>
 
 
 </div>

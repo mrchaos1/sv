@@ -1,6 +1,7 @@
 {% extends "@Hotel/Default/layout.html.twig" %}
 {% block stylesheet %}
   {{ parent() }}
+
   <style>
     .slick-track {  }
   </style>
@@ -9,6 +10,16 @@
 {% block content %}
 <section class="bg-1">
     <div class="container">
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('hotel_homepage') }}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('hotel_rooms') }}">Номера</a></li>
+            <li class="breadcrumb-item">{{ room.title }}</li>
+          </ol>
+        </nav>
+
+
         <h1>{{ room.title }}</h1>
 
         <div class="row">
@@ -18,7 +29,9 @@
                 <div class="slider slider-for">
                     {% for image in room.images %}
                     <div>
-                        <div style="width:100%;height:300px;background:url({{ image.image|thumbnail('big') }}) no-repeat;{{ image.image.width > image.image.height ? 'background-size:100% auto;background-position:center;' : 'background-size:100% auto;' }}"></div>
+                        <a data-fancybox="gallery"  class="" href="{{ image.image|thumbnail('big') }}">
+                            <div style="width:100%;height:300px;background:url({{ image.image|thumbnail('big') }}) no-repeat;{{ image.image.width > image.image.height ? 'background-size:100% auto;background-position:center;' : 'background-size:100% auto;' }}"></div>
+                        </a>
                     </div>
 
                     {% endfor %}
@@ -66,6 +79,9 @@
                 <p><b>Включено: </b> {{ room.includes }}</p>
                 {% endif %}
 
+                <div class="">
+                    <button data-room-id="{{ room.id }}" data-toggle="modal" data-target="#bookModal" type="submit" class="js-book-button btn btn-primary">Забронировать</button>
+                </div>
             </div>
 
 
@@ -83,6 +99,8 @@
 
     </div>
 </section>
+{{ render(controller('HotelBundle\\Controller\\HotelController::bookRoomModalRender')) }}
+
 {% endblock %}
 {% block javascript %}
 {{ parent() }}

@@ -1,0 +1,76 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Настройки{% endblock %}
+{% block styles %}
+{{ parent() }}
+<style media="screen">
+
+</style>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+{% endblock %}
+{% block header_title %}Настройки сайта{% endblock %}
+
+{% block header_breadcrumb %}
+{{ parent() }}
+  <li class="breadcrumb-item">Настройки сайта</li>
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md-12">
+    <div class="tile">
+    {{ form_start(form) }}
+
+        <div class="tile-title-w-btn">
+            <h3 class="title">Изменить настройки</h3>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary" name="submit">Сохранить</button>
+            </div>
+        </div>
+
+
+        {% form_theme form '@Admin/form/fields.html.twig' %}
+        {{ form_row(form.title, { 'label' : 'Название сайта' }) }}
+
+
+
+        <div class="row">
+            <div class="col-4">
+                  {{ form_row(form.adminEmail, { 'label' : 'E-Mail администратора' }) }}
+            </div>
+        </div>
+
+        <label>Скидки на номера (%)</label>
+
+        <div class="row">
+            <div class="col-1">
+                {{ form_row(form.discountMonday, { 'label' : 'Пн' }) }}
+            </div>
+            <div class="col-1">
+                {{ form_row(form.discountTuesday, { 'label' : 'Вт' }) }}
+            </div>
+            <div class="col-1">
+                {{ form_row(form.discountWednesday, { 'label' : 'Ср' }) }}
+            </div>
+            <div class="col-1">
+                {{ form_row(form.discountThursday, { 'label' : 'Чт' }) }}
+            </div>
+            <div class="col-1">
+                {{ form_row(form.discountFriday, { 'label' : 'Пт' }) }}
+            </div>
+            <div class="col-1">
+                {{ form_row(form.discountSaturday, { 'label' : 'Сб' }) }}
+            </div>
+            <div class="col-1">
+                {{ form_row(form.discountSunday, { 'label' : 'Вс' }) }}
+            </div>
+        </div>
+
+
+        {{ form_row(form.save, { "label" : "Сохранить", "attr" : {"class" : "btn btn-primary btn-block", "rows" : "2"}}) }}
+
+
+    {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

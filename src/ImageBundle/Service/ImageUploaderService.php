@@ -287,6 +287,61 @@ class ImageUploaderService
     }
 
 
+    protected function removeObjectFromImage($object)
+    {
+        $object = explode('\\', get_class($object));
+        $objectName = end($object);
+        return $objectName;
+    }
+
+    public function updateImageProviders($providersIds, $object)
+    {
+        $em = $this->container->get('doctrine.orm.entity_manager');
+
+        $newProviders   =
+          $em->getRepository(ImageProvider::class)
+          ->createQueryBuilder('p')
+          ->andWhere('p.id IN (:providersIds)')
+          ->setParameter('providersIds', $providersIds)
+          ->getQuery()
+          ->getResult();
+
+        $objectName = $this->removeObjectFromImage($object);
+
+        # Remove old images
+        if($object->getImages())
+        {
+            foreach($object->getImages() as $image)
+            {
+                # Call remove method of object
+                call_user_func_array([$image, 'remove'.$objectName], [$object]);
+                $object->removeImage($image);
+                $em->persist($object);
+                $em->flush();
+            }
+        }
+
+        if($newProviders)
+        {
+            $flipProvidersIds     = array_flip($providersIds);
+            $providersToInsert    = [];
+
+            foreach ($newProviders as $provider)
+            {
+                # Set sort order
+                if(isset($flipProvidersIds[$provider->getId()]))
+                {
+                    call_user_func_array([$provider, 'set'.$objectName.'SortOrder'], [$flipProvidersIds[$provider->getId()]]);
+
+                }
+                $object->addImage($provider);
+                $em->persist($object);
+                $em->flush();
+
+            }
+        }
+    }
+
 
 
 }

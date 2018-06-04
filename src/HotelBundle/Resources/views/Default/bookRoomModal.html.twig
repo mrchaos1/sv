@@ -9,16 +9,21 @@
         </button>
       </div>
 
-      {{ form_start(bookForm) }}
+      {{ form_start(bookForm, {'attr' : { 'id': 'js-book-form'} }) }}
       <div class="modal-body bg-1">
           <div class="form-row">
             <div class="col form-group">
-              {{ form_widget(bookForm.dateCome, {'attr': {'class': 'form-control datepicker', 'placeholder': 'Дата заезда' }}) }}
+              {{ form_widget(bookForm.dateCome, {'attr': {'class': 'js-date-from form-control datepicker', 'placeholder': 'Дата заезда' }}) }}
             </div>
             <div class="col form-group">
-              {{ form_widget(bookForm.dateLeft, {'attr': {'class': 'form-control datepicker', 'placeholder': 'Дата выезда' }}) }}
+              {{ form_widget(bookForm.dateLeft, {'attr': {'class': 'js-date-to form-control datepicker', 'placeholder': 'Дата выезда' }}) }}
             </div>
           </div>
+
+          <div class="form-group">
+              {{ form_widget(bookForm.rooms, {'attr': {'class': 'js-room form-control', 'placeholder': 'Выберите номер' }}) }}
+          </div>
+
           <div class="form-group">
               {{ form_widget(bookForm.name, {'attr': {'class': 'form-control', 'placeholder': 'Ваше имя' }}) }}
           </div>
@@ -27,10 +32,6 @@
           </div>
           <div class="form-group">
               {{ form_widget(bookForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Ваш E-Mail' }}) }}
-          </div>
-
-          <div class="form-group">
-              {{ form_widget(bookForm.rooms, {'attr': {'class': 'form-control', 'placeholder': 'Выберите номер' }}) }}
           </div>
 
           <div class="form-group">

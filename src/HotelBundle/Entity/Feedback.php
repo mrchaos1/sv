@@ -93,7 +93,7 @@ class Feedback
 
     /**
      * @ORM\ManyToOne(targetEntity="Room", inversedBy="feedbacks")
-     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="room_id", referencedColumnName="id", nullable=true)
      */
     private $room;
 

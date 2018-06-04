@@ -1,0 +1,312 @@
+<?php
+
+namespace HotelBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Setting
+ *
+ * @ORM\Table(name="setting")
+ * @ORM\Entity(repositoryClass="HotelBundle\Repository\SettingRepository")
+ */
+class Setting
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_title", type="string", length=500, nullable=true)
+     */
+    private $metaTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_description", type="string", length=2000, nullable=true)
+     */
+    private $metaDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="meta_keywords", type="string", length=2000, nullable=true)
+     */
+    private $metaKeywords;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="room_promotions", type="array", nullable=true)
+     */
+    private $roomPromotions;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="admin_email", type="string", length=255, nullable=true)
+     */
+    private $adminEmail;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_monday", type="integer", nullable=true)
+     */
+    private $discountMonday;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_tuesday", type="integer", nullable=true)
+     */
+    private $discountTuesday;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_wednesday", type="integer", nullable=true)
+     */
+    private $discountWednesday;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_thursday", type="integer", nullable=true)
+     */
+    private $discountThursday;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_friday", type="integer", nullable=true)
+     */
+    private $discountFriday;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_saturday", type="integer", nullable=true)
+     */
+    private $discountSaturday;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount_sunday", type="integer", nullable=true)
+     */
+    private $discountSunday;
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Setting
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set metaTitle
+     *
+     * @param string $metaTitle
+     *
+     * @return Setting
+     */
+    public function setMetaTitle($metaTitle)
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get metaTitle
+     *
+     * @return string
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
+    }
+
+    /**
+     * Set metaDescription
+     *
+     * @param string $metaDescription
+     *
+     * @return Setting
+     */
+    public function setMetaDescription($metaDescription)
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get metaDescription
+     *
+     * @return string
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    /**
+     * Set metaKeywords
+     *
+     * @param string $metaKeywords
+     *
+     * @return Setting
+     */
+    public function setMetaKeywords($metaKeywords)
+    {
+        $this->metaKeywords = $metaKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Get metaKeywords
+     *
+     * @return string
+     */
+    public function getMetaKeywords()
+    {
+        return $this->metaKeywords;
+    }
+
+    /**
+     * Set roomPromotions
+     *
+     * @param array $roomPromotions
+     *
+     * @return Setting
+     */
+    public function setRoomPromotions($roomPromotions)
+    {
+        $this->roomPromotions = $roomPromotions;
+
+        return $this;
+    }
+
+    /**
+     * Get roomPromotions
+     *
+     * @return array
+     */
+    public function getRoomPromotions()
+    {
+        return $this->roomPromotions;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Setting
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set admin email
+     *
+     * @param string $adminEmail
+     *
+     * @return Setting
+     */
+    public function setAdminEmail($adminEmail)
+    {
+        $this->adminEmail = $adminEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get admin email
+     *
+     * @return string
+     */
+    public function getAdminEmail()
+    {
+        return $this->adminEmail;
+    }
+
+
+}

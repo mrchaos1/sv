@@ -73,7 +73,5 @@ return array(
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
     'Buzz\\' => array($vendorDir . '/kriswallsmith/buzz/lib/Buzz'),
-    'Application\\Sonata\\MediaBundle\\' => array($baseDir . '/src/Application/Sonata/MediaBundle'),
-    'AppBundle\\' => array($baseDir . '/src/AppBundle'),
     'AdminBundle\\' => array($baseDir . '/src/AdminBundle'),
 );

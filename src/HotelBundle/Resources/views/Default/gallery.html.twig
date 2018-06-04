@@ -1,7 +1,6 @@
 {% extends "@Hotel/Default/layout.html.twig" %}
 {% block stylesheet %}
 {{ parent() }}
-<link rel="stylesheet" href="{{ asset('bundles/hotel/fancybox/jquery.fancybox.min.css') }}" />
 
 <style media="screen">
   .gp-item { margin-bottom: 30px;}
@@ -11,6 +10,13 @@
 {% block content %}
 <section>
     <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ path('hotel_homepage') }}">Главная</a></li>
+          <li class="breadcrumb-item">Галлерея</li>
+        </ol>
+      </nav>
+
         <h1>Галлерея</h1>
         <div class="row">
             {% for image in images %}
@@ -28,9 +34,4 @@
         </div>
     </div>
 </section>
-{% endblock %}
-{% block javascript %}
-{{ parent() }}
-<script src="{{ asset('bundles/hotel/fancybox/jquery.fancybox.min.js') }}"></script>
-
 {% endblock %}

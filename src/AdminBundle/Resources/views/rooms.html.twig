@@ -1,21 +1,20 @@
 {% extends "@Admin/layout.html.twig" %}
-{% block title %}Rooms{% endblock %}
+{% block title %}Posts{% endblock %}
 {% block styles %}
 {{ parent() }}
 
 {% endblock %}
 
 {% block header_breadcrumb %}
-<li class="breadcrumb-item">Номера</li>
+<li class="breadcrumb-item">Статьи</li>
 {% endblock %}
-{% block header_title %}Список номеров{% endblock %}
-
+{% block header_title %}Список статей{% endblock %}
 
 {% block content %}
 <div class="col-md-12">
   <div class="tile">
     <div class="tile-title-w-btn">
-        <h3 class="title">Номера ({{ rooms | length }})</h3>
+        <h3 class="title">Статьи ({{ rooms | length }})</h3>
         <p><a class="btn btn-primary icon-btn" href="{{ path('admin_room_create') }}"><i class="fa fa-plus"></i>Добавить номер</a></p>
     </div>
 

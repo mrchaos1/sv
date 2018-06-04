@@ -4,8 +4,8 @@ namespace HotelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use \Application\Sonata\MediaBundle\Entity\Media;
-use HotelBundle\Entity\RoomMedia;
+#use \Application\Sonata\MediaBundle\Entity\Media;
+#use HotelBundle\Entity\RoomMedia;
 use ImageBundle\Entity\ImageProvider;
 
 
@@ -462,13 +462,6 @@ class Room
     {
         return $this->metaDescription;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->media = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get images
@@ -561,7 +554,7 @@ class Room
     {
         return $this->datetimeModifed;
     }
-    
+
     /**
      * Add feedback
      *
@@ -595,4 +588,13 @@ class Room
     {
         return $this->feedbacks;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->feedbacks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

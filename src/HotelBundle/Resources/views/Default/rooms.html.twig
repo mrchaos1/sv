@@ -8,12 +8,23 @@
     .rp-image { width:100%;height:300px; }
     .rp-description-container { padding-left:30px;background-color:#fff; }
     .rp-description-container > h4 { padding-top:20px;padding-bottom:10px; }
+    .rp-price-container { font-size:20px;color:#c0a061;font-weight: 600; }
+    .rp-price-container.old { color:#ccc; }
+
 </style>
 {% endblock %}
 {% block title %}Номера SV-отеля{% endblock %}
 {% block content %}
 <section>
   <div class="container">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('hotel_homepage') }}">Главная</a></li>
+        <li class="breadcrumb-item">Номера</li>
+      </ol>
+    </nav>
+
     <h1>Номера</h1>
     {% for room in rooms %}
     <div class="rp-item">
@@ -35,16 +46,37 @@
             {% if room.shortText %}<p>{{ room.shortText }}</p>{% elseif room.text %}<p>{{ room.text }}</p>  {% endif %}
 
             {% if room.priceFrom > 0 or room.priceTo > 0 %}
-            <div style="font-size:20px;color:#c0a061;font-weight: 600;">
 
-                {% if room.priceFrom == room.priceTo %}
-                  {{ room.priceFrom }}
-                {% else %}
-                  {{ room.priceFrom > 0 ? "от " ~ room.priceFrom: "" }}
-                  {{ room.priceTo > 0 ? "до " ~ room.priceTo: "" }}
-                {% endif %}
+            {{ discount }}
+
+            {% if discount > 0 %}
+            <div class="rp-price-container old">
+                <s>
+                  {% if room.priceFrom == room.priceTo %}
+                    {{ discount > 0 ? room.priceFrom : "" }}
+                  {% else %}
+                    {{ room.priceFrom > 0 ? "от " ~ room.priceFrom: "" }}
+                    {{ room.priceTo > 0 ? "до " ~ room.priceTo: "" }}
+                  {% endif %}
+                  руб.
+                </s>
+            </div>
+            {% endif %}
+
+
+            <div class="rp-price-container">
+                  {% if room.priceFrom == room.priceTo %}
+                    {{ discount > 0 ? (discount > 0 ? ((room.priceFrom - (room.priceFrom / 100 * discount))  | round) : room.priceFrom) : room.priceFrom }}
+                  {% else %}
+                    {{ room.priceFrom > 0 ? "от " ~ (discount > 0 ? (room.priceFrom - (room.priceFrom / 100 * discount)) : room.priceFrom) | round: "" }}
+                    {{ room.priceTo > 0 ? "до " ~ (discount > 0 ? (room.priceTo - (room.priceTo / 100 * discount)) : room.priceTo) | round: "" }}
+                  {% endif %}
                 руб.
             </div>
+
+
+
+
             {% endif %}
 
             <div class="" style="margin-top: 20px;">
@@ -54,7 +86,7 @@
               {% if room.floor > 0 %} {{ s ? s : '' }}{{ room.floor }}-й этаж {% set s = ', ' %}{% endif %}
             </div>
             <div class="" style="margin-top: 20px;float:left;">
-              <button data-toggle="modal" data-target="#bookModal" type="submit" class="btn btn-primary">Забронировать</button>
+                <button data-room-id="{{ room.id }}" data-toggle="modal" data-target="#bookModal" type="submit" class="js-book-button btn btn-primary">Забронировать</button>
             </div>
           </div>
         </div>
@@ -64,4 +96,7 @@
 
   </div>
 </section>
+
+{{ render(controller('HotelBundle\\Controller\\HotelController::bookRoomModalRender', { 'rooms' : rooms })) }}
+
 {% endblock %}

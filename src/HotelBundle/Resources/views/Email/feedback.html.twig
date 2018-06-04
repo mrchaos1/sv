@@ -1,11 +1,21 @@
-<table style="width:100%;text-align:left;">
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Сообщение с сайта {{ server.SERVER_NAME }}</title>
+  </head>
+  <body>
+      <h1>Сообщение с сайта <b>{{ server.SERVER_NAME }}</b></h1>
 
-  <h1>Сообщение с сайта <b>{{ server.SERVER_NAME }}</b></h1>
-  {% for key, item in data %}
-  <tr>
-      <th>{{ key }}</th>
-      <td>{{ item }}</td>
-  </tr>
-  {% endfor %}
-</table>
-<p>Страница: <b>{{ server.HTTP_REFERER }}</b></p>
+      <table style="width:100%;text-align:left;">
+        {% for key, item in data %}
+        <tr>
+            <th>{{ key | trans | capitalize}}</th>
+            <td>{{ item }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <p>Страница: <b>{{ server.HTTP_REFERER }}</b></p>
+      
+  </body>
+</html>

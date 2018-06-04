@@ -1,0 +1,61 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Posts{% endblock %}
+{% block styles %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block header_breadcrumb %}
+<li class="breadcrumb-item">Публикации</li>
+{% endblock %}
+{% block header_title %}Список статей{% endblock %}
+
+
+{% block content %}
+<div class="col-md-12">
+  <div class="tile">
+    <div class="tile-title-w-btn">
+        <h3 class="title">Публикации ({{ posts | length }})</h3>
+        <p><a class="btn btn-primary icon-btn" href="{{ path('admin_create_post') }}"><i class="fa fa-plus"></i>Добавить публикацию</a></p>
+    </div>
+
+    {% if posts | length > 0 %}
+    <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Заголовок</th>
+          <th>Алиас</th>
+          <th>Категория</th>
+          <th>Опубликовано</th>
+          <th></th>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <tr class="{{ post.isPublished ? '' : 'table-secondary' }}" >
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.slug }}</td>
+            <td>{{ post.category ? post.category.title : '' }}</td>
+            <td>{{ post.isPublished ? 'Да' : 'Нет' }}</td>
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-primary" href="{{ path('admin_post_editor', {'postId': post.id}) }}"><i class="fa fa-lg fa-edit"></i></a>
+                {% if post.isPublished %}
+                <a class="btn btn-primary" target="_blank" href="{{ path('hotel_post', {'slug': post.slug }) }}"><i class="fa fa-lg fa-eye"></i></a>
+                {% endif %}
+                
+                {% if not post.isSystem %}
+                <a class="btn btn-danger" onclick="return confirm('Удалить публикацию?');" href="{{ path('admin_post_remove', {'postId': post.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+                {% endif %}
+              </div>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет статей</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -28,7 +28,7 @@
       <div class="form-inline">
         <div class="input-group col-3">
 
-          <input class="datepicker form-control" placeholder="Дата заезда">
+          <input id="js-mp-date-from" class="datepicker form-control" placeholder="Дата заезда">
 
           <div class="input-group-append">
             <span class="input-group-text"><span class="icon-calendar"></span></span>
@@ -36,22 +36,22 @@
         </div>
 
         <div class="input-group col-3">
-          <input class="datepicker form-control" placeholder="Дата выезда">
+          <input  id="js-mp-date-to" class="datepicker form-control" placeholder="Дата выезда">
           <div class="input-group-append">
             <span class="input-group-text"><span class="icon-calendar"></span></span>
           </div>
         </div>
 
         <div class="input-group col-3">
-          <select class="form-control" >
+          <select id="js-mp-room" class="form-control" >
             <option value="">Выберите номер</option>
             {% for k, room in rooms %}
-              <option value="{{ k }}">{{ room.title }}</option>
+              <option value="{{ room.id }}">{{ room.title }}</option>
             {% endfor %}
           </select>
         </div>
         <div class="form-group col-3">
-          <button  data-toggle="modal" data-target="#bookModal" type="submit" class="btn btn-primary btn-block">Забронировать</button>
+          <button data-room-selector="#js-mp-room" data-date-from-selector="#js-mp-date-from" data-date-to-selector="#js-mp-date-to" data-toggle="modal" data-target="#bookModal" type="submit" class="js-book-button btn btn-primary btn-block">Забронировать</button>
         </div>
 
       </div>
@@ -59,68 +59,13 @@
   </section>
 </section>
 
-
-
-<section id = "mp-description-section" class = 'bg-1'>
-  <div class="container">
-    <h2 class = 'text-center'>Оздоровительный коплекс</h2>
-    <div class="row">
-
-        <div class="col-4">
-          <div class="include-item">
-              <a href="#">
-                <div class="include-item-image"style = "background:url(https://www.hotel-vega.ru/images/tour/gym/NIK_2593.jpg) no-repeat; background-size: 100% auto; background-position:center;">
-                  <div class="include-item-image-border">
-                      <div class="title">Тренажерный зал</div>
-                  </div>
-                </div>
-              </a>
-          </div>
-        </div>
-
-        <div class="col-4">
-          <div class="include-item">
-              <a href="#">
-                <div class="include-item-image"style = "background:url(https://lux-hotel05.ru/upload/000/u1/001/2324f1fb.jpg) no-repeat; background-size: 100% auto; background-position:center;">
-                  <div class="include-item-image-border">
-                      <div class="title">Массажный кабинет</div>
-                  </div>
-                </div>
-              </a>
-          </div>
-        </div>
-
-
-        <div class="col-4">
-          <div class="include-item">
-              <a href="#">
-                <div class="include-item-image"style = "background:url(http://hotelspb.ru/d/26909/d/_aglaya_classic_room.jpg) no-repeat; background-size: 100% auto; background-position:center;">
-                  <div class="include-item-image-border">
-                      <div class="title">Хамам</div>
-                  </div>
-                </div>
-              </a>
-          </div>
-        </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section id="mp-rooms-section">
+<section id="mp-rooms-section" class = 'bg-1'>
   <div class="container text-center">
     <h2>Номера</h2>
-
-
-
-    <div class="row" id="mp-rooms-carousel">
-
+    <div class="row">
 
       {% for room in rooms %}
-        <div style="padding:10px;">
-            <div class="room-item">
+            <div class="room-item col-md-3">
               <a href="{{ path('hotel_room', { 'roomId' : room.id }) }}">
                 {% if room.images | length > 0 %}
 
@@ -129,60 +74,38 @@
                 {% else %}
                 <div class="room-item-image" style="background:url({{ asset('bundles/hotel/images/placeholder.png') }}) no-repeat; background-position: center; background-size:auto 100%;"></div>
                 {% endif %}
-
                 <h5>{{ room.title }}</h5>
                 <p>от 2100 руб.</p>
               </a>
           </div>
-        </div>
       {% endfor %}
+    </div>
+  </div>
+</section>
 
-      {#
-      <div class="col-3">
-          <div class="room-item">
-            <a href="/room">
-              <div class="room-item-image"style = "background:url(http://belgorod.amaks-hotels.ru/uploads/rooms/big/u80nda1340198698.jpg) no-repeat; background-size: auto 100%; background-position:center;"></div>
-              <h5>Одноместный</h5>
-              <p>от 2100 руб.</p>
-            </a>
-        </div>
-      </div>
 
-      <div class="col-3">
-        <div class="room-item">
-            <a href="/room">
-
-              <div class="room-item-image"style = "background:url(http://hotelspb.ru/d/26909/d/_aglaya_classic_room.jpg) no-repeat; background-size: auto 100%; background-position:center;"></div>
-              <h5>Стандарт</h5>
-              <p>от 2100 руб.</p>
-            </a>
-        </div>
-      </div>
-
-      <div class="col-3">
-        <div class="room-item">
-          <a href="/room">
-            <div class="room-item-image"style = "background:url(http://belgorod.amaks-hotels.ru/uploads/rooms/big/u80nda1340198698.jpg) no-repeat; background-size: auto 100%; background-position:center;"></div>
-            <h5>Студия</h5>
-            <p>от 2100 руб.</p>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-3">
-          <div class="room-item">
-            <a href="/room">
-              <div class="room-item-image" style = "background:url(http://hotelspb.ru/d/26909/d/_aglaya_classic_room.jpg) no-repeat; background-size: auto 100%; background-position:center;"></div>
-              <h5>Бизнес студия</h5>
-              <p>от 2100 руб.</p>
-            </a>
+<section id = "mp-description-section" >
+  <div class="container">
+    <h2 class = 'text-center'>Оздоровительный коплекс</h2>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-4">
+          <div class="include-item">
+              <a href="{{ path('hotel_post', { 'slug': post.slug } ) }}">
+                <div class="include-item-image" style = "background:url({{ post.images | length > 0 ? post.images.0.image | thumbnail('preview') : asset('bundles/hotel/images/placeholder.png') }}) no-repeat; background-size: 100% auto; background-position:center;">
+                  <div class="include-item-image-border">
+                      <div class="title">{{ post.title }}</div>
+                  </div>
+                </div>
+              </a>
           </div>
-      </div>#}
+        </div>
+        {% endfor %}
 
     </div>
 
-
   </div>
+
 </section>
 
 <section  class = 'bg-1' id="mp-gallery-section" >
@@ -196,13 +119,6 @@
             <div class = 'slider-item' style = 'background:url({{ image|thumbnail('preview') }}) no-repeat; {{ image.width > image.height ? 'background-size:auto 100% ; background-position:center;' : 'background-size:100% auto;' }} height:150px;'></div>
         </a>
       {% endfor %}
-
-      <!-- <div class = 'slider-item' style = 'background:url(https://t-ec.bstatic.com/images/hotel/max1024x768/224/22462893.jpg) no-repeat; background-position:center; background-size:100%;height:150px;'></div>
-      <div class = 'slider-item' style = 'background:url(https://t-ec.bstatic.com/images/hotel/max1024x768/224/22462893.jpg) no-repeat; background-position:center; background-size:100%;height:150px;'></div>
-      <div class = 'slider-item' style = 'background:url(https://t-ec.bstatic.com/images/hotel/max1024x768/224/22462893.jpg) no-repeat; background-position:center; background-size:100%;height:150px;'></div>
-      <div class = 'slider-item' style = 'background:url(https://t-ec.bstatic.com/images/hotel/max1024x768/224/22462893.jpg) no-repeat; background-position:center; background-size:100%;height:150px;'></div>
-      <div class = 'slider-item' style = 'background:url(https://t-ec.bstatic.com/images/hotel/max1024x768/224/22462893.jpg) no-repeat; background-position:center; background-size:100%;height:150px;'></div>
-      <div class = 'slider-item' style = 'background:url(https://t-ec.bstatic.com/images/hotel/max1024x768/224/22462893.jpg) no-repeat; background-position:center; background-size:100%;height:150px;'></div> -->
 
 
     </div>
@@ -236,7 +152,7 @@
 <script src="{{ asset('bundles/hotel/fancybox/jquery.fancybox.min.js') }}"></script>
 <script type="text/javascript">
 
-  
+
   $('#mp-slider').slick();
 
   $('#mp-carousel-slider').slick
@@ -247,12 +163,7 @@
   });
 
 
-  $('#mp-rooms-carousel').slick
-  ({
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 2
-  });
+
 
 
 

@@ -1,5 +1,5 @@
 {% extends "@Admin/layout.html.twig" %}
-{% block title %}Редактор номера{% endblock %}
+{% block title %}Post Editor{% endblock %}
 {% block styles %}
 {{ parent() }}
 <style media="screen">
@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
 {% endblock %}
-{% block header_title %}Редактор номера{% endblock %}
+{% block header_title %}Редактор публикации{% endblock %}
 
 {% block header_breadcrumb %}
 {{ parent() }}
-  <li class="breadcrumb-item"><a href="{{ path('admin_rooms') }}">Номера</a></li>
-  <li class="breadcrumb-item">Редактировать номер</li>
+  <li class="breadcrumb-item"><a href="{{ path('admin_posts') }}">Публикации</a></li>
+  <li class="breadcrumb-item">Редактировать публикацию</li>
 {% endblock %}
 
 
@@ -31,64 +31,59 @@
 
 
         {{ form_start(form) }}
+
+
+
         <div class="tile-title-w-btn">
-            <h3 class="title">Редактировать номер</h3>
+            <h3 class="title">Редактировать публикацию</h3>
             <div class="btn-group">
 
                 <button type="submit" class="btn btn-primary" name="submit">Сохранить</button>
 
-                {% if room.id  > 0 %}
-                <a class="btn btn-danger" onclick="return confirm('Удалить номер?');"  href="{{ path('admin_room_remove', {'roomId': room.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
-                <a class="btn btn-primary icon-btn" href="{{ path('admin_room_create') }}"><i class="fa fa-plus"></i> Новый номер</a>
+                {% if post.id  > 0 %}
+                <a class="btn btn-danger" onclick="return confirm('Удалить публикацию?');"  href="{{ path('admin_post_remove', {'postId': post.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+                <a class="btn btn-primary icon-btn" href="{{ path('admin_create_post') }}"><i class="fa fa-plus"></i> Новая публикация</a>
                 {% endif %}
             </div>
         </div>
 
-          {% form_theme form '@Admin/form/fields.html.twig' %}
-          <div class="row">
-              <div class="col-10">{{ form_row(form.title, { 'label' : 'Заголовок' }) }}</div>
-              <div class="col-2">{{ form_row(form.sortOrder, { 'label' : 'Порядок сортировки' }) }}</div>
-          </div>
-          <div class="row">
-              <div class="col-2">
-                  {{ form_row(form.priceFrom, { 'label' : 'Цена от (руб.)' }) }}
-              </div>
-              <div class="col-2">
-                  {{ form_row(form.priceTo, { 'label' : 'Цена до (руб.)' }) }}
-              </div>
-              <div class="col-2">
-                  {{ form_row(form.floor, { 'label' : 'Этаж' }) }}
-              </div>
-              <div class="col-2">
-                  {{ form_row(form.areaSize, { 'label' : 'Площадь (м²)' }) }}
-              </div>
-              <div class="col-2">
-                  {{ form_row(form.personsNumber, { 'label' : 'Количество гостей' }) }}
-              </div>
-          </div>
-          {{ form_row(form.includes, { 'label' : 'Включено' }) }}
+        {% form_theme form '@Admin/form/fields.html.twig' %}
 
-          {{ form_row(form.text, { 'label' : 'Описание', "attr" : {"class" : "form-control", "rows" : "5"}}) }}
-          {{ form_row(form.shortText, { 'label' : 'Краткое описание', "attr" : {"class" : "form-control", "rows" : "3"}}) }}
+        <div class="row">
+            <div class="col-10">{{ form_row(form.title, { 'label' : 'Заголовок' }) }}</div>
+            <div class="col-2">{{ form_row(form.sortOrder, { 'label' : 'Порядок сортировки' }) }}</div>
+        </div>
+        {{ form_row(form.slug, { 'label' : 'Алиас', "attr" : {"class" : "form-control"}}) }}
+
+        {{ form_row(form.text, { 'label' : 'Текст', "attr" : {"class" : "form-control", "rows" : "5"}}) }}
+        {{ form_row(form.shortText, { 'label' : 'Краткий текст', "attr" : {"class" : "form-control", "rows" : "3"}}) }}
+
+        {{ form_row(form.category, { 'label' : 'Категория', 'attr': { 'class' : 'form-control'} }) }}
+        {{ form_row(form.isPublished, { 'label' : ' Опубликовать ', "attr" : {  "style" : "float:left; margin-right:5px;margin-top:4px; "} } ) }}
 
 
-          {{ form_row(form.isPublished, { 'label' : ' Опубликовать ', "attr" : {  "style" : "float:left; margin-right:5px;margin-top:4px; "} } ) }}
+        <div class="">
+            <button type="button" data-toggle="modal" data-target="#imagesModal" name="button" class="btn btn-info"><i class="fa fa-plus"></i> Добавить изображение</button>
+        </div>
+        <br />
+        <div id="imagesArea">
+            {{ render(controller('AdminBundle\\Controller\\AdminController::imagesBoxRender', { 'providers' : post.images  } )) }}
+        </div>
+
+        {{ form_row(form.metaTitle, { 'label' : 'META Заголовок' }) }}
+        {{ form_row(form.metaDescription, { 'label' : 'META Описание', "attr" : {"class" : "form-control", "rows" : "2"}}) }}
+        {{ form_row(form.metaKeywords, { 'label' : 'META ключевые слова', "attr" : {"class" : "form-control", "rows" : "2"}}) }}
 
 
-          <div class="">
-              <button type="button" data-toggle="modal" data-target="#imagesModal" name="button" class="btn btn-info"><i class="fa fa-plus"></i> Добавить изображение</button>
-          </div>
-          <br />
-          <div id="imagesArea">
-              {{ render(controller('AdminBundle\\Controller\\AdminController::imagesBoxRender', { 'providers' : room.images  } )) }}
-          </div>
 
-          {{ form_row(form.metaTitle, { 'label' : 'META Заголовок' }) }}
-          {{ form_row(form.metaDescription, { 'label' : 'META Описание', "attr" : {"class" : "form-control", "rows" : "2"}}) }}
-          {{ form_row(form.metaKeywords, { 'label' : 'META ключевые слова', "attr" : {"class" : "form-control", "rows" : "2"}}) }}
+        {{ form_row(form.save, { "label" : "Сохранить", "attr" : {"class" : "btn btn-primary btn-block" }}) }}
 
 
-          {{ form_row(form.save, { "label" : "Сохранить", "attr" : {"class" : "btn btn-primary btn-block", "rows" : "2"}}) }}
+
+
+
+
+
       </div>
       {{ form_end(form) }}
 
@@ -116,7 +111,23 @@
 {% block script %}
 {{ parent() }}
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/translations/ru.js"></script>
+
+<script>
+
+    ClassicEditor
+      .create( document.querySelector( '#form_text' ),
+      {
+          language: 'ru',
+          toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+      } )
+      .catch( error => {   console.log( error ); } );
+
+
+</script>
 <script type="text/javascript">
+
 
     $( "#imagesBox" ).sortable
     ({
@@ -145,7 +156,7 @@
         $.ajax({
 
             url: '{{ path("admin_images_modal") }}',
-            data: { 'providersIds' : ids, 'roomId': '{{ room.id }}'  },
+            data: { 'providersIds' : ids, 'postId': '{{ post.id }}'  },
             success: function(data)
             {
                 modal_content.html(data);

@@ -4,6 +4,7 @@ namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HotelBundle\Entity\Room;
+use HotelBundle\Entity\Post;
 use ImageBundle\Entity\Image;
 use ImageBundle\Entity\ImageProvider;
 use HotelBundle\Entity\Feedback;
@@ -88,6 +89,19 @@ class AdminController extends Controller
         $qb->where('feedback.isReaded IS null OR feedback.isReaded = 0');
         $feedbacksCount = $qb->getQuery()->getSingleScalarResult();
 
+        $qb = $em->createQueryBuilder();
+        $qb->select('count(post.id)');
+        $qb->from('HotelBundle:Post', 'post');
+        $postsCount = $qb->getQuery()->getSingleScalarResult();
+
+        $posts  =
+          $em->getRepository(Post::class)
+          ->createQueryBuilder('p')
+          ->orderBy('p.datetimeModifed', 'DESC')
+          ->getQuery()
+          ->setMaxResults(10)
+          ->getResult();
+
         return $this->render('@Admin/index.html.twig',
         [
           'roomsCount'      => $roomsCount,
@@ -96,9 +110,12 @@ class AdminController extends Controller
           'images'          => $images,
           'feedbacks'       => $feedbacks,
           'feedbacksCount'  => $feedbacksCount,
+          'postsCount'      => $postsCount,
+          'posts'           => $posts,
 
         ]);
     }
+
 
     public function feedbackAction(Request $request, $feedbackId)
     {
@@ -179,19 +196,22 @@ class AdminController extends Controller
           $em             = $this->getDoctrine()->getManager();
           $providersIds   = $request->query->get('providersIds');
           $roomId         = $request->query->get('roomId');
+          $type           = $request->query->get('type');
 
           $qb = $em->getRepository(ImageProvider::class)->createQueryBuilder('p');
           $qb->addSelect('i');
           $qb->addSelect('th');
-        #  $qb->leftJoin('p.image', 'i');
           $qb->join('p.image', 'i');
           $qb->leftJoin('i.thumbnails', 'th');
           $qb->andWhere('i.isOriginal=1');
 
           $qb->addSelect('r');
-          $qb->leftJoin('p.rooms', 'r');
-          $qb->where('r.id is NULL');
 
+          $qb->leftJoin('p.rooms', 'r');
+          $qb->andWhere('r.id is NULL');
+
+          $qb->leftJoin('p.posts', 'post');
+          $qb->andWhere('post.id is NULL');
 
           if(!empty($providersIds))
           {
@@ -201,9 +221,8 @@ class AdminController extends Controller
 
           $qb->orderBy('i.id', 'DESC');
           $providers = $qb->getQuery()->getResult();
-        #  dump($providers); die;
 
-          return $this->render('@Admin/imagesModal.html.twig', ['providers' => $providers]);
+          return $this->render('@Admin/imagesModal.html.twig', [ 'providers' => $providers ]);
     }
 
     public function imagesBoxAction(Request $request)
@@ -230,7 +249,10 @@ class AdminController extends Controller
         die('0');
     }
 
-
+    /**
+    * @param array $providers
+    * @return Response
+    */
     public function imagesBoxRender($providers)
     {
         return $this->render('@Admin/imagesBox.html.twig', [ 'providers' => $providers ]);
@@ -244,7 +266,6 @@ class AdminController extends Controller
             $em->remove($room);
             $em->flush();
             return $this->redirectToRoute('admin_rooms');
-
         }
     }
 
@@ -271,7 +292,6 @@ class AdminController extends Controller
             {
                 $roomId >= 1?die('Room not found'):null;
             }
-
 
             # Sorting images
             if($room->getImages())
@@ -319,63 +339,8 @@ class AdminController extends Controller
             $em->persist($room);
             $em->flush();
 
-            $providersIds   = $request->request->get('providers');
-            $newProviders   =
-              $em->getRepository(ImageProvider::class)
-              ->createQueryBuilder('p')
-              ->andWhere('p.id IN (:providersIds)')
-              ->setParameter('providersIds', $providersIds)
-              ->getQuery()
-              ->getResult();
-
-
-            # Remove old images
-            if($room->getImages())
-            {
-                foreach($room->getImages() as $image)
-                {
-                    $image->removeRoom($room);
-                    $room->removeImage($image);
-                    $em->persist($room);
-
-                }
-            }
-            $em->flush();
-
-            if($newProviders)
-            {
-                $flipProvidersIds     = array_flip($providersIds);
-                $providersToInsert    = [];
-
-                foreach ($newProviders as $provider)
-                {
-                    # Set sort order
-                    if(isset($flipProvidersIds[$provider->getId()]))
-                    {
-                        $provider->setRoomSortOrder($flipProvidersIds[$provider->getId()]);
-                    }
-                    $room->addImage($provider);
-                    $em->persist($room);
-                    $em->flush();
-
-                }
-            }
-
-
-            # Add new images
-            // if($newProviders)
-            // {
-            //     $flipProvidersIds     = array_flip($providersIds);
-            //
-            //     foreach($newProviders as $image)
-            //     {
-            //         $room->addImage($image);
-            //         $em->persist($room);
-            //         $em->flush();
-            //     }
-            //     #dump($flipProvidersIds);
-            //     #die;
-            // }
+            $imageService = $this->get('image_uploader');
+            $imageService->updateImageProviders($request->request->get('providers'), $room);
 
             return $this->redirectToRoute('admin_room_editor', ['roomId' => $room->getId()]);
         }
@@ -395,7 +360,6 @@ class AdminController extends Controller
         $file = new FileObject;
         $form = $this->createFormBuilder($file)
           ->add('file', FileType::class,  ['multiple' => true])
-        #  ->add('save', SubmitType::class, array('label' => 'Upload'))
           ->getForm()
           ->handleRequest($request);
 
@@ -410,7 +374,6 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_images');
 
         }
-
 
         $images  =
           $em->getRepository(Image::class)
@@ -450,22 +413,6 @@ class AdminController extends Controller
     }
 
 
-    public function postsAction(Request $request)
-    {
-        $em     = $this->getDoctrine()->getManager();
-
-        die('postsAction');
-    }
-
-
-    public function postEditorAction(Request $request, $postId=false)
-    {
-        $em             = $this->getDoctrine()->getManager();
-
-        die('postEditorAction ' . $postId);
-    }
-
-
     public function siteSettingsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -487,8 +434,6 @@ class AdminController extends Controller
           ->where("i.id={$imageId}")
           ->getQuery()
           ->getSingleResult();
-
-        dump($image); die;
 
         return $this->render('@Admin/roomEditor.html.twig', [ 'form' => $form->createView() ]);
     }

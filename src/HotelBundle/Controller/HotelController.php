@@ -7,6 +7,10 @@ use HotelBundle\Entity\Room;
 use HotelBundle\Entity\Feedback;
 use ImageBundle\Entity\Image;
 use ImageBundle\Entity\ImageProvider;
+use HotelBundle\Entity\Post;
+use HotelBundle\Entity\Setting;
+
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -23,8 +27,19 @@ class HotelController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $rooms  = $this->getRooms();
         $em     = $this->getDoctrine()->getManager();
+        $rooms  = $em->getRepository(Room::class)
+          ->createQueryBuilder('r')
+          ->addSelect('p')
+          ->addSelect('i')
+          ->addSelect('th')
+          ->join('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
+          ->join('p.image', 'i')
+          ->join('i.thumbnails', 'th')
+          ->getQuery()
+          ->setMaxResults(4)
+          ->getResult();
+
         $images = $em->getRepository(Image::class)
           ->createQueryBuilder('i')
           ->addSelect('p')
@@ -34,17 +49,15 @@ class HotelController extends Controller
           ->getQuery()
           ->getResult();
 
+        $posts = $em->getRepository(Post::class)->getPosts('health_center', true);
 
         return $this->render('@Hotel/Default/index.html.twig', [
           'rooms'     => $rooms,
+          'posts'     => $posts,
           'images'    => $images,
         ]);
     }
 
-    public function callBackAction(Request $request)
-    {
-
-    }
 
     public function bookRoomAction(Request $request)
     {
@@ -71,11 +84,18 @@ class HotelController extends Controller
             $em->flush();
             $this->addFlash('notice', 'Ваше сообщение отправлено!');
 
-            return $this->redirectToRoute('hotel_homepage');
+            if(!empty($data['redirect']))
+            {
+                return $this->redirect($data['redirect']);
+            }
+            else
+            {
+                return $this->redirectToRoute('hotel_homepage');
+            }
         }
     }
 
-    protected function getBookRoomForm($rooms = false)
+    protected function getBookRoomForm($rooms = false, $redirectRoute = '')
     {
         if(!$rooms)
         {
@@ -89,12 +109,14 @@ class HotelController extends Controller
           ->add('phone', TextType::class, [ 'required' => false  ])
           ->add('email', EmailType::class, [ 'required' => false  ])
           ->add('comment', TextareaType::class, [ 'required' => false  ])
+          ->add('redirect', TextType::class, [ 'required' => false, 'data' => $_SERVER['REQUEST_URI']  ])
           ->add('rooms', ChoiceType::class,
           [
-              'required' => false,
-              'choices' => $rooms,
-              'placeholder' => 'Выберите номер',
-              'choice_label' => function($room, $key, $index) { return $room->getTitle(); },
+              'required'      => false,
+              'choices'       => $rooms,
+              'choice_value'  => 'id',
+              'placeholder'   => 'Выберите номер',
+              'choice_label'  => function($room, $key, $index) { return $room->getTitle(); },
           ])
           ->setAction($this->generateUrl('hotel_room_book'))
           ->add('submit', SubmitType::class, ['label' => 'Отправить'])
@@ -102,32 +124,71 @@ class HotelController extends Controller
         return $bookForm;
     }
 
-    public function bookRoomModalRender($rooms)
+    public function bookRoomModalRender($rooms = false)
     {
+        $rooms = $rooms ? $rooms : $this->getRooms();
         $bookForm = $this->getBookRoomForm($rooms);
 
         return $this->render('@Hotel/Default/bookRoomModal.html.twig', ['bookForm' => $bookForm->createView() ]);
     }
 
-
-    public function callBackModalRender(Request $request)
+    public function getCallBackForm()
     {
         $form = $this->createFormBuilder()
           ->add('name', TextType::class, ['label' => 'Имя', 'required' => false  ])
-          ->add('phone', TextType::class, ['label' => 'Телефон', 'required' => false  ])
-          ->add('comment', TextareaType::class, ['label' => 'Комментарий' ])
-        #  ->add('redirect', HiddenType::class, ['data' => $this->generateUrl('hotel_callback') ])
+          ->add('phone', TextType::class, ['label' => 'Телефон'])
+          ->add('comment', TextareaType::class, ['label' => 'Комментарий', 'required' => false  ])
           ->add('submit', SubmitType::class, ['label' => 'Отправить'])
           ->setAction($this->generateUrl('hotel_callback'))
           ->getForm();
+        return $form ;
+    }
 
-
+    public function callBackModalRender(Request $request)
+    {
+        $form = $this->getCallBackForm();
 
         return $this->render('@Hotel/Default/callBackModal.html.twig', [ 'form' => $form->createView() ]);
     }
 
+
+    public function callBackAction(Request $request)
+    {
+        $form = $this->getCallBackForm();
+        $form->handleRequest($request);
+        $ajax = $request->get('ajax');
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $feedback = new Feedback;
+            $feedback->setName($form->getData()['name']);
+            $feedback->setPhone($form->getData()['phone']);
+            $feedback->setFormName('callback');
+            $feedback->setIpAddress($_SERVER['REMOTE_ADDR']);
+            $feedback->setDatetime(new \DateTime);
+            $feedback->setRoom(null);
+
+            $em->persist($feedback);
+            $em->flush();
+
+            if($ajax == 1)
+            {
+                  die('11111111');
+            }
+            else
+            {
+                $this->addFlash('notice', 'Ваше сообщение отправлено!');
+                return $this->redirectToRoute('hotel_homepage');
+            }
+        }
+    }
+
+
     public function contactsAction(Request $request)
     {
+
         $form = $this->createFormBuilder()
           ->add('name', TextType::class, ['label' => 'Имя', 'required' => false  ])
           ->add('email', EmailType::class, ['label' => 'E-Mail*' ])
@@ -139,15 +200,44 @@ class HotelController extends Controller
 
         $form->handleRequest($request);
 
+
+
         if($form->isSubmitted() && $form->isValid())
         {
-            $message = (new \Swift_Message('Hello Email'))
-              ->setFrom('info@cl23681.tmweb.ru')
-              ->setTo('mrchaos001@yandex.ru')
-              ->setBody($this->renderView('@Hotel/Default/contacts.html.twig', [ 'form' => $form->createView() ]), 'text/html');
+            $em = $this->getDoctrine()->getManager();
+            $setting = $em->getRepository(Setting::class)->getSetting();
+            $mailerUser = $this->getParameter('mailer_user');
 
-            $result = $this->get('mailer')->send($message);
-            die;
+            if($setting && $setting->getAdminEmail())
+            {
+              $message = (new \Swift_Message('Hello Email'))
+                ->setFrom($mailerUser)
+                ->setTo($setting->getAdminEmail())
+                ->setBody($this->renderView('@Hotel/Email/feedback.html.twig',
+                [
+                    'data'    => $form->getData(),
+                    'server'  => $_SERVER,
+
+                ]), 'text/html');
+
+              $result = $this->get('mailer')->send($message);
+            }
+
+            $feedback = new Feedback;
+            $feedback->setName($form->getData()['name']);
+            $feedback->setPhone($form->getData()['phone']);
+            $feedback->setEmail($form->getData()['email']);
+            $feedback->setComment($form->getData()['comment']);
+            $feedback->setFormName('contacts');
+            $feedback->setIpAddress($_SERVER['REMOTE_ADDR']);
+            $feedback->setDatetime(new \DateTime);
+            $feedback->setRoom(null);
+
+            $em->persist($feedback);
+            $em->flush();
+
+            $this->addFlash('notice', 'Ваше сообщение отправлено!');
+            return $this->redirectToRoute('hotel_contacts');
         }
 
         return $this->render('@Hotel/Default/contacts.html.twig', [ 'form' => $form->createView() ]);
@@ -161,10 +251,10 @@ class HotelController extends Controller
           ->createQueryBuilder('r')
           ->addSelect('p')
           ->addSelect('i')
+          ->addSelect('th')
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th');
-        #  ->groupBy('r.id');
 
         $limit > 0 ? $qb->setMaxResults($limit) : null;
         $rooms  =  $qb->getQuery()->getResult();
@@ -185,7 +275,14 @@ class HotelController extends Controller
     }
     public function roomsAction(Request $request)
     {
-        return $this->render('@Hotel/Default/rooms.html.twig', [ 'rooms' => $this->getRooms() ]);
+        $em       = $this->getDoctrine()->getManager();
+        $setting  = $em->getRepository(Setting::class)->getSetting();
+
+        return $this->render('@Hotel/Default/rooms.html.twig',
+        [
+          'rooms'    => $this->getRooms(),
+          'discount' =>  $setting->getDiscountToday()
+        ]);
     }
 
     public function roomAction(Request $request, $roomId)

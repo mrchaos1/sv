@@ -84,6 +84,7 @@ If you need custom parameters in pagination template, use:
 // set an array of custom parameters
 $pagination->setCustomParameters(array(
     'align' => 'center', # center|right (for template: twitter_bootstrap_v4_pagination)
+    'size' => 'large', # small|large (for template: twitter_bootstrap_v4_pagination)
     'style' => 'bottom',
     'span_class' => 'whatever'
 ));
@@ -153,3 +154,29 @@ Or even in Twig:
         ) }}
 ```
 
+## Customize rendering
+
+### Bulma
+
+You can configure the position, the size, and make the buttons rounded or not:
+- `position`: `'left'`, `'centered'`, or `'right'`. By default it's `'left'` 
+- `size`: `'small'`, `'medium'`, or `'large'`. By default, size is not modified
+- `rounded`: `true` or `false`. By default it's `false`
+
+In your controller:
+```php
+$pagination->setCustomParameters([
+    'position' => 'centered',
+    'size' => 'large',
+    'rounded' => true,
+]);
+```
+
+or in the view:
+```twig
+{{ knp_pagination_render(pagination, null, {}, {
+   'position': 'centered',
+   'size': 'large'
+   'rounded': true,
+}) }}
+```

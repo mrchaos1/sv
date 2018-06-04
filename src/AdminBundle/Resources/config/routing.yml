@@ -19,13 +19,6 @@ admin_rooms:
     path:     /rooms
     defaults: { _controller: AdminBundle:Admin:rooms }
 
-# Posts
-admin_posts:
-    path:     /posts
-    defaults: { _controller: AdminBundle:Admin:posts }
-admin_post_editor:
-    path:     /post_editor/{postId}
-    defaults: { _controller: AdminBundle:Admin:postEditor }
 
 # Posts
 admin_feedbacks:
@@ -78,3 +71,24 @@ admin_image_editor:
 admin_images:
     path:     /images
     defaults: { _controller: AdminBundle:Admin:images }
+
+# Post Admin
+admin_posts:
+    path:     /posts
+    defaults: { _controller: AdminBundle:PostAdmin:posts }
+
+admin_post_editor:
+    path:     /post_editor/{postId}
+    defaults: { _controller: AdminBundle:PostAdmin:postEditor }
+
+admin_create_post:
+    path:     /post_editor
+    defaults: { _controller: AdminBundle:PostAdmin:postEditor }
+
+admin_post_remove:
+    path:     /post_remove/{postId}
+    defaults: { _controller: AdminBundle:PostAdmin:postRemove }
+
+admin_setting_editor:
+    path:     /setting_editor
+    defaults: { _controller: AdminBundle:SettingAdmin:settingEditor }

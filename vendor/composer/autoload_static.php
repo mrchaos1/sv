@@ -135,8 +135,6 @@ class ComposerStaticInitc88857855b98408104dbdd3483b2c6a8
         ),
         'A' => 
         array (
-            'Application\\Sonata\\MediaBundle\\' => 31,
-            'AppBundle\\' => 10,
             'AdminBundle\\' => 12,
         ),
     );
@@ -409,14 +407,6 @@ class ComposerStaticInitc88857855b98408104dbdd3483b2c6a8
         'Buzz\\' => 
         array (
             0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib/Buzz',
-        ),
-        'Application\\Sonata\\MediaBundle\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/Application/Sonata/MediaBundle',
-        ),
-        'AppBundle\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/AppBundle',
         ),
         'AdminBundle\\' => 
         array (

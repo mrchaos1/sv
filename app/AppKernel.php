@@ -16,29 +16,30 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
             new HotelBundle\HotelBundle(),
-
-            new Sonata\CoreBundle\SonataCoreBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Sonata\FormatterBundle\SonataFormatterBundle(),
-            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
-            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-
-
-            new Sonata\MediaBundle\SonataMediaBundle(),
-            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
-
-
-            //new Sonata\CoreBundle\SonataCoreBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new ImageBundle\ImageBundle(),
             new AdminBundle\AdminBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
+            // new Sonata\CoreBundle\SonataCoreBundle(),
+            // new Sonata\BlockBundle\SonataBlockBundle(),
+            // new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            // new Sonata\AdminBundle\SonataAdminBundle(),
+            // new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            // new Sonata\FormatterBundle\SonataFormatterBundle(),
+            // new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            // new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            //
+            //
+            // new Sonata\MediaBundle\SonataMediaBundle(),
+            // new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            // new JMS\SerializerBundle\JMSSerializerBundle(),
+            // new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            //
+            //
+            // //new Sonata\CoreBundle\SonataCoreBundle(),
+            // new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
