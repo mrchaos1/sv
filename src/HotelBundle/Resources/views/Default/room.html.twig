@@ -49,20 +49,36 @@
             </div>
 
             <div class="col-5">
-                {% if room.priceFrom > 0 or room.priceTo > 0 %}
-                <p><b>Стоимость: </b>
+              {% if room.priceFrom > 0 or room.priceTo > 0 %}
+
+              {% if discount > 0 %}
+              <div class="rp-price-container old">
+                  <s>
                     {% if room.priceFrom == room.priceTo %}
-
-                      {{ room.priceFrom }}
-
+                      {{ discount > 0 ? room.priceFrom : "" }}
                     {% else %}
                       {{ room.priceFrom > 0 ? "от " ~ room.priceFrom: "" }}
                       {{ room.priceTo > 0 ? "до " ~ room.priceTo: "" }}
                     {% endif %}
-
                     руб.
-                </p>
-                {% endif %}
+                  </s>
+              </div>
+              {% endif %}
+
+
+              <div class="rp-price-container">
+                    {% if room.priceFrom == room.priceTo %}
+                      {{ discount > 0 ? (discount > 0 ? ((room.priceFrom - (room.priceFrom / 100 * discount))  | round) : room.priceFrom) : room.priceFrom }}
+                    {% else %}
+                      {{ room.priceFrom > 0 ? "от " ~ (discount > 0 ? (room.priceFrom - (room.priceFrom / 100 * discount)) : room.priceFrom) | round: "" }}
+                      {{ room.priceTo > 0 ? "до " ~ (discount > 0 ? (room.priceTo - (room.priceTo / 100 * discount)) : room.priceTo) | round: "" }}
+                    {% endif %}
+                  руб.
+              </div>
+              {% endif %}
+
+
+              <br />
                 {% if room.floor > 0 %}
                 <p><b>Этаж: </b> {{ room.floor }}</p>
                 {% endif %}

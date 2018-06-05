@@ -33,11 +33,11 @@ class HotelController extends Controller
           ->addSelect('p')
           ->addSelect('i')
           ->addSelect('th')
-          ->join('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
-          ->join('p.image', 'i')
-          ->join('i.thumbnails', 'th')
+          ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
+          ->leftJoin('p.image', 'i')
+          ->leftJoin('i.thumbnails', 'th')
           ->getQuery()
-          ->setMaxResults(4)
+        #  ->setMaxResults(4)
           ->getResult();
 
         $images = $em->getRepository(Image::class)
@@ -49,23 +49,49 @@ class HotelController extends Controller
           ->getQuery()
           ->getResult();
 
-        $posts = $em->getRepository(Post::class)->getPosts('health_center', true);
+        $posts    = $em->getRepository(Post::class)->getPosts('health_center', true);
+        $setting  = $em->getRepository(Setting::class)->getSetting();
+      #  return $this->render('@Hotel/Default/bootstrap_test.html.twig');
 
         return $this->render('@Hotel/Default/index.html.twig', [
           'rooms'     => $rooms,
           'posts'     => $posts,
           'images'    => $images,
+          'discount'  => $setting->getDiscountToday(),
         ]);
     }
 
 
     public function bookRoomAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $bookForm = $this->getBookRoomForm();
         $bookForm->handleRequest($request);
+        $setting = $em->getRepository(Setting::class)->getSetting();
 
         if($bookForm->isSubmitted() && $bookForm->isValid())
         {
+            #dump($bookForm->getData()['dateCome']); die;
+            $message = (new \Swift_Message('Заявка на бронирование номера'. ($bookForm->getData()['rooms'] ? (': '.$bookForm->getData()['rooms']->getTitle()) : null)))
+              ->setFrom($this->getParameter('mailer_user'))
+              ->setTo($setting->getAdminEmail())
+              ->setBody($this->renderView('@Hotel/Email/feedback.html.twig',
+              [
+                  'data'    =>
+                  [
+                    'date_come'   => $bookForm->getData()['dateCome'],
+                    'date_left'   => $bookForm->getData()['dateLeft'],
+                    'name'        => $bookForm->getData()['name'],
+                    'phone'       => $bookForm->getData()['phone'],
+                    'email'       => $bookForm->getData()['email'],
+                    'comment'     => $bookForm->getData()['comment'],
+                    'room'        => $bookForm->getData()['rooms'] ? $bookForm->getData()['rooms']->getTitle() : null,
+                  ] ,
+                  'server'  => $_SERVER,
+              ]), 'text/html');
+
+            $result = $this->get('mailer')->send($message);
+
             $data = $bookForm->getData();
             $feedback = new Feedback;
             $feedback->setName($data['name']);
@@ -79,7 +105,6 @@ class HotelController extends Controller
             $feedback->setComment($data['comment']);
             $feedback->setDatetime(new \DateTime);
 
-            $em = $this->getDoctrine()->getManager();
             $em->persist($feedback);
             $em->flush();
             $this->addFlash('notice', 'Ваше сообщение отправлено!');
@@ -156,11 +181,24 @@ class HotelController extends Controller
     {
         $form = $this->getCallBackForm();
         $form->handleRequest($request);
-        $ajax = $request->get('ajax');
+
+        $em           = $this->getDoctrine()->getManager();
+        $ajax         = $request->get('ajax');
+        $setting      = $em->getRepository(Setting::class)->getSetting();
+        $mailerUser   = $this->getParameter('mailer_user');
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $em = $this->getDoctrine()->getManager();
+            $message = (new \Swift_Message('Заявка на обратный звонок'))
+              ->setFrom($mailerUser)
+              ->setTo($setting->getAdminEmail())
+              ->setBody($this->renderView('@Hotel/Email/feedback.html.twig',
+              [
+                  'data'    => $form->getData(),
+                  'server'  => $_SERVER,
+              ]), 'text/html');
+
+            $result = $this->get('mailer')->send($message);
 
             $feedback = new Feedback;
             $feedback->setName($form->getData()['name']);
@@ -174,9 +212,7 @@ class HotelController extends Controller
             $em->flush();
 
             if($ajax == 1)
-            {
-                  die('11111111');
-            }
+            {}
             else
             {
                 $this->addFlash('notice', 'Ваше сообщение отправлено!');
@@ -195,7 +231,6 @@ class HotelController extends Controller
           ->add('phone', TextType::class, ['label' => 'Телефон', 'required' => false  ])
           ->add('comment', TextareaType::class, ['label' => 'Ваш вопрос*' ])
           ->add('submit', SubmitType::class, array('label' => 'Отправить'))
-
           ->getForm();
 
         $form->handleRequest($request);
@@ -210,7 +245,7 @@ class HotelController extends Controller
 
             if($setting && $setting->getAdminEmail())
             {
-              $message = (new \Swift_Message('Hello Email'))
+              $message = (new \Swift_Message('Форма обратной связи'))
                 ->setFrom($mailerUser)
                 ->setTo($setting->getAdminEmail())
                 ->setBody($this->renderView('@Hotel/Email/feedback.html.twig',
@@ -287,8 +322,9 @@ class HotelController extends Controller
 
     public function roomAction(Request $request, $roomId)
     {
-        $em     = $this->getDoctrine()->getManager();
-        $rooms  = $em->getRepository(Room::class)
+        $em       = $this->getDoctrine()->getManager();
+        $setting  = $em->getRepository(Setting::class)->getSetting();
+        $rooms    = $em->getRepository(Room::class)
           ->createQueryBuilder('r')
           ->addSelect('p')
           ->addSelect('i')
@@ -306,7 +342,7 @@ class HotelController extends Controller
         if($rooms)
         {
             $room = $rooms[0];
-            return $this->render('@Hotel/Default/room.html.twig', ['room' => $room]);
+            return $this->render('@Hotel/Default/room.html.twig', ['room' => $room, 'discount' => $setting->getDiscountToday() ]);
         }
         else
         {

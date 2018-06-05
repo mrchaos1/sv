@@ -3,3 +3,15 @@
 .flash-message:hover { opacity:0.6; }
 .flash-message.notice { background: green; }
 .flash-message.error { background: red; }
+
+.mp-room-price-container { padding-bottom: 20px; }
+.mp-room-price-container.old { color:#ccc; padding-bottom:0; }
+
+.rp-item { margin-bottom:35px; }
+.rp-row { box-shadow: 0 0 20px 0px rgba(71, 63, 63, 0.2); }
+.rp-row-image-container { padding-left:0;padding-right:0;  }
+.rp-image { width:100%;height:300px; }
+.rp-description-container { padding-left:30px;background-color:#fff; }
+.rp-description-container > h4 { padding-top:20px;padding-bottom:10px; }
+.rp-price-container { font-size:20px;color:#c0a061;font-weight: 600; }
+.rp-price-container.old { color:#ccc; }

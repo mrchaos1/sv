@@ -7,9 +7,7 @@ $('.js-book-button').click(function()
     var date_to_selector     = button.attr('data-date-to-selector');
     var room_selector        = button.attr('data-room-selector');
 
-    var room_id             = button.attr('data-room-id');
-
-//    alert(date_from_selector + ', ' + date_to_selector + ', ' + room_selector  + ', ' + room_id);
+    var room_id              = button.attr('data-room-id');
 
     if(book_form.length > 0)
     {
@@ -17,6 +15,17 @@ $('.js-book-button').click(function()
         {
             book_form.find('input.js-date-from').val($(date_from_selector).val());
         }
+
+        if(date_to_selector && date_to_selector != undefined && date_to_selector != '')
+        {
+            book_form.find('select.js-room').val($(date_to_selector).val());
+        }
+
+        if(room_id && room_id > 0)
+        {
+            book_form.find('select.js-room').val(room_id);
+        }
+
 
     }
 
