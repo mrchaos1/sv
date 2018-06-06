@@ -20,7 +20,7 @@
         <h1>Галлерея</h1>
         <div class="row">
             {% for image in images %}
-            <div class="col-4 gp-item">
+            <div class="col-md-4 col-xs-6  gp-item">
                 <a data-caption="{% if image.provider.rooms | length > 0%}
                     {% set room = image.provider.rooms.0 %}
                     <b><a href='{{ path('hotel_room', {'roomId': room.id })  }}'>{{ room.title }}</a></b>

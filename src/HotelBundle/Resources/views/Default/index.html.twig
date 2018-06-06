@@ -59,6 +59,7 @@
   </section>
 </section>
 
+{% if rooms | length > 0 %}
 <section id="mp-rooms-section" class = 'bg-1'>
   <div class="container text-center">
     <h2>Номера</h2>
@@ -122,8 +123,9 @@
     </div>
   </div>
 </section>
+{% endif %}
 
-
+{% if posts | length > 0 %}
 <section id = "mp-description-section" >
   <div class="container">
     <h2 class = 'text-center'>Оздоровительный коплекс</h2>
@@ -143,27 +145,25 @@
         {% endfor %}
 
     </div>
-
   </div>
-
 </section>
+{% endif %}
 
+{% if images | length > 0 %}
 <section  class = 'bg-1' id="mp-gallery-section" >
   <div class="container text-center">
     <h2><a href="{{ path('hotel_gallery') }}">Галлерея</a></h2>
-
     <div id="mp-carousel-slider">
-
       {% for image in images %}
         <a href="{{ image|thumbnail('big') }}" data-fancybox="gallery" >
             <div class = 'slider-item' style = 'background:url({{ image|thumbnail('preview') }}) no-repeat; {{ image.width > image.height ? 'background-size:auto 100% ; background-position:center;' : 'background-size:100% auto;' }} height:150px;'></div>
         </a>
       {% endfor %}
-
-
     </div>
   </div>
 </section>
+{% endif %}
+
 
 <section class = 'bg-white' id = "mp-map-section">
   <div class="container">
@@ -171,7 +171,7 @@
       <div class="col-md-6 col-sm-12">
         <ul class="list-group list-group-flush mb-10" >
           <li class="list-group-item"><span class="icon-location"></span> г. Бийск, Советская, 212/2</li>
-          <li class="list-group-item"><span class="icon-phone"></span> <a href="#">+7 (999) 999-99-99</a></li>
+          <li class="list-group-item"><span class="icon-phone"></span> <a href="#">+7 (3854) 36–48–36</a></li>
           <li class="list-group-item"><span class="icon-envelop"></span> <a href="#">sv-hotel@inbox.ru</a></li>
           <li class="list-group-item"><span class="icon-clock"></span> Круглосуточно</li>
         </ul>
@@ -190,7 +190,6 @@
 <script src="{{ asset('bundles/hotel/fancybox/jquery.fancybox.min.js') }}"></script>
 <script type="text/javascript">
 
-
   $('#mp-slider').slick();
 
   $('#mp-carousel-slider').slick
@@ -199,11 +198,6 @@
     slidesToShow: 5,
     slidesToScroll: 2
   });
-
-
-
-
-
 
 </script>
 {% endblock %}

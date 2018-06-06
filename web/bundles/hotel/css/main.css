@@ -15,3 +15,14 @@
 .rp-description-container > h4 { padding-top:20px;padding-bottom:10px; }
 .rp-price-container { font-size:20px;color:#c0a061;font-weight: 600; }
 .rp-price-container.old { color:#ccc; }
+
+.top-logo-container {  }
+.top-address-container {  }
+
+@media (max-width: 768px)
+{
+  .top-logo-container { text-align:center; }
+  .top-address-container { text-align:center; }
+  .top-address-container li { font-size: 10px; margin-top: 40px; }
+
+}
