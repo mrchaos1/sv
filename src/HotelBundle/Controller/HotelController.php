@@ -52,6 +52,7 @@ class HotelController extends Controller
         $posts    = $em->getRepository(Post::class)->getPosts('health_center', true);
         $setting  = $em->getRepository(Setting::class)->getSetting();
       #  return $this->render('@Hotel/Default/bootstrap_test.html.twig');
+      #  return $this->render('@Hotel/Default/layout.html.twig');
 
         return $this->render('@Hotel/Default/index.html.twig', [
           'rooms'     => $rooms,

@@ -1,4 +1,4 @@
-{% extends "@Hotel/Default/layout.html.twig" %}
+{% extends "@Hotel/Default/layout0.html.twig" %}
 {% block stylesheet %}
 {{ parent() }}
 <link rel="stylesheet" href="{{ asset("bundles/hotel/css/mp-slider.css") }}" />
@@ -26,7 +26,7 @@
   <section id = 'mp-order-form-section'>
     <div class="container">
       <div class="form-inline">
-        <div class="input-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="input-group col-md-5">
 
           <input id="js-mp-date-from" class="datepicker form-control" placeholder="Дата заезда">
 
@@ -35,14 +35,14 @@
           </div>
         </div>
 
-        <div class="input-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="input-group col-md-5">
           <input  id="js-mp-date-to" class="datepicker form-control" placeholder="Дата выезда">
           <div class="input-group-append">
             <span class="input-group-text"><span class="icon-calendar"></span></span>
           </div>
         </div>
 
-        <div class="input-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="input-group col-md-5">
           <select id="js-mp-room" class="form-control" >
             <option value="">Выберите номер</option>
             {% for k, room in rooms %}
@@ -50,7 +50,7 @@
             {% endfor %}
           </select>
         </div>
-        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group col-md-5">
           <button data-room-selector="#js-mp-room" data-date-from-selector="#js-mp-date-from" data-date-to-selector="#js-mp-date-to" data-toggle="modal" data-target="#bookModal" type="submit" class="js-book-button btn btn-primary btn-block">Забронировать</button>
         </div>
 
@@ -68,7 +68,7 @@
       {% set break = false %}
       {% set i = 0 %}
       {% for k, room in rooms if not break %}
-          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <a href="{{ path('hotel_room', { 'roomId' : room.id }) }}">
               <div class="room-item">
                 {% if room.images | length > 0 %}
@@ -131,7 +131,7 @@
     <h2 class = 'text-center'>Оздоровительный коплекс</h2>
     <div class="row">
         {% for post in posts %}
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
           <div class="include-item">
               <a href="{{ path('hotel_post', { 'slug': post.slug } ) }}">
                 <div class="include-item-image" style = "background:url({{ post.images | length > 0 ? post.images.0.image | thumbnail('preview') : asset('bundles/hotel/images/placeholder.png') }}) no-repeat; background-size: 100% auto; background-position:center;">
@@ -168,7 +168,7 @@
 <section class = 'bg-white' id = "mp-map-section">
   <div class="container">
     <div class = 'row'>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 col-xs-12">
         <ul class="list-group list-group-flush mb-10" >
           <li class="list-group-item"><span class="icon-location"></span> г. Бийск, Советская, 212/2</li>
           <li class="list-group-item"><span class="icon-phone"></span> <a href="#">+7 (3854) 36–48–36</a></li>
@@ -176,7 +176,7 @@
           <li class="list-group-item"><span class="icon-clock"></span> Круглосуточно</li>
         </ul>
       </div>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 col-xs-12">
           <a class="dg-widget-link" href="http://2gis.ru/biysk/firm/2815278048084196/center/85.17393350601198,52.514582081587605/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Бийска</a><div class="dg-widget-link"><a href="http://2gis.ru/biysk/firm/2815278048084196/photos/2815278048084196/center/85.17393350601198,52.514582081587605/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">Фотографии компании</a></div><div class="dg-widget-link"><a href="http://2gis.ru/biysk/center/85.173733,52.514339/zoom/17/routeTab/rsType/bus/to/85.173733,52.514339╎SV-отель, гостиничный комплекс?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти проезд до SV-отель, гостиничный комплекс</a></div><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":'100%',"height":200,"borderColor":"#a3a3a3","pos":{"lat":52.514582081587605,"lon":85.17393350601198,"zoom":17},"opt":{"city":"biysk"},"org":[{"id":"2815278048084196"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
       </div>
     </div>
