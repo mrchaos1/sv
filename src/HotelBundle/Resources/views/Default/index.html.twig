@@ -26,7 +26,7 @@
   <section id = 'mp-order-form-section'>
     <div class="container">
       <div class="form-inline">
-        <div class="input-group col-md-5">
+        <div class="input-group col-lg-3 col-md-5 ">
 
           <input id="js-mp-date-from" class="datepicker form-control" placeholder="Дата заезда">
 
@@ -35,14 +35,14 @@
           </div>
         </div>
 
-        <div class="input-group col-md-5">
+        <div class="input-group col-lg-3  col-md-5">
           <input  id="js-mp-date-to" class="datepicker form-control" placeholder="Дата выезда">
           <div class="input-group-append">
             <span class="input-group-text"><span class="icon-calendar"></span></span>
           </div>
         </div>
 
-        <div class="input-group col-md-5">
+        <div class="input-group col-lg-3  col-md-5">
           <select id="js-mp-room" class="form-control" >
             <option value="">Выберите номер</option>
             {% for k, room in rooms %}
@@ -50,7 +50,7 @@
             {% endfor %}
           </select>
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-lg-3 col-md-5">
           <button data-room-selector="#js-mp-room" data-date-from-selector="#js-mp-date-from" data-date-to-selector="#js-mp-date-to" data-toggle="modal" data-target="#bookModal" type="submit" class="js-book-button btn btn-primary btn-block">Забронировать</button>
         </div>
 
