@@ -74,4 +74,4 @@ services:
               $thumbnailPatterns:
                 small   : { width: 100, height: 100, quality: 70, resize_method: aspect_ratio}
                 preview : { width: 500, height: 500, quality: 70, resize_method: aspect_ratio}
-                big     : { width: 1400, height: 1400, quality: 70, resize_method: aspect_ratio}
+                big     : { width: 2000, height: 2000, quality: 70, resize_method: aspect_ratio}
