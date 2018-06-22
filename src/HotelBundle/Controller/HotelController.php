@@ -36,10 +36,11 @@ class HotelController extends Controller
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th')
+          ->orderBy('r.sortOrder', 'ASC')
           ->getQuery()
         #  ->setMaxResults(4)
           ->getResult();
-
+         
         $images = $em->getRepository(Image::class)
           ->createQueryBuilder('i')
           ->addSelect('p')
