@@ -16,6 +16,7 @@
 .rp-price-container { font-size:20px;color:#c0a061;font-weight: 600; }
 .rp-price-container.old { color:#ccc; }
 
+.mp-room-container a { text-decoration: none;}
 .top-logo-container {  }
 .top-address-container {  }
 

@@ -10,7 +10,6 @@
     .rp-description-container > h4 { padding-top:20px;padding-bottom:10px; }
 </style>
 {% endblock %}
-
 {% block title %}{{ category ? category.title : parent() }}{% endblock %}
 {% block content %}
 <section>
@@ -23,7 +22,6 @@
         {% endif %}
       </ol>
     </nav>
-
     {% if category %}
     <h1>{{ category.title }}</h1>
     {% endif %}
@@ -57,7 +55,7 @@
 
                 {% else %}
 
-                    <p>{{ short_text | length >= 500 ? :  short_text | raw    }}</p>
+                    <p>{{ short_text | raw    }}</p>
 
                 {% endif %}
             {% endif %}

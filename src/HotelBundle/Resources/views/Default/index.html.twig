@@ -78,7 +78,7 @@
       {% set break = false %}
       {% set i = 0 %}
       {% for k, room in rooms if not break %}
-          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <div class="mp-room-container col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <a href="{{ path('hotel_room', { 'roomId' : room.id }) }}">
               <div class="room-item">
                 {% if room.images | length > 0 %}
