@@ -80,7 +80,7 @@
               <div class="room-item">
                 {% if room.images | length > 0 %}
                 {% set image = room.images.0.image %}
-                <div class="room-item-image"style = "background:url({{ image|thumbnail('preview') }}) no-repeat; {{ image.width > image.height ? 'background-size:100% auto;background-position:center;' : 'background-size:100% auto;' }}) "></div>
+                <div class="room-item-image"style = "background:url({{ image|thumbnail('preview') }}) no-repeat; {{ image.width > image.height ? 'background-size:auto 100% ;background-position:center;' : 'background-size:100% auto;' }}) "></div>
                 {% else %}
                 <div class="room-item-image" style="background:url({{ asset('bundles/hotel/images/placeholder.png') }}) no-repeat; background-position: center; background-size:auto 100%;"></div>
                 {% endif %}
