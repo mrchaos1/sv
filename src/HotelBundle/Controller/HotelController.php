@@ -129,14 +129,14 @@ class HotelController extends Controller
         }
 
         $bookForm = $this->createFormBuilder()
-          ->add('dateCome', TextType::class, [ 'required' => false  ])
-          ->add('dateLeft', TextType::class, [ 'required' => false  ])
-          ->add('name', TextType::class, [ 'required' => false  ])
-          ->add('phone', TextType::class, [ 'required' => false  ])
-          ->add('email', EmailType::class, [ 'required' => false  ])
-          ->add('comment', TextareaType::class, [ 'required' => false  ])
-          ->add('redirect', TextType::class, [ 'required' => false, 'data' => $_SERVER['REQUEST_URI']  ])
-          ->add('rooms', ChoiceType::class,
+          ->add('dateCome',   TextType::class,      [ 'required' => false  ])
+          ->add('dateLeft',   TextType::class,      [ 'required' => false  ])
+          ->add('name',       TextType::class,      [ 'required' => false  ])
+          ->add('phone',      TextType::class,      [ 'required' => false  ])
+          ->add('email',      EmailType::class,     [ 'required' => false  ])
+          ->add('comment',    TextareaType::class,  [ 'required' => false  ])
+          ->add('redirect',   HiddenType::class,    [ 'required' => false, 'data' => $_SERVER['REQUEST_URI']  ])
+          ->add('rooms',      ChoiceType::class,
           [
               'required'      => false,
               'choices'       => $rooms,
