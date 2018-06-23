@@ -289,7 +289,7 @@ class HotelController extends Controller
           ->addSelect('p')
           ->addSelect('i')
           ->addSelect('th')
-          ->orderBy('r.sortOrder', 'ASC')
+          ->orderBy('r. sortOrder', 'ASC')
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th');

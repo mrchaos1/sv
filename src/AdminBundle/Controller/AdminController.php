@@ -138,23 +138,28 @@ class AdminController extends Controller
 
     public function feedbacksAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
 
-        $feedbacks  =
+        $feedbacksQuery  =
           $em->getRepository(Feedback::class)
           ->createQueryBuilder('f')
           ->orderBy('f.id', 'DESC')
-          ->getQuery()
-          ->getResult();
+          ->getQuery();
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $feedbacksQuery, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            100
+        );
+        
         $qb   = $em->createQueryBuilder();
         $q    = $qb->update('HotelBundle:Feedback', 'f')
           ->set('f.isReaded', '1')
           ->getQuery()
           ->execute();
 
-        return $this->render('@Admin/feedbacks.html.twig', [ 'feedbacks' => $feedbacks ]);
+        return $this->render('@Admin/feedbacks.html.twig', [ 'pagination' => $pagination, 'feedbacks' => $pagination->getItems() ]);
 
     }
 

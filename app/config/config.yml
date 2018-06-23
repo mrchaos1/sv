@@ -75,107 +75,16 @@ swiftmailer:
     port: 2525
 
 
-#
-# sonata_media:
-#     class:
-#         media             : Application\Sonata\MediaBundle\Entity\Media
-#         gallery           : Application\Sonata\MediaBundle\Entity\Gallery
-#         gallery_has_media : Application\Sonata\MediaBundle\Entity\GalleryHasMedia
-#
-#     db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
-#     default_context: default # you need to set a context
-#     contexts:
-#         default:  # the default context is mandatory
-#             providers:
-#                 - sonata.media.provider.dailymotion
-#                 - sonata.media.provider.youtube
-#                 - sonata.media.provider.image
-#                 - sonata.media.provider.file
-#                 - sonata.media.provider.vimeo
-#
-#             formats:
-#                 small: { width: 100 , quality: 70}
-#                 big:   { width: 500 , quality: 70}
-#                 preview: { width: 420, height: 270, quality: 70 }
-#
-#         post:
-#             providers:
-#                 - sonata.media.provider.image
-#
-#             formats:
-#                 small: { width: 150 , quality: 95}
-#                 big:   { width: 500 , quality: 90}
-#
-#
-#     cdn:
-#         server:
-#             path: /uploads/media # http://media.sonata-project.org/
-#
-#     filesystem:
-#         local:
-#             directory:  "%kernel.root_dir%/../web/uploads/media" #flex
-#             create:     false
-#
-# sonata_block:
-#     blocks:
-#         # enable the SonataAdminBundle block
-#         sonata.admin.block.admin_list:
-#             contexts: [admin]
-#
-#
-#
-# sonata_formatter:
-#     default_formatter: text
-#     formatters:
-#         markdown:
-#             service: sonata.formatter.text.markdown
-#             extensions:
-#                 - sonata.formatter.twig.control_flow
-#                 - sonata.formatter.twig.gist
-#         #        - sonata.media.formatter.twig #keep this commented unless you are using media bundle.
-#
-#
-#         text:
-#             service: sonata.formatter.text.text
-#             extensions:
-#                 - sonata.formatter.twig.control_flow
-#                 - sonata.formatter.twig.gist
-#         #        - sonata.media.formatter.twig
-#
-#
-#         rawhtml:
-#             service: sonata.formatter.text.raw
-#             extensions:
-#                 - sonata.formatter.twig.control_flow
-#                 - sonata.formatter.twig.gist
-#         #        - sonata.media.formatter.twig
-#
-#
-#         richhtml:
-#             service: sonata.formatter.text.raw
-#             extensions:
-#                 - sonata.formatter.twig.control_flow
-#                 - sonata.formatter.twig.gist
-#         #        - sonata.media.formatter.twig
-#
-#
-#         twig:
-#             service: sonata.formatter.text.twigengine
-#             extensions: [] # Twig formatter cannot have extensions
-#
-
-# # Image uploader settings
-# image_uploader:
-#   patterns:
-#     default:
-#       # rand(0,9999)
-#       # Y, m, d, h - datetime arguments
-#       path_template   : /Y/m/d/rand(0,99999)
-#       # [ext] - extantion
-#       name_template   : rand(0,99999).[ext]
-#       public_dir      : /uploads/images/
-#       internal_dir    : /web/uploads/images/
-#       thumbnails:
-#           small:    { size: 100, quality: 70 }
-#           big:      { size: 500, quality: 70 }
-#           preview:  { size: 420, quality: 70 }
+knp_paginator:
+    page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+    default_options:
+        page_name: page                 # page query parameter name
+        sort_field_name: sort           # sort field query parameter name
+        sort_direction_name: direction  # sort direction query parameter name
+        distinct: true                  # ensure distinct results, useful when ORM queries are using GROUP BY statements
+        filter_field_name: filterField  # filter field query parameter name
+        filter_value_name: filterValue  # filter value query parameter name
+    template:
+        pagination: '@KnpPaginator/Pagination/sliding.html.twig'     # sliding pagination controls template
+        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
+        filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template

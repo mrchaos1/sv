@@ -49,9 +49,9 @@
             {% elseif post.text %}
                 {% set short_text = post.text | striptags | raw %}
 
-                {% if short_text | length >= 500 %}
+                {% if short_text | length >= 200 %}
 
-                    <p>{{ ((short_text | raw) | slice(0, 500) ~ '...')  }} <a href ="{{ path('hotel_post', {'slug' : post.slug }) }}">Читать далее.</a></p>
+                    <p>{{ ((short_text | raw) | slice(0, 200) ~ '...')  }} <a href ="{{ path('hotel_post', {'slug' : post.slug }) }}">Читать далее.</a></p>
 
                 {% else %}
 

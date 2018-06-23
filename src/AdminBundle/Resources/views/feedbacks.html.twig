@@ -15,8 +15,9 @@
 <div class="col-md-12">
   <div class="tile">
     <div class="tile-title-w-btn">
-        <h3 class="title">Сообщения ({{ feedbacks | length }})</h3>
+        <h3 class="title">Сообщения ({{ pagination.getTotalItemCount }})</h3>
     </div>
+
 
     {% if feedbacks | length > 0 %}
     <table class="table">
@@ -60,6 +61,11 @@
     {% else %}
     <p>Нет сообщений</p>
     {% endif %}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
   </div>
+
 </div>
+
 {% endblock %}

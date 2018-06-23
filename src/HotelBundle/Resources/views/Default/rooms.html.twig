@@ -40,9 +40,9 @@
             {% elseif room.text %}
                 {% set short_text = room.text | striptags | raw %}
 
-                {% if short_text | length >= 200 %}
+                {% if short_text | length >= 170 %}
 
-                    <p>{{ ((short_text | raw) | slice(0, 200) ~ '...')  }} <a href ="{{ path('hotel_room', {'roomId' : room.id }) }}">Читать далее.</a></p>
+                    <p>{{ ((short_text | raw) | slice(0, 170) ~ '...')  }} <a href ="{{ path('hotel_room', {'roomId' : room.id }) }}">Читать далее.</a></p>
                 {% else %}
 
                     <p>{{ short_text }}</p>
