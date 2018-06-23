@@ -18,15 +18,18 @@ $('.js-book-button').click(function()
 
         if(date_to_selector && date_to_selector != undefined && date_to_selector != '')
         {
-            book_form.find('select.js-room').val($(date_to_selector).val());
+            book_form.find('input.js-date-to').val($(date_to_selector).val());
+        }
+
+        if(room_selector && room_selector != undefined && room_selector != '')
+        {
+            book_form.find('select.js-room').val($(room_selector).val());
         }
 
         if(room_id && room_id > 0)
         {
             book_form.find('select.js-room').val(room_id);
         }
-
-
     }
 
 });
