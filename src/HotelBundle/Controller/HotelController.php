@@ -35,12 +35,12 @@ class HotelController extends Controller
           ->addSelect('th')
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
-          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
+          ->leftJoin('i.thumbnails', 'th')
           ->orderBy('r.sortOrder', 'ASC')
           ->getQuery()
           ->getResult();
 
-
+        r();
 
         $images = $em->getRepository(Image::class)
           ->createQueryBuilder('i')
@@ -49,7 +49,7 @@ class HotelController extends Controller
           ->addSelect('th')
           ->join('i.provider', 'p')
           ->join('p.rooms', 'r')
-          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
+          ->leftJoin('i.thumbnails', 'th')
 
           ->setMaxResults(10)
           ->getQuery()
@@ -296,7 +296,7 @@ class HotelController extends Controller
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
         #  ->leftJoin('i.thumbnails', 'th');
-          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent');
+          ->leftJoin('i.thumbnails', 'th');
 
 
         $limit > 0 ? $qb->setMaxResults($limit) : null;
@@ -340,7 +340,7 @@ class HotelController extends Controller
 
           ->leftJoin('r.images', 'p')
           ->leftJoin('p.image', 'i')
-          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
+          ->leftJoin('i.thumbnails', 'th')
 
           ->andWhere('r.id = :roomId')
           ->setParameter('roomId', $roomId)
@@ -370,7 +370,7 @@ class HotelController extends Controller
 
           ->join('i.provider', 'p')
           ->join('p.rooms', 'r')
-          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
+          ->leftJoin('i.thumbnails', 'th')
 
           ->getQuery()
           ->getResult();
