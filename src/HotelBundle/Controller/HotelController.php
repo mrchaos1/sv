@@ -40,8 +40,6 @@ class HotelController extends Controller
           ->getQuery()
           ->getResult();
 
-        r();
-
         $images = $em->getRepository(Image::class)
           ->createQueryBuilder('i')
           ->addSelect('p')
