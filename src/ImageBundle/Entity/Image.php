@@ -94,6 +94,7 @@ class Image
     /**
      * One Image has many thumbnains.
      * @ORM\OneToMany(targetEntity="Image", mappedBy="parent")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     private $thumbnails;
 
@@ -554,7 +555,7 @@ class Image
     public function removeProvider($provider)
     {
         $this->provider->remove($provider);
-        $photo->setProvider(null);
+        $this->setProvider(null);
     }
 
 

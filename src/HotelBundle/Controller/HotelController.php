@@ -33,9 +33,13 @@ class HotelController extends Controller
           ->addSelect('p')
           ->addSelect('i')
           ->addSelect('th')
+          ->addSelect('thp')
+
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('th.provider', 'thp')
+
           ->orderBy('r.sortOrder', 'ASC')
           ->getQuery()
           ->getResult();
@@ -45,9 +49,12 @@ class HotelController extends Controller
           ->addSelect('p')
           ->addSelect('r')
           ->addSelect('th')
+          ->addSelect('thp')
+
           ->join('i.provider', 'p')
           ->join('p.rooms', 'r')
           ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('th.provider', 'thp')
 
           ->setMaxResults(10)
           ->getQuery()
@@ -290,11 +297,13 @@ class HotelController extends Controller
           ->addSelect('p')
           ->addSelect('i')
           ->addSelect('th')
+          ->addSelect('thp')
+
           ->orderBy('r. sortOrder', 'ASC')
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
-        #  ->leftJoin('i.thumbnails', 'th');
-          ->leftJoin('i.thumbnails', 'th');
+          ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('th.provider', 'thp');
 
 
         $limit > 0 ? $qb->setMaxResults($limit) : null;
@@ -335,10 +344,12 @@ class HotelController extends Controller
           ->addSelect('p')
           ->addSelect('i')
           ->addSelect('th')
+          ->addSelect('thp')
 
           ->leftJoin('r.images', 'p')
           ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('th.providers', 'thp')
 
           ->andWhere('r.id = :roomId')
           ->setParameter('roomId', $roomId)
@@ -363,12 +374,14 @@ class HotelController extends Controller
         $images   = $em->getRepository(Image::class)
           ->createQueryBuilder('i')
           ->addSelect('p')
-          ->addSelect('th')
           ->addSelect('r')
+          ->addSelect('th')
+          ->addSelect('thp')
 
           ->join('i.provider', 'p')
           ->join('p.rooms', 'r')
           ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('th.provider', 'thp')
 
           ->getQuery()
           ->getResult();

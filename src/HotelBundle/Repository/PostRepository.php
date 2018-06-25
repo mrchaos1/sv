@@ -28,13 +28,12 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
       $qb->addSelect('p');
       $qb->addSelect('i');
       $qb->addSelect('th');
+      $qb->addSelect('thp');
 
       $qb->leftJoin('post.images', 'p', 'WITH', 'p.postSortOrder=0');
       $qb->leftJoin('p.image', 'i');
       $qb->leftJoin('i.thumbnails', 'th');
-
-
-
+      $qb->leftJoin('th.provider', 'thp');
 
       if($onlyPublished)
       {
