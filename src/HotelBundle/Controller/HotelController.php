@@ -35,25 +35,28 @@ class HotelController extends Controller
           ->addSelect('th')
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
-          ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
           ->orderBy('r.sortOrder', 'ASC')
           ->getQuery()
-        #  ->setMaxResults(4)
           ->getResult();
+
+
 
         $images = $em->getRepository(Image::class)
           ->createQueryBuilder('i')
           ->addSelect('p')
+          ->addSelect('r')
+          ->addSelect('th')
           ->join('i.provider', 'p')
           ->join('p.rooms', 'r')
+          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
+
           ->setMaxResults(10)
           ->getQuery()
           ->getResult();
 
         $posts    = $em->getRepository(Post::class)->getPosts('health_center', true);
         $setting  = $em->getRepository(Setting::class)->getSetting();
-      #  return $this->render('@Hotel/Default/bootstrap_test.html.twig');
-      #  return $this->render('@Hotel/Default/layout.html.twig');
 
         return $this->render('@Hotel/Default/index.html.twig', [
           'rooms'     => $rooms,
@@ -292,7 +295,9 @@ class HotelController extends Controller
           ->orderBy('r. sortOrder', 'ASC')
           ->leftJoin('r.images', 'p', 'WITH', 'p.roomSortOrder=0')
           ->leftJoin('p.image', 'i')
-          ->leftJoin('i.thumbnails', 'th');
+        #  ->leftJoin('i.thumbnails', 'th');
+          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent');
+
 
         $limit > 0 ? $qb->setMaxResults($limit) : null;
         $rooms  =  $qb->getQuery()->getResult();
@@ -335,7 +340,7 @@ class HotelController extends Controller
 
           ->leftJoin('r.images', 'p')
           ->leftJoin('p.image', 'i')
-          ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
 
           ->andWhere('r.id = :roomId')
           ->setParameter('roomId', $roomId)
@@ -365,7 +370,8 @@ class HotelController extends Controller
 
           ->join('i.provider', 'p')
           ->join('p.rooms', 'r')
-          ->leftJoin('i.thumbnails', 'th')
+          ->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent')
+
           ->getQuery()
           ->getResult();
 

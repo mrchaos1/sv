@@ -29,9 +29,12 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
       $qb->addSelect('i');
       $qb->addSelect('th');
 
-      $qb->leftJoin('post.images', 'p');
+      $qb->leftJoin('post.images', 'p', 'WITH', 'p.postSortOrder=0');
       $qb->leftJoin('p.image', 'i');
-      $qb->leftJoin('i.thumbnails', 'th');
+      $qb->leftJoin('i.thumbnails', 'th', 'WITH', 'th.id = th.parent');
+
+
+
 
       if($onlyPublished)
       {
