@@ -36,7 +36,7 @@
                 {% for image in post.images %}
                 <div>
                     <a data-fancybox="gallery"  href="{{ image.image|thumbnail('big') }}">
-                      <div style="width:100%;height:300px;background:url({{ image.image|thumbnail('big') }}) no-repeat;{{ image.image.width > image.image.height ? 'background-size:100% auto;background-position:center;' : 'background-size:100% auto;' }}"></div>
+                      <div style="width:100%;height:500px;background:url({{ image.image|thumbnail('big') }}) no-repeat;{{ image.image.width > image.image.height ? 'background-size:100% auto;background-position:center;' : 'background-size:100% auto;' }}"></div>
                     </a>
                 </div>
                 {% endfor %}
