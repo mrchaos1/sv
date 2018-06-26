@@ -349,8 +349,8 @@ class HotelController extends Controller
           ->leftJoin('r.images', 'p')
           ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th')
-          ->leftJoin('th.providers', 'thp')
-
+          ->leftJoin('th.provider', 'thp')
+          ->orderBy('p.roomSortOrder', 'ASC')
           ->andWhere('r.id = :roomId')
           ->setParameter('roomId', $roomId)
           ->getQuery()
