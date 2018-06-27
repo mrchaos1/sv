@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% set route =  app.request.attributes.get('_route') %}<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
@@ -84,19 +84,18 @@
 
       </div>
       <ul class="app-menu">
-        <li><a class="app-menu__item ___active" href="{{ path('admin_index') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-
-        <li class="treeview"><a class="app-menu__item"  href="{{ path('admin_rooms') }}" data-toggle="treeview"><i class="app-menu__icon  fa fa-home"></i><span class="app-menu__label">Номера</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li><a class="app-menu__item{{ route == 'admin_index' ? ' active' : '' }}" href="{{ path('admin_index') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li class="treeview{{ route in { 0 : 'admin_rooms', 1 : 'admin_room_create', 2 : 'admin_room_editor' }  ? ' is-expanded' : '' }}">
+          <a class="app-menu__item{{ route in { 0 : 'admin_rooms', 1 : 'admin_room_create', 2 : 'admin_room_editor' }  ? ' active' : '' }}"  href="{{ path('admin_rooms') }}" data-toggle="treeview"><i class="app-menu__icon  fa fa-home"></i><span class="app-menu__label">Номера</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item"   href="{{ path('admin_room_create') }}" ><i class="icon fa fa-plus"></i> Добавить номер</a></li>
-            <li><a class="treeview-item"  href="{{ path('admin_rooms') }}"><i class="icon fa fa-list"></i>  Список номеров</a></li>
+            <li><a class="treeview-item{{ route == 'admin_room_create' ? ' active' : '' }}"  href="{{ path('admin_room_create') }}" ><i class="icon fa fa-plus"></i> Добавить номер</a></li>
+            <li><a class="treeview-item{{ route == 'admin_rooms' ? ' active' : '' }}"  href="{{ path('admin_rooms') }}"><i class="icon fa fa-list"></i>  Список номеров</a></li>
           </ul>
         </li>
-
-         <li><a class="app-menu__item" href="{{ path('admin_images') }}"><i class="app-menu__icon fa fa-camera-retro"></i><span class="app-menu__label">Фотографии</span></a></li>
-         <li><a class="app-menu__item" href="{{ path('admin_feedbacks') }}"><i class="app-menu__icon fa fa-comments"></i><span class="app-menu__label">Сообщения</span></a></li>
-         <li><a class="app-menu__item" href="{{ path('admin_posts') }}"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Публикации</span></a></li>
-         <li><a class="app-menu__item" href="{{ path('admin_setting_editor') }}"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Настройки</span></a></li>
+         <li><a class="app-menu__item{{ route == 'admin_images' ? ' active' : '' }}" href="{{ path('admin_images') }}"><i class="app-menu__icon fa fa-camera-retro"></i><span class="app-menu__label">Фотографии</span></a></li>
+         <li><a class="app-menu__item{{ route in { 0 : 'admin_feedbacks', 1 : 'admin_feedback', 2 : 'admin_feedback_editor' }  ? ' active' : '' }}" href="{{ path('admin_feedbacks') }}"><i class="app-menu__icon fa fa-comments"></i><span class="app-menu__label">Сообщения</span></a></li>
+         <li><a class="app-menu__item{{ route in { 0 : 'admin_posts', 1 : 'admin_create_post', 2 : 'admin_post_editor' }  ? ' active' : '' }}" href="{{ path('admin_posts') }}"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Публикации</span></a></li>
+         <li><a class="app-menu__item{{ route == 'admin_setting_editor' ? ' active' : '' }}" href="{{ path('admin_setting_editor') }}"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Настройки</span></a></li>
       </ul>
     </aside>
     <main class="app-content">

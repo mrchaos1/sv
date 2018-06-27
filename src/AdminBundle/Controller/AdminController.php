@@ -152,7 +152,7 @@ class AdminController extends Controller
             $request->query->getInt('page', 1)/*page number*/,
             100
         );
-        
+
         $qb   = $em->createQueryBuilder();
         $q    = $qb->update('HotelBundle:Feedback', 'f')
           ->set('f.isReaded', '1')
@@ -384,7 +384,11 @@ class AdminController extends Controller
           $em->getRepository(Image::class)
           ->createQueryBuilder('i')
           ->addSelect('th')
+          ->addSelect('thp')
+          ->addSelect('p')
           ->leftJoin('i.thumbnails', 'th')
+          ->join('i.provider', 'p')
+          ->leftJoin('th.provider', 'thp')
           ->where('i.isOriginal=1')
           ->orderBy('i.id', 'DESC')
           ->getQuery()
