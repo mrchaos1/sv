@@ -34,6 +34,8 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
       $qb->leftJoin('p.image', 'i');
       $qb->leftJoin('i.thumbnails', 'th');
       $qb->leftJoin('th.provider', 'thp');
+      $qb->orderBy('p.postSortOrder', 'ASC');
+
 
       if($onlyPublished)
       {
