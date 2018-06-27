@@ -80,10 +80,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger" href="{{ path('hotel_post', { 'slug' : 'about' }) }}">О нас</a>
-          </li>
+
+
+        <li class="nav-item dropdown js-dropdown-hover mx-0 mx-lg-1">
+          <a class="nav-link py-3 px-0 px-lg-3 dropdown-toggle" href="{{ path('hotel_post', { 'slug' : 'about' }) }}" id="navbarDropdown" role="button" {# data-toggle="dropdown" #} aria-haspopup="true" aria-expanded="false">О нас</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item" href="{{ path('hotel_post', { 'slug' : 'parthership' }) }}">Для сотрудничества</a>
+             <a class="dropdown-item" href="{{ path('hotel_gallery') }}">Галлерея</a>
+           </div>
         </li>
+
+
+
         <li class="nav-item mx-0 mx-lg-1">
           <a class="nav-link py-3 px-0 px-lg-3" href="{{ path('hotel_rooms') }}">Номера</a>
         </li>
@@ -93,9 +101,9 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3" href="{{ path('hotel_posts', {'slug' : 'news'}) }}">Новости</a>
 
-          <li class="nav-item mx-0 mx-lg-1">
+          {#<li class="nav-item mx-0 mx-lg-1">
             <a class="to-modal nav-link py-3 px-0 px-lg-3 js-scroll-trigger" href="{{ path('hotel_gallery') }}">Галлерея</a>
-          </li>
+          </li>#}
           <li class="nav-item mx-0 mx-lg-1">
             <a class="to-modal nav-link py-3 px-0 px-lg-3 js-scroll-trigger" href="{{ path('hotel_contacts') }}">Контакты</a>
           </li>
@@ -150,6 +158,13 @@
 
         $( ".datepicker" ).datepicker({ minDate: new Date(), dateFormat: "dd.mm.yy" });
         $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+
+        $('li.js-dropdown-hover').hover(function()
+        {
+          $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeIn(10);
+        }, function() {
+          $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(200);
+        });
 
     </script>
     {% endblock %}
