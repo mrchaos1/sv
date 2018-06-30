@@ -558,6 +558,4 @@ class Image
         $this->setProvider(null);
     }
 
-
-
 }

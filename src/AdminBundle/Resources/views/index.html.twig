@@ -34,11 +34,8 @@
                       <td>{{ feedback.email }}</td>
                       <td>
                           {% if feedback.room %}
-
                               <a target="_blank" href="{{ path('hotel_room', { 'roomId' : feedback.room.id }) }}">{{ feedback.room.title }}</a>
-
                           {% else %}
-
                             Не указан
                           {% endif %}
                       </td>
@@ -63,8 +60,6 @@
             {% if rooms | length > 0 %}
             <div class="row">
                 {% for room in rooms %}
-
-
                     <div class="col-4 text-center">
                       {% if room.images | length > 0 %}
                       {% set image = room.images.0.image %}

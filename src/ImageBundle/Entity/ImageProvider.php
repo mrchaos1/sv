@@ -65,6 +65,14 @@ class ImageProvider
      */
     private $postSortOrder;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array", nullable=true)
+     */
+    private $roles;
+
+    private $roleNames = [ 'ROLE_SLIDER' ];
 
 
     /**
@@ -249,5 +257,45 @@ class ImageProvider
     public function getPostSortOrder()
     {
         return $this->postSortOrder;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     *
+     * @return ImageProvider
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return roles
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return roles
+     */
+    public function getRoleNames()
+    {
+        return $this->roleNames;
+        $return = [];
+        foreach($this->roleNames as $k=>$name)
+        {
+            $return[$name] = $name;
+        }
+        return $return;
     }
 }

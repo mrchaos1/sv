@@ -60,14 +60,29 @@ class HotelController extends Controller
           ->getQuery()
           ->getResult();
 
+        $sliderImages = $em->getRepository(Image::class)
+            ->createQueryBuilder('i')
+            ->addSelect('p')
+            ->addSelect('th')
+            ->addSelect('thp')
+            ->join('i.provider', 'p')
+            ->leftJoin('i.thumbnails', 'th')
+            ->leftJoin('th.provider', 'thp')
+            ->where('p.roles LIKE :role')
+            ->setParameter('role', "%ROLE_SLIDER%")
+            ->getQuery()
+            ->getResult();
+
         $posts    = $em->getRepository(Post::class)->getPosts('health_center', true);
         $setting  = $em->getRepository(Setting::class)->getSetting();
 
-        return $this->render('@Hotel/Default/index.html.twig', [
-          'rooms'     => $rooms,
-          'posts'     => $posts,
-          'images'    => $images,
-          'discount'  => $setting->getDiscountToday(),
+        return $this->render('@Hotel/Default/index.html.twig',
+        [
+          'rooms'           => $rooms,
+          'posts'           => $posts,
+          'images'          => $images,
+          'sliderImages'    => $sliderImages,
+          'discount'        => $setting->getDiscountToday(),
         ]);
     }
 

@@ -1,6 +1,10 @@
 {% extends "@Admin/layout.html.twig" %}
 {% block styles %}
 {{ parent() }}
+<style media="screen">
+    .il-col-info { position:absolute; top: 0; }
+    .il-col-area { position: relative; }
+</style>
 {% endblock %}
 {% block header_title %}Галлерея{% endblock %}
 
@@ -39,8 +43,20 @@
                 <div class="il-col-description">
                     {{ image.width }}x{{ image.height }}
                     <div class="">
-                      <a onclick="return confirm('Удалить изображение?');" href="{{ path('admin_image_remove', { 'imageId': image.id  }) }}">Удалить</a>
-                      <!-- <a href="{{ path('admin_image_editor', { 'imageId': image.id  }) }}">Редактировать</a> -->
+                      {% if image.provider.roles %}
+                      <div class="">
+                      {% set length = image.provider.roles | length %}
+
+                      {% for k, role in image.provider.roles %}
+                      <b>{{ role | trans({}, 'admin')}}{{ (length >= k + 2) ? ", " : "" }}</b>
+                      {% endfor %}
+                      </div>
+                      {% endif %}
+                      {% if image.provider.note %}
+                      <div><i>{{ image.provider.note }}</i></div>
+                      {% endif %}
+                      <a onclick="return confirm('Удалить изображение?');" href="{{ path('admin_image_remove', { 'imageId': image.id  }) }}">Удалить</a> /
+                      <a href="{{ path('admin_image_editor', { 'imageId': image.id  }) }}">Редактировать</a>
                     </div>
                 </div>
             </div>

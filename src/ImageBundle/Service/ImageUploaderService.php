@@ -173,14 +173,12 @@ class ImageUploaderService
         $imageHeight      = $imageSize[1];
         $imageMime        = $imageSize['mime'];
         $imageExtension   = $this->getImageExtension($imageSize['mime']);
+        $fileName         = $fileName.'.'.$imageExtension;
 
         # Save paths
         $filePath         = $this->generateFilePath();
         $filePublicPath   = $this->generateFilePublicPath();
         $fileNameOrigal   = $file->getClientOriginalName();
-
-        # File Name
-        #$fileName         = ($fileName ? $fileName : date('Y-m-d-h-i-s')).'.'.$imageExtension;
 
         # Prepare to database
         $image = new Image;
@@ -194,8 +192,7 @@ class ImageUploaderService
         $image->setInternalDir($this->internalDir);
         $image->setSubDir($subDir);
         $image->setFileName($fileName);
-        $image->setFileName($fileName);
-
+        $image->setFileExtension($imageExtension);
         $imageProvider = new ImageProvider;
         $imageProvider->setImage($image);
         $image->setProvider($imageProvider);
@@ -227,6 +224,7 @@ class ImageUploaderService
                     $thumbImage->setPublicDir($filePublicPath);
                     $thumbImage->setInternalDir($this->internalDir);
                     $thumbImage->setSubDir($subDir);
+                    $thumbImage->setFileExtension($imageExtension);
                     $thumbImage->setFileName($thumbFileName);
                     $thumbImage->setDatetimeAdded(new \DateTime);
                     $thumbImage->setDatetimeModifed(new \DateTime);

@@ -22,7 +22,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use AdminBundle\Form\Object\FileObject;
@@ -192,8 +191,6 @@ class AdminController extends Controller
           }
 
         return $this->render('@Admin/login.html.twig', [ 'form' => $form->createView() ]);
-
-
     }
 
     public function imagesModalAction(Request $request)
@@ -429,22 +426,61 @@ class AdminController extends Controller
         die('siteSettingsAction');
     }
 
-
-
-
+    /**
+    * @param Request $request
+    * @param int $imageId
+    * @return Response
+    */
     public function imageEditorAction(Request $request, $imageId = false)
     {
-        $em             = $this->getDoctrine()->getManager();
-        $image  =
-          $em->getRepository(Image::class)
-          ->createQueryBuilder('i')
+        $em     = $this->getDoctrine()->getManager();
+        $provider  =
+          $em->getRepository(ImageProvider::class)
+          ->createQueryBuilder('p')
           ->addSelect('th')
+          ->addSelect('i')
+          ->leftJoin('p.image', 'i')
           ->leftJoin('i.thumbnails', 'th')
           ->where("i.id={$imageId}")
           ->getQuery()
           ->getSingleResult();
 
-        return $this->render('@Admin/roomEditor.html.twig', [ 'form' => $form->createView() ]);
+        $roleChoices = [];
+
+        if(!$provider)
+        {
+            die('Image not found');
+        }
+
+        foreach($provider->getRoleNames() as $role)
+        {
+              $roleChoices[$role] = $role;
+        }
+
+        $form = $this->createFormBuilder($provider)
+          ->add('note', TextType::class, [ 'required' => false ])
+          ->add('roles', ChoiceType::class, array
+          (
+              'choices'               => $roleChoices,
+              'multiple'              => true,
+              'expanded'              => true,
+              'choices_as_values'     => true,
+              'translation_domain'    => 'admin',
+          ))
+          ->add('save', SubmitType::class)
+          ->getForm()
+          ->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($provider);
+            $em->flush();
+            return $this->redirectToRoute('admin_image_editor', [ 'imageId' => $provider->getImage()->getId() ]);
+        }
+
+
+
+        return $this->render('@Admin/imageEditor.html.twig', [ 'form' => $form->createView(), 'provider' => $provider ]);
     }
 
 
