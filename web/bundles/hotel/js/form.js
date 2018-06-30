@@ -6,7 +6,6 @@ $('.js-book-button').click(function()
     var date_from_selector   = button.attr('data-date-from-selector');
     var date_to_selector     = button.attr('data-date-to-selector');
     var room_selector        = button.attr('data-room-selector');
-
     var room_id              = button.attr('data-room-id');
 
     if(book_form.length > 0)

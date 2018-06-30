@@ -1,0 +1,53 @@
+{% extends "@Hotel/Default/layout.html.twig" %}
+{% block stylesheet %}
+{{ parent() }}
+<style media="screen">
+    .rvp-container { text-align: center; border: 1px solid #ccc; padding: 20px; border: 1px solid #c4bf7b; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); }
+    .rvp-reply-text { margin-top: 20px; border: 1px solid #ccc; padding: 20px; border: 1px solid #c4bf7b; }
+    .rvp-text { margin-top: 20px; }
+
+</style>
+
+{% endblock %}
+{% block title %}Отзывы гостей{% endblock %}
+{% block content %}
+<section>
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('hotel_homepage') }}">Главная</a></li>
+        <li class="breadcrumb-item">Отзывы гостей</li>
+      </ol>
+    </nav>
+    <h1>отзывы</h1>
+
+    {% if reviews %}
+    <div class="row">
+    {% for review in reviews %}
+    <div class="col-md-4 rvp-item">
+        <div class="rvp-container">
+            <h4>{{ review.name }}</h4>
+            {% if review.country %}
+            <h5>{{ review.country }}</h5>
+            {% endif %}
+            {% if review.city %}
+            <h5>{{ review.city }}</h5>
+            {% endif %}
+            <div class="rvp-text">
+                {{ review.text }}
+                {% if review.replyText %}
+                <div class="rvp-reply-text"><i>{{ review.replyText }}</i></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    {% else %}
+
+    <p>Пока нет отзывов</p>
+
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

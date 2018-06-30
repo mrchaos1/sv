@@ -123,7 +123,17 @@ class PostAdminController extends Controller
 
     public function postRemoveAction(Request $request, $postId)
     {
-        die('postRemoveAction ' . $postId);
+        $em = $this->getDoctrine()->getManager();
+        if($post = $em->getRepository(Post::class)->findOneBy(['id' => $postId]))
+        {
+            if($post->getIsSystem())
+            {
+                die('Статья защища от удаления');
+            }
+            $em->remove($post);
+            $em->flush();
+            return $this->redirectToRoute('admin_posts');
+        }
     }
 
 

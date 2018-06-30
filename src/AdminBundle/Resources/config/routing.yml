@@ -92,3 +92,20 @@ admin_post_remove:
 admin_setting_editor:
     path:     /setting_editor
     defaults: { _controller: AdminBundle:SettingAdmin:settingEditor }
+
+# Reviews
+admin_reviews:
+    path:     /reviews
+    defaults:
+        _controller: AdminBundle:ReviewAdmin:reviews
+admin_review_editor:
+    path:     /review_editor/{reviewId}
+    defaults: { _controller: AdminBundle:ReviewAdmin:reviewEditor }
+
+admin_review_create:
+    path:     /review_editor/create
+    defaults: { _controller: AdminBundle:ReviewAdmin:reviewEditor }
+
+admin_review_remove:
+    path:     /review_remove/{reviewId}
+    defaults: { _controller: AdminBundle:ReviewAdmin:reviewRemove }

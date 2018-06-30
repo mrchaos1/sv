@@ -19,7 +19,9 @@
 .mp-room-container a { text-decoration: none;}
 .top-logo-container {  }
 .top-address-container {  }
-
+.dropdown-menu { padding: 0 0; }
+.dropdown-item { padding: 12px 30px; }
+.dropdown-item:hover { background-color: #8f2a31; color:#fff; }
 @media (max-width: 768px)
 {
   .top-logo-container { text-align:center; }

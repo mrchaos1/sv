@@ -1,0 +1,56 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Отзывы{% endblock %}
+{% block styles %}
+{{ parent() }}
+
+{% endblock %}
+
+{% block header_breadcrumb %}
+<li class="breadcrumb-item">Отзывы</li>
+{% endblock %}
+{% block header_title %}Список отзывов{% endblock %}
+
+
+{% block content %}
+<div class="col-md-12">
+  <div class="tile">
+    <div class="tile-title-w-btn">
+        <h3 class="title">Отзывы ({{ reviews | length }})</h3>
+        <p><a class="btn btn-primary icon-btn" href="{{ path('admin_review_create') }}"><i class="fa fa-plus"></i>Добавить отзыв</a></p>
+    </div>
+
+    {% if reviews | length > 0 %}
+    <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Имя</th>
+          <th>Отзыв</th>
+          <th>Ответ на отзыв</th>
+          <th>Порядок</th>
+          <th></th>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.id }}</td>
+            <td>{{ review.name }}</td>
+            <td>{{ review.text }}</td>
+            <td>{{ review.replyText }}</td>
+            <td>{{ review.sortOrder }}</td>
+
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-primary" href="{{ path('admin_review_editor', {'reviewId': review.id}) }}"><i class="fa fa-lg fa-edit"></i></a>
+                <a class="btn btn-danger" onclick="return confirm('Удалить отзыв?');" href="{{ path('admin_review_remove', {'reviewId': review.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+              </div>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Нет отзывов</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

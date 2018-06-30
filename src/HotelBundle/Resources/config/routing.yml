@@ -45,3 +45,8 @@ hotel_includes:
     defaults:
         _controller: HotelBundle:Post:posts
         slug: "includes"
+
+hotel_reviews:
+    path:     /reviews
+    defaults:
+        _controller: HotelBundle:Review:reviews

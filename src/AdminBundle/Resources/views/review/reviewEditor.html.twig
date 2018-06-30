@@ -1,0 +1,84 @@
+{% extends "@Admin/layout.html.twig" %}
+{% block title %}Review Editor{% endblock %}
+{% block styles %}
+{{ parent() }}
+<style media="screen">
+
+</style>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+{% endblock %}
+{% block header_title %}Редактор отзыва{% endblock %}
+
+{% block header_breadcrumb %}
+{{ parent() }}
+  <li class="breadcrumb-item"><a href="{{ path('admin_reviews') }}">Отзывы</a></li>
+  <li class="breadcrumb-item">Редактировать отзыв</li>
+{% endblock %}
+
+
+{% form_theme form _self %}
+{% block integer_widget %}
+    <div class="integer_widget" style="border: 2px solid red">
+        {% set type = type|default('number') %}
+        {{ block('form_widget_simple') }}
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+    <div class="tile">
+
+
+        {{ form_start(form) }}
+
+
+
+        <div class="tile-title-w-btn">
+            <h3 class="title">Редактировать отзыв</h3>
+            <div class="btn-group">
+
+                <button type="submit" class="btn btn-primary" name="submit">Сохранить</button>
+
+                {% if review.id  > 0 %}
+                <a class="btn btn-danger" onclick="return confirm('Удалить отзыв?');"  href="{{ path('admin_review_remove', {'reviewId': review.id}) }}"><i class="fa fa-lg fa-trash"></i></a>
+                <a class="btn btn-primary icon-btn" href="{{ path('admin_review_create') }}"><i class="fa fa-plus"></i> Новый отзыв</a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% form_theme form '@Admin/form/fields.html.twig' %}
+
+
+        {{ form_row(form.name,      { 'label' : 'Имя', "attr" :             {"class" : "form-control"}}) }}
+
+        <div class="row">
+
+            <div class="col-md-5">
+                {{ form_row(form.country,   { 'label' : 'Страна', "attr" : {"class" : "form-control"}}) }}
+            </div>
+            <div class="col-md-5">
+                {{ form_row(form.city,      { 'label' : 'Город', "attr" : {"class" : "form-control"}}) }}
+            </div>
+            <div class="col-md-2">
+                {{ form_row(form.sortOrder, { 'label' : 'Порядок', "attr" : {"class" : "form-control"}}) }}
+            </div>
+        </div>
+
+        {{ form_row(form.text,      { 'label' : 'Отзыв', "attr" :           {"rows": "5", "class" : "form-control"}}) }}
+        {{ form_row(form.replyText, { 'label' : 'Ответ на отзыв', "attr" :  {"rows": "3", "class" : "form-control"}}) }}
+      {#  {{ form_row(form.datetime,  { 'label' : 'Дата отзыва', "attr" :     {"class" : "form-control"}}) }} #}
+
+
+        {{ form_row(form.save, { "label" : "Сохранить", "attr" : {"class" : "btn btn-primary btn-block" }}) }}
+
+
+
+
+
+
+
+      </div>
+      {{ form_end(form) }}
+</div>
+{% endblock %}
