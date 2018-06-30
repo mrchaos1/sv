@@ -9,7 +9,7 @@ Deny from all
 Satisfy any
 Require valid-user
 Allow from env=!require_auth
-
+#Comment
 
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
