@@ -1,5 +1,16 @@
 php_value date.timezone "Asia/Barnaul"
 
+SetEnvIf Request_URI ^/admin require_auth=true
+AuthUserFile /var/www/sv-hotel.loc/web/.htpasswd
+AuthName "Password Protected"
+AuthType Basic
+Order Deny,Allow
+Deny from all
+Satisfy any
+Require valid-user
+Allow from env=!require_auth
+
+
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
 # mod_rewrite). Additionally, this reduces the matching process for the

@@ -17,3 +17,4 @@
 #/web/bundles/
 /web/uploads/images/*
 /web/uploads/media/*
+/web/.htpasswd
