@@ -55,6 +55,9 @@
                       {% if image.provider.note %}
                       <div><i>{{ image.provider.note }}</i></div>
                       {% endif %}
+                      {% if image.provider.sortOrder is not null %}
+                      <div><b>Порядок:</b> {{ image.provider.sortOrder }}</div>
+                      {% endif %}
                       <a onclick="return confirm('Удалить изображение?');" href="{{ path('admin_image_remove', { 'imageId': image.id  }) }}">Удалить</a> /
                       <a href="{{ path('admin_image_editor', { 'imageId': image.id  }) }}">Редактировать</a>
                     </div>

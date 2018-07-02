@@ -27,6 +27,7 @@
 
 {% block content %}
 <div class="col-md-12">
+    {{ form_start(form) }}
     <div class="tile">
         <div class="tile-title-w-btn">
             <h3 class="title">Редактировать изображение</h3>
@@ -36,19 +37,22 @@
             </div>
         </div>
         {% form_theme form '@Admin/form/fields.html.twig' %}
-
         <div class="row">
             <div class="col-md-8">
                 <img width="100%" src="{{ provider.image.publicSrc }}" alt="">
             </div>
             <div class="col-md-4">
-                {{ form_start(form) }}
                 {{ form_row(form.note, { 'label' : 'Заметка', "attr" : {"class" : "form-control"}}) }}
+                <div class="row">
+                    <div class="col-md-4">
+                    {{ form_row(form.sortOrder, { 'label' : 'Порядок', "attr" : {"class" : "form-control"}}) }}
+                    </div>
+                </div>
                 {{ form_widget(form.roles) }}
                 {{ form_row(form.save, { "label" : "Сохранить", "attr" : {"class" : "btn btn-primary btn-block" }}) }}
-                {{ form_end(form) }}
             </div>
         </div>
       </div>
+      {{ form_end(form) }}
 </div>
 {% endblock %}

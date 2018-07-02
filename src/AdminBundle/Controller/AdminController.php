@@ -387,7 +387,9 @@ class AdminController extends Controller
           ->join('i.provider', 'p')
           ->leftJoin('th.provider', 'thp')
           ->where('i.isOriginal=1')
-          ->orderBy('i.id', 'DESC')
+        #  ->orderBy('i.id', 'DESC')
+          ->orderBy('p.sortOrder', 'ASC')
+
           ->getQuery()
           ->getResult();
 
@@ -458,8 +460,9 @@ class AdminController extends Controller
         }
 
         $form = $this->createFormBuilder($provider)
-          ->add('note', TextType::class, [ 'required' => false ])
-          ->add('roles', ChoiceType::class, array
+          ->add('note',       TextType::class, [ 'required' => false ])
+          ->add('sortOrder',  TextType::class, [ 'required' => false ])
+          ->add('roles',      ChoiceType::class, array
           (
               'choices'               => $roleChoices,
               'multiple'              => true,

@@ -53,6 +53,13 @@ class ImageProvider
     private $roomSortOrder;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="sort_order", type="integer", nullable=true)
+     */
+    private $sortOrder;
+
+    /**
    * @ORM\ManyToMany(targetEntity="HotelBundle\Entity\Post", inversedBy="images", cascade={"persist"})
    * @ORM\JoinTable(name="posts_images")
    */
@@ -257,6 +264,30 @@ class ImageProvider
     public function getPostSortOrder()
     {
         return $this->postSortOrder;
+    }
+
+    /**
+     * Set sort order
+     *
+     * @param int $sortOrder
+     *
+     * @return ImageProvider
+     */
+    public function setSortOrder($sortOrder)
+    {
+        $this->sortOrder = $sortOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get sort order
+     *
+     * @return int
+     */
+    public function getSortOrder()
+    {
+        return $this->sortOrder;
     }
 
     /**
