@@ -6,7 +6,7 @@
       <div class="il-col-container" >
             <div class="il-col-area" style="">
                 {% set image = provider.image %}
-                <div data-provider-id="{{ provider.id }}" class="il-col-image image-selectable" style="background:url({{ asset(image.publicSrc) }}) no-repeat;  {{ image.width > image.height ? 'background-size: auto 100%;background-position: center;' : 'background-size: 100% auto;'  }}"></div>
+                <div data-provider-id="{{ provider.id }}" class="il-col-image image-selectable" style="background:url({{ image|thumbnail('preview') }}) no-repeat;  {{ image.width > image.height ? 'background-size: auto 100%;background-position: center;' : 'background-size: 100% auto;'  }}"></div>
             </div>
       </div>
   </div>
