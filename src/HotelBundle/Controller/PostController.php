@@ -31,6 +31,16 @@ class PostController extends Controller
         {
             throw $this->createNotFoundException('Страница не найдена');
         }
+
+        $iterator = $post->getImages()->getIterator();
+        $iterator->uasort(function ($a, $b)
+        {
+            return ($a->getRoomSortOrder() < $b->getRoomSortOrder()) ? -1 : 1;
+        });
+        $collection = new ArrayCollection(iterator_to_array($iterator));
+        $post->setImages($collection);
+
+
         return $this->render('@Hotel/Default/post.html.twig', [ 'post' => $post ]);
 
     }

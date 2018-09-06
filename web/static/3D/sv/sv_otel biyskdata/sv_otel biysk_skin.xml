@@ -1,0 +1,1885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.19">
+
+    
+  <!-- Spot Style - Default Point Spot Style 1 -->
+
+
+  <style name="IconDefaultPointSpotStyle1"
+         url="%FIRSTXML%/spots/_33_user_defaultpoint0.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle1"
+         onover="onoverIconDefaultPointSpotStyle1"
+         onout="onoutIconDefaultPointSpotStyle1"
+
+         height="70"
+         width="70"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle1">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle1">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle1">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 2 -->
+
+
+  <style name="IconDefaultPointSpotStyle2"
+         url="%FIRSTXML%/spots/_33_user_defaultpoint1.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle2"
+         onover="onoverIconDefaultPointSpotStyle2"
+         onout="onoutIconDefaultPointSpotStyle2"
+
+         height="85"
+         width="85"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle2">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle2">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle2">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 3 -->
+
+
+  <style name="IconDefaultPointSpotStyle3"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint2.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle3"
+         onover="onoverIconDefaultPointSpotStyle3"
+         onout="onoutIconDefaultPointSpotStyle3"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle3">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle3">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle3">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 4 -->
+
+
+  <style name="IconDefaultPointSpotStyle4"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint3.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle4"
+         onover="onoverIconDefaultPointSpotStyle4"
+         onout="onoutIconDefaultPointSpotStyle4"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle4">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle4">
+tween(scale, 1.2);
+
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle4">
+    hideTooltip();
+    tween(scale, 1);
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 5 -->
+
+
+  <style name="IconDefaultPointSpotStyle5"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint4.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle5"
+         onover="onoverIconDefaultPointSpotStyle5"
+         onout="onoutIconDefaultPointSpotStyle5"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle5">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle5">
+tween(scale, 1.2);
+
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle5">
+    hideTooltip();
+    tween(scale, 1);
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 6 -->
+
+
+  <style name="IconDefaultPointSpotStyle6"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint5.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle6"
+         onover="onoverIconDefaultPointSpotStyle6"
+         onout="onoutIconDefaultPointSpotStyle6"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle6">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle6">
+tween(scale, 1.2);
+
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle6">
+    hideTooltip();
+    tween(scale, 1);
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 7 -->
+
+
+  <style name="IconDefaultPointSpotStyle7"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint6.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle7"
+         onover="onoverIconDefaultPointSpotStyle7"
+         onout="onoutIconDefaultPointSpotStyle7"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle7">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle7">
+tween(scale, 1.2);
+
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle7">
+    hideTooltip();
+    tween(scale, 1);
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 8 -->
+
+
+  <style name="IconDefaultPointSpotStyle8"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint7.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle8"
+         onover="onoverIconDefaultPointSpotStyle8"
+         onout="onoutIconDefaultPointSpotStyle8"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle8">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle8">
+tween(scale, 1.2);
+
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle8">
+    hideTooltip();
+    tween(scale, 1);
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style -->
+
+
+  <style name="IconDefaultPointSpotStyle"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint8.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle"
+         onover="onoverIconDefaultPointSpotStyle"
+         onout="onoutIconDefaultPointSpotStyle"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 9 -->
+
+
+  <style name="IconDefaultPointSpotStyle9"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint9.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle9"
+         onover="onoverIconDefaultPointSpotStyle9"
+         onout="onoutIconDefaultPointSpotStyle9"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle9">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle9">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle9">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 10 -->
+
+
+  <style name="IconDefaultPointSpotStyle10"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint10.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle10"
+         onover="onoverIconDefaultPointSpotStyle10"
+         onout="onoutIconDefaultPointSpotStyle10"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle10">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle10">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle10">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 11 -->
+
+
+  <style name="IconDefaultPointSpotStyle11"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint11.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle11"
+         onover="onoverIconDefaultPointSpotStyle11"
+         onout="onoutIconDefaultPointSpotStyle11"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle11">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle11">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle11">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 12 -->
+
+
+  <style name="IconDefaultPointSpotStyle12"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint12.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle12"
+         onover="onoverIconDefaultPointSpotStyle12"
+         onout="onoutIconDefaultPointSpotStyle12"
+
+         height="65"
+         width="65"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle12">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle12">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle12">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 13 -->
+
+
+  <style name="IconDefaultPointSpotStyle13"
+         url="%FIRSTXML%/spots/hotspot_image_big_user_defaultpoint13.png"
+         visible="false"
+         edge="center"
+         onhover="onhoverIconDefaultPointSpotStyle13"
+         onover="onoverIconDefaultPointSpotStyle13"
+         onout="onoutIconDefaultPointSpotStyle13"
+
+         height="60"
+         width="60"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle13">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconDefaultPointSpotStyle13">
+tween(scale, 1.2);
+
+pauseautorotation(forcehotspot);
+
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle13">
+    hideTooltip();
+    tween(scale, 1);
+
+resumeautorotation(forcehotspot);
+
+  </action>
+
+
+
+<!-- ********** -->
+<!-- Progress Bar and Loopings -->
+<!-- id : progressbar -->
+<!-- ********** -->
+
+  <progress showwait.flash="loopings(
+				0xffffff,
+				15,15,
+				0,0,
+				0xffffff,8,
+				0,0,center
+				)"
+			showreloads.flash="false"
+			parent=""
+			/>
+
+
+  <layer name="progressbar_bg"
+    align="center"
+    bgcolor="0x000000"
+    bgalpha="1.0"
+    bgborder="0"
+    onclick="progressbar_stop();"
+    enabled="true"
+    handcursor="false"
+    bgcapture="true"
+    x="0" y="50"
+    type="container"
+    width="200" height="10"
+    visible="true"
+    keep="true">
+      <layer name="progressbar_bar" 
+        align="topleft"
+        bgcolor="0xdddddd"
+        bgalpha="1.0"
+        x="0" y="0"
+        type="container"
+        width="0%"
+        height="100%"
+        enabled="false"
+        bgshadow="0 0 2 0 0x000000 0.6 inset"
+        keep="true"
+        />
+  </layer>
+  <action name="progressbar_start">
+    if(scene[get(xml.scene)].video,
+      progressbar_stop();
+    ,
+      mul(progress_val, get(progress.progress), 100);
+      txtadd(progress_percent, get(progress_val),"%");
+      set(layer[progressbar_bar].width, get(progress_percent));
+    if (device.html5, 
+      mul(xcrop, layer[progressbarwheel].frame, 64);
+      txtadd(layer[progressbarwheel].crop, get(xcrop), '|0|64|64');
+      
+      inc(layer[progressbarwheel].frame);
+      if(layer[progressbarwheel].frame GE layer[progressbarwheel].frames, set(layer[progressbarwheel].frame,0));
+    );
+      delayedcall(progressbar_progresscall, 0.1,progressbar_start());
+      if(progress_val == 100,
+        progressbar_stop();
+      );
+    );
+  </action>
+  <action name="progressbar_stop">
+    stopdelayedcall(progressbar_progresscall);
+    set(layer[progressbar_bg].visible, false);
+    set(layer[progressbar_bar].width, "0%");
+    if (device.html5, set(layer[progressbarwheel].visible, false););
+  </action>
+  <events name="progressbar_events" onloadcomplete="progressbar_stop();" onxmlcomplete="if (device.html5,set(layer[progressbarwheel].visible, true););set(layer[progressbar_bg].visible, true);progressbar_start();" keep="true" />
+
+  <!-- loading wheel -->
+  <layer name="progressbarwheel"
+         keep="true"
+         devices="html5"
+         visible="false"
+         url="%FIRSTXML%/graphics/progressbarandloopings/loadingwheel.png"
+         crop="0|0|64|64"
+         align="center"
+         x="0" y="0"
+         frame="0" frames="12"
+         width="30"
+         height="30" />
+
+<!-- ********** -->
+<!-- iControl Bar -->
+<!-- id : controlBar_i -->
+<!-- ********** -->
+
+  <krpano controlBar_ibarbuilt="false" controlBar_ibackgroundwidthwhenclosed="0" controlBar_ibackgroundwidthwhenopened="0" controlBar_iIsOpened="false" />
+  <events name="controlBar_ievents" 
+    onxmlcomplete="controlBar_ibuildMenuBar();" 
+
+
+    keep="true" />
+
+
+
+  <action name="controlBar_ibuildMenuBar">
+    ifnot (controlBar_ibarbuilt, controlBar_ibuildMenu(); set(controlBar_ibarbuilt, true););
+  </action>
+
+  <style name="controlBar_i_btn_style"
+         keep="true"
+         edge="right"
+         align="right"
+         x="0" y="0"
+         width="40" height="40"
+         crop="0|0|60|60"
+         onovercrop="0|60|60|60"
+         ondowncrop="0|120|60|60"
+         onhover="showTooltip('plugin', controlBar_imenuTooltipStyle, bottom);"
+         onout="hideTooltip();"
+         />
+  <style name="controlBar_i_btn_style_off"
+         keep="true"
+         edge="right"
+         align="right"
+         x="0" y="0"
+         width="40" height="40"
+         onhover="showTooltip('plugin', controlBar_imenuTooltipStyle, bottom);"
+         onout="hideTooltip();"
+         />
+
+  <layer name="controlBar_i_menu_bg"
+         keep="true"
+         type="container"
+         zorder="2"
+         width="40"
+         height="40"
+         align="bottom"
+         x="0" y="10"
+         maskchildren="true"
+         rotate="0"
+         visible="false"
+         >
+
+
+    <layer name="controlBar_ibtn_ctrlmode_move_to"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_to.png"
+            style="controlBar_i_btn_style"
+            tooltip="controlBar_ictrlmodeMoveTip"
+            onclick="setControlModeMoveTo();
+"
+            visible="false"
+            devices="desktop"
+            />
+    <layer name="controlBar_ibtn_ctrlmode_drag_to"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_drag_to.png"
+            style="controlBar_i_btn_style"
+            tooltip="controlBar_ictrlmodeDragTip"
+            onclick="setControlModeDragTo();
+"
+            visible="false"
+            devices="desktop"
+            />
+
+    <layer name="controlBar_ibtn_in"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_zoom_in.png"
+            ondown="viewControlZoomIn(false);"
+            onup="viewControlZoomStop();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_izoomInTip"
+            devices="desktop"
+            />
+    <layer name="controlBar_ibtn_out"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_zoom_out.png"
+            ondown="viewControlZoomOut(false);
+"
+            onup="viewControlZoomStop();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_izoomOutTip"
+            devices="desktop"
+            />
+
+    <layer name="controlBar_ibtn_left"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_left.png"
+            ondown="viewControlMoveLeft(false);
+"
+            onup="viewControlMoveHoriStop();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveLeftTip"
+            devices="desktop"
+            />
+    <layer name="controlBar_ibtn_right"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_right.png"
+            ondown="viewControlMoveRight(false);
+"
+            onup="viewControlMoveHoriStop();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveRightTip"
+            devices="desktop"
+            />
+
+    <layer name="controlBar_ibtn_up"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_up.png"
+            ondown="viewControlMoveUp(false);
+"
+            onup="viewControlMoveVertStop();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveUpTip"
+            devices="desktop"
+            />
+    <layer name="controlBar_ibtn_down"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_down.png"
+            ondown="viewControlMoveDown(false);
+"
+            onup="viewControlMoveVertStop();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveDownTip"
+            devices="desktop"
+            />
+
+
+
+    <layer name="controlBar_ibtn_prev_pano"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_previous_scene.png"
+            onclick="loadPreviousScene();
+"
+            style="controlBar_i_btn_style"
+            tooltip="controlBar_iprevSceneTip"
+            visible="false"
+            />
+    <layer name="controlBar_ibtn_next_pano"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_next_scene.png"
+            onclick="loadNextScene();
+"
+            style="controlBar_i_btn_style"
+            tooltip="controlBar_inextSceneTip"
+            visible="false"
+            />
+
+
+
+    <layer name="controlBar_ibtn_openfs"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_enter_fs.png"
+            onclick="enterFullscreen();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            tooltip="controlBar_iopenFsTip"
+            />
+    <layer name="controlBar_ibtn_closefs"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_close_fs.png"
+            onclick="exitFullscreen();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            tooltip="controlBar_icloseFsTip"
+            />
+
+    <layer name="controlBar_ibtn_autorotate_on"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_start_autorotation.png"
+            onclick="resumeautorotation();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_iautorotateOnTip"
+            />
+    <layer name="controlBar_ibtn_autorotate_off"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_stop_autorotation.png"
+            onclick="pauseautorotation();
+"
+            style="controlBar_i_btn_style"
+            visible="false"
+            tooltip="controlBar_iautorotateOffTip"
+            />
+
+
+
+    <layer name="controlBar_ibtn_display_help"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_help.png"
+            onclick="controlBar_idisplayHelp();"
+            style="controlBar_i_btn_style"
+            devices="desktop"
+            visible="false"
+            tooltip="controlBar_idisplayHelpTip"
+            />
+    <layer name="controlBar_ibtn_close_help"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_help.png"
+            onclick="controlBar_icloseHelp();"
+            style="controlBar_i_btn_style"
+            visible="false"
+            devices="desktop"
+            tooltip="controlBar_ihideHelpTip"
+            />
+
+
+
+ </layer>
+
+
+
+
+
+	<events name="controlBar_icontrolmodechangedevent" 
+		oncontrolmodechanged="controlBar_iupdateControlModeButtons();" 
+		keep="true" />
+	<action name="controlBar_iHideControlModeButtons">
+		set(layer[controlBar_ibtn_ctrlmode_move_to].visible, false);
+		set(layer[controlBar_ibtn_ctrlmode_drag_to].visible, false);
+	</action>
+	<action name="controlBar_iShowControlModeButtons">
+		if (tour_controlmodemousetype == "moveto",
+			set(layer[controlBar_ibtn_ctrlmode_drag_to].visible, true);
+			set(layer[controlBar_ibtn_ctrlmode_move_to].visible, false);
+		,
+			set(layer[controlBar_ibtn_ctrlmode_move_to].visible, true);
+			set(layer[controlBar_ibtn_ctrlmode_drag_to].visible, false);
+		);
+	</action>
+	<action name="controlBar_iupdateControlModeButtons">
+	if (device.desktop,
+		if (controlBar_iIsOpened,
+			controlBar_iShowControlModeButtons();
+		,
+			controlBar_iHideControlModeButtons();
+		);
+	,
+		controlBar_iHideControlModeButtons();
+	);
+	</action>
+
+
+  <action name="controlBar_ihideMenuControls">
+    set(controlBar_iIsOpened, false);
+if (scene.count GT 1,
+	set(layer[controlBar_ibtn_next_pano].visible, false);
+	set(layer[controlBar_ibtn_prev_pano].visible, false);
+);
+
+
+if (device.desktop,
+	set(layer[controlBar_ibtn_in].visible, false);
+	set(layer[controlBar_ibtn_out].visible, false);
+);
+if (device.desktop,
+	set(layer[controlBar_ibtn_up].visible, false);
+	set(layer[controlBar_ibtn_down].visible, false);
+);
+if (device.desktop,
+	set(layer[controlBar_ibtn_left].visible, false);
+	set(layer[controlBar_ibtn_right].visible, false);
+);
+	controlBar_iupdateFullscreenButtons();
+	controlBar_iupdateHelpButtons();
+
+
+	controlBar_iupdateAutorotationButtons();
+
+
+	controlBar_iupdateControlModeButtons();
+
+
+
+
+	set(layer[controlBar_i_menu_bg].width, get(controlBar_ibackgroundwidthwhenclosed));
+
+	set(layer[controlBar_i_menu_bg].visible, true);
+  </action>
+  <action name="controlBar_ishowMenuControls">
+    set(controlBar_iIsOpened, true);
+	set(layer[controlBar_i_menu_bg].visible, true);
+if (scene.count GT 1,
+	set(layer[controlBar_ibtn_next_pano].visible, true);
+	set(layer[controlBar_ibtn_prev_pano].visible, true);
+);
+
+
+if (device.desktop,
+	set(layer[controlBar_ibtn_in].visible, true);
+	set(layer[controlBar_ibtn_out].visible, true);
+);
+if (device.desktop,
+	set(layer[controlBar_ibtn_up].visible, true);
+	set(layer[controlBar_ibtn_down].visible, true);
+);
+if (device.desktop,
+	set(layer[controlBar_ibtn_left].visible, true);
+	set(layer[controlBar_ibtn_right].visible, true);
+);
+	controlBar_iupdateFullscreenButtons();
+	controlBar_iupdateHelpButtons();
+
+
+	controlBar_iupdateAutorotationButtons();
+
+
+	controlBar_iupdateControlModeButtons();
+
+
+
+    set(layer[controlBar_i_menu_bg].width, get(controlBar_ibackgroundwidthwhenopened));
+  </action>
+
+  <layer name="controlBar_ihelpScreenBg"
+         align="center"
+         keep="true"
+         onclick="controlBar_icloseHelp();"
+         url="%FIRSTXML%/graphics/icontrolbar/help_screen_bg.png"
+         visible="false"
+         rotate="-90"
+         height="50%"
+         width="prop"
+         zorder="97"
+         x="100%" />
+  <layer name="controlBar_ihelpScreenFg"
+         align="center"
+         keep="true"
+         onclick="controlBar_icloseHelp();"
+         url="%FIRSTXML%/graphics/icontrolbar/help_screen_fg.png"
+         height="50%"
+         width="prop"
+         visible="false"
+         rotate="90"
+         zorder="98"
+         x="-100%"
+         displayed="false" />
+  <action name="controlBar_idisplayHelp">
+  if (device.desktop,
+    set(layer[controlBar_ihelpScreenFg].displayed,true);
+    set(layer[controlBar_ihelpScreenBg].visible,true);
+    set(layer[controlBar_ihelpScreenFg].visible,true);
+    tween(layer[controlBar_ihelpScreenFg].rotate,0, 1);
+    tween(layer[controlBar_ihelpScreenFg].x,0, 1);
+    tween(layer[controlBar_ihelpScreenBg].rotate,0, 1);
+    tween(layer[controlBar_ihelpScreenBg].x,0, 1);
+    controlBar_iupdateHelpButtons();
+  );
+  </action>
+  <action name="controlBar_icloseHelp">
+  if (device.desktop,
+    set(layer[controlBar_ihelpScreenFg].displayed,false);
+    tween(layer[controlBar_ihelpScreenFg].rotate,  90, 1, easeOutQuad, set(layer[controlBar_ihelpScreenFg].visible,false););
+    tween(layer[controlBar_ihelpScreenFg].x, -100%, 1);
+    tween(layer[controlBar_ihelpScreenBg].rotate, -90, 1, easeOutQuad, set(layer[controlBar_ihelpScreenBg].visible,false););
+    tween(layer[controlBar_ihelpScreenBg].x, 100%, 1);
+    controlBar_iupdateHelpButtons();
+  );
+  </action>
+	<action name="controlBar_iHideHelpButtons">
+		set(layer[controlBar_ibtn_display_help].visible, false);
+		set(layer[controlBar_ibtn_close_help].visible, false);
+	</action>
+	<action name="controlBar_iShowHelpButtons">
+		if (layer[controlBar_ihelpScreenFg].displayed,
+			set(layer[controlBar_ibtn_close_help].visible, true);
+			set(layer[controlBar_ibtn_display_help].visible, false);
+		,
+			set(layer[controlBar_ibtn_display_help].visible, true);
+			set(layer[controlBar_ibtn_close_help].visible, false);
+		);
+	</action>
+	<action name="controlBar_iupdateHelpButtons">
+	if (device.desktop,
+		if (controlBar_iIsOpened,
+			controlBar_iShowHelpButtons();
+		,
+			controlBar_iHideHelpButtons();
+		);
+	,
+		controlBar_iHideHelpButtons();
+	);
+	</action>
+
+
+
+
+  <events name="controlBar_imenufullscreenchangeevent"
+          onenterfullscreen="controlBar_iupdateFullscreenButtons();"
+          onexitfullscreen="controlBar_iupdateFullscreenButtons();"
+          keep="true"/>
+	<action name="controlBar_iHideFullscreenButtons">
+		set(layer[controlBar_ibtn_openfs].visible , false);
+		set(layer[controlBar_ibtn_closefs].visible, false);
+	</action>
+	<action name="controlBar_iShowFullscreenButtons">
+		if (device.fullscreensupport,
+			if(tour_fullscreen,
+				set(layer[controlBar_ibtn_openfs].visible , false);
+				set(layer[controlBar_ibtn_closefs].visible, true);
+			,
+				set(layer[controlBar_ibtn_openfs].visible ,true);
+				set(layer[controlBar_ibtn_closefs].visible,false);
+			);
+		,
+			controlBar_iHideFullscreenButtons();
+		);
+	</action>
+	<action name="controlBar_iupdateFullscreenButtons">
+		if (controlBar_iIsOpened,
+			controlBar_iShowFullscreenButtons();
+		,
+			controlBar_iHideFullscreenButtons();
+		);
+	</action>
+
+	<events name="controlBar_iAutorotationEvents"
+		onstartautorotation="controlBar_iupdateAutorotationButtons();"
+		onresumeautorotation="controlBar_iupdateAutorotationButtons();"
+		onstopautorotation="controlBar_iupdateAutorotationButtons();"
+		onpauseautorotation="controlBar_iupdateAutorotationButtons();"
+		keep="true"/>
+	<action name="controlBar_iHideAutorotationButtons">
+		set(layer[controlBar_ibtn_autorotate_off].visible, false);
+		set(layer[controlBar_ibtn_autorotate_on].visible , false);
+	</action>
+	<action name="controlBar_iShowAutorotationButtons">
+		if(autorotate.enabled == false,
+			set(layer[controlBar_ibtn_autorotate_off].visible, false);
+			set(layer[controlBar_ibtn_autorotate_on].visible , true);
+		,
+			set(layer[controlBar_ibtn_autorotate_off].visible, true);
+			set(layer[controlBar_ibtn_autorotate_on].visible , false);
+		);
+	</action>
+	<action name="controlBar_iupdateAutorotationButtons">
+		if (controlBar_iIsOpened,
+			controlBar_iShowAutorotationButtons();
+		,
+			controlBar_iHideAutorotationButtons();
+		);
+	</action>
+
+
+
+<layer name="controlBar_imenuTooltipStyle"
+	keep="true"
+	enabled="false"
+	capture="false"
+	type="text"
+	align="center"
+	bg="true"
+	bgcolor="0x313131"
+	bgalpha="1"
+  bgroundedge="5"
+	bgborder="0"
+	css="color:#ffffff;font-family:Arial;font-weight:bold;font-size:20px;text-align:left;"
+	xoffset="0"
+	yoffset="0"
+	padding="2"
+	interactivecontent="false"
+	zorder="0"
+	visible="false"
+	html=""
+	edge="bottom"
+/>
+  <action name="controlBar_ibuildMenu">
+    
+    set(controlBar_ibutton_pos, 0);
+
+
+
+      if (device.desktop,
+        set(layer[controlBar_ibtn_display_help].x, get(controlBar_ibutton_pos));
+        set(layer[controlBar_ibtn_close_help].x  , get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+      );
+
+      if (device.fullscreensupport,
+        set(layer[controlBar_ibtn_openfs].x , get(controlBar_ibutton_pos));
+        set(layer[controlBar_ibtn_closefs].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+      );
+
+
+
+      set(layer[controlBar_ibtn_autorotate_on].x , get(controlBar_ibutton_pos));
+      set(layer[controlBar_ibtn_autorotate_off].x, get(controlBar_ibutton_pos));
+      inc(controlBar_ibutton_pos, 45);
+
+
+
+    if (device.desktop,
+      set(layer[controlBar_ibtn_ctrlmode_drag_to].x, get(controlBar_ibutton_pos));
+      set(layer[controlBar_ibtn_ctrlmode_move_to].x, get(controlBar_ibutton_pos));
+      inc(controlBar_ibutton_pos, 45);
+    );
+
+
+
+
+
+      if (device.desktop,
+        set(layer[controlBar_ibtn_right].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+        set(layer[controlBar_ibtn_left].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+      );
+
+      if (device.desktop,
+        set(layer[controlBar_ibtn_down].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+        set(layer[controlBar_ibtn_up].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+      );
+
+      if (device.desktop,
+        set(layer[controlBar_ibtn_out].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+        set(layer[controlBar_ibtn_in].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+      );
+
+    if (scene.count GT 1,
+        set(layer[controlBar_ibtn_next_pano].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+        set(layer[controlBar_ibtn_prev_pano].x, get(controlBar_ibutton_pos));
+        inc(controlBar_ibutton_pos, 45);
+      );
+
+
+
+      dec(controlBar_ibutton_pos, 5);
+
+      set(controlBar_ibackgroundwidthwhenopened, get(controlBar_ibutton_pos));
+
+
+    
+      set(layer[controlBar_i_menu_bg].width, get(controlBar_ibackgroundwidthwhenopened));
+	
+	
+	
+    </action>
+
+	<events name="controlBar_iStartTourEvents" onTourStart="controlBar_iCallOnStartTour();" keep="true" />
+	
+	<action name="controlBar_iCallOnStartTour">
+		
+		controlBar_ishowMenuControls();
+	</action>
+
+
+
+
+<!-- ********** -->
+<!-- Logo -->
+<!-- id : logo -->
+<!-- ********** -->
+
+  <layer align="topright"
+         x="10"
+         y="15"
+         zorder="3"
+         name="logo"
+         keep="true"
+         visible="false"
+         capture="false"
+
+         url="%FIRSTXML%/graphics/logo/logo.png" 
+         onclick="
+getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
+"
+
+         height="35"
+         width="190"
+
+         />
+
+  <events name="logoevents" 
+    onTourStart="showlogo();"
+    keep="true" />
+
+  <action name="hidelogo">
+    set(layer[logo].visible, false);
+  </action>
+  <action name="showlogo">
+      set(layer[logo].visible, true);
+  </action>
+
+
+
+
+  <!-- ************* -->
+  <!-- Panorama Menu -->
+  <!-- ************* -->
+
+<ptplugin name="panoramaMenu" engine="kolorMenu">
+	<settings>
+		<option name="position" value="topleft" type="string" />
+		<option name="orientation" value="horizontal" type="string" />
+		<option name="sub_orientation" value="vertical" type="string" />
+		<option name="margin_x" value="5" type="int" />
+		<option name="margin_y" value="5" type="int" />
+		<option name="background_color" value="3e6ea0" type="string" />
+		<option name="background_alpha" value="1" type="float" />
+		<option name="item_spacer" value="5" type="int" />
+		<option name="border_radius" value="7" type="int" />
+		<option name="full_size" value="false" type="bool" />
+		<option name="use_out_effect" value="true" type="bool" />
+		<option name="item_out_border_radius" value="7" type="int" />
+		<option name="item_hover_border_radius" value="7" type="int" />
+		<option name="item_out_border_width" value="0" type="int" />
+		<option name="item_hover_border_width" value="0" type="int" />
+		<option name="item_out_bg_color" value="3e6ea0" type="string" />
+		<option name="item_out_bg_alpha" value="1" type="float" />
+		<option name="item_out_font_color" value="ffffff" type="string" />
+		<option name="item_out_font_family" value="Arial" type="string" />
+		<option name="item_out_font_size" value="14" type="int" />
+		<option name="item_out_font_weight" value="normal" type="string" />
+		<option name="item_out_font_style" value="normal" type="string" />
+		<option name="item_out_font_decoration" value="normal" type="string" />
+		<option name="use_hover_effect" value="true" type="bool" />
+		<option name="item_hover_bg_color" value="4a84c0" type="string" />
+		<option name="item_hover_bg_alpha" value="1" type="float" />
+		<option name="item_hover_font_color" value="ffffff" type="string" />
+		<option name="item_hover_font_family" value="Arial" type="string" />
+		<option name="item_hover_font_size" value="14" type="int" />
+		<option name="item_hover_font_weight" value="normal" type="string" />
+		<option name="item_hover_font_style" value="normal" type="string" />
+		<option name="item_hover_font_decoration" value="normal" type="string" />
+		<option name="padding_main" value="10" type="int" />
+		<option name="padding_sub" value="10" type="int" />
+		<option name="item_selected_color" value="b3b3b3" type="string" />
+		<option name="item_selected_alpha" value="1" type="float" />
+		
+		<option name="item_selected_hover_color" value="d7d7d7" type="string" />
+		<option name="item_selected_hover_alpha" value="1" type="float" />
+		
+		<option name="item_selected_font_color" value="ffffff" type="string" />
+		<option name="open_callback" value="invokeKrFunction('changeSelectedItem_panoramaMenu');" type="string" />
+		<option name="text_align" value="right" type="string" />
+		<option name="item_thumb_max_width" value="60" type="int" />
+		<option name="item_thumb_max_height" value="35" type="int" />
+		
+		<option name="zorder" value="4" type="int" />
+		<option name="use_i18n" value="true" type="bool" />
+	</settings>
+	<internaldata>
+				<group name="group_1"
+						titleID="panogroup80_title"
+						thumbnail=""
+						subMenu="true"
+						cssClass="panogroup80"> 
+
+				
+				
+						<item name="group_1_item_1"
+							action="invokeKrFunction('mainloadscene', 'pano389')"
+								titleID="pano389_title"
+								thumbnail="sv_otel biyskdata/pano_389/thumbnail.jpg"
+							cssClass="pano389">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_2"
+							action="invokeKrFunction('mainloadscene', 'pano391')"
+								titleID="pano391_title"
+								thumbnail="sv_otel biyskdata/pano_391/thumbnail.jpg"
+							cssClass="pano391">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_3"
+							action="invokeKrFunction('mainloadscene', 'pano402')"
+								titleID="pano402_title"
+								thumbnail="sv_otel biyskdata/pano_402/thumbnail.jpg"
+							cssClass="pano402">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_4"
+							action="invokeKrFunction('mainloadscene', 'pano83')"
+								titleID="pano83_title"
+								thumbnail="sv_otel biyskdata/pano_83/thumbnail.jpg"
+							cssClass="pano83">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_5"
+							action="invokeKrFunction('mainloadscene', 'pano85')"
+								titleID="pano85_title"
+								thumbnail="sv_otel biyskdata/pano_85/thumbnail.jpg"
+							cssClass="pano85">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_6"
+							action="invokeKrFunction('mainloadscene', 'pano87')"
+								titleID="pano87_title"
+								thumbnail="sv_otel biyskdata/pano_87/thumbnail.jpg"
+							cssClass="pano87">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_7"
+							action="invokeKrFunction('mainloadscene', 'pano89')"
+								titleID="pano89_title"
+								thumbnail="sv_otel biyskdata/pano_89/thumbnail.jpg"
+							cssClass="pano89">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_8"
+							action="invokeKrFunction('mainloadscene', 'pano93')"
+								titleID="pano93_title"
+								thumbnail="sv_otel biyskdata/pano_93/thumbnail.jpg"
+							cssClass="pano93">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_9"
+							action="invokeKrFunction('mainloadscene', 'pano95')"
+								titleID="pano95_title"
+								thumbnail="sv_otel biyskdata/pano_95/thumbnail.jpg"
+							cssClass="pano95">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_10"
+							action="invokeKrFunction('mainloadscene', 'pano97')"
+								titleID="pano97_title"
+								thumbnail="sv_otel biyskdata/pano_97/thumbnail.jpg"
+							cssClass="pano97">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_11"
+							action="invokeKrFunction('mainloadscene', 'pano99')"
+								titleID="pano99_title"
+								thumbnail="sv_otel biyskdata/pano_99/thumbnail.jpg"
+							cssClass="pano99">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_1_item_12"
+							action="invokeKrFunction('mainloadscene', 'pano81')"
+								titleID="pano81_title"
+								thumbnail="sv_otel biyskdata/pano_81/thumbnail.jpg"
+							cssClass="pano81">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+					
+						<option name="background_color" value="808080" type="string" />
+						<option name="background_alpha" value="1" type="float" />
+					
+				</group>
+				<group name="group_2"
+						titleID="panogroup217_title"
+						thumbnail=""
+						subMenu="true"
+						cssClass="panogroup217"> 
+
+				
+				
+						<item name="group_2_item_1"
+							action="invokeKrFunction('mainloadscene', 'pano209')"
+								titleID="pano209_title"
+								thumbnail="sv_otel biyskdata/pano_209/thumbnail.jpg"
+							cssClass="pano209">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_2_item_2"
+							action="invokeKrFunction('mainloadscene', 'pano211')"
+								titleID="pano211_title"
+								thumbnail="sv_otel biyskdata/pano_211/thumbnail.jpg"
+							cssClass="pano211">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_2_item_3"
+							action="invokeKrFunction('mainloadscene', 'pano213')"
+								titleID="pano213_title"
+								thumbnail="sv_otel biyskdata/pano_213/thumbnail.jpg"
+							cssClass="pano213">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+					
+						<option name="background_color" value="808080" type="string" />
+						<option name="background_alpha" value="1" type="float" />
+					
+				</group>
+				<group name="group_3"
+						titleID="panogroup218_title"
+						thumbnail=""
+						subMenu="true"
+						cssClass="panogroup218"> 
+
+				
+				
+						<item name="group_3_item_1"
+							action="invokeKrFunction('mainloadscene', 'pano410')"
+								titleID="pano410_title"
+								thumbnail="sv_otel biyskdata/pano_410/thumbnail.jpg"
+							cssClass="pano410">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_3_item_2"
+							action="invokeKrFunction('mainloadscene', 'pano415')"
+								titleID="pano415_title"
+								thumbnail="sv_otel biyskdata/pano_415/thumbnail.jpg"
+							cssClass="pano415">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_3_item_3"
+							action="invokeKrFunction('mainloadscene', 'pano105')"
+								titleID="pano105_title"
+								thumbnail="sv_otel biyskdata/pano_105/thumbnail.jpg"
+							cssClass="pano105">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_3_item_4"
+							action="invokeKrFunction('mainloadscene', 'pano235')"
+								titleID="pano235_title"
+								thumbnail="sv_otel biyskdata/pano_235/thumbnail.jpg"
+							cssClass="pano235">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+						<item name="group_3_item_5"
+							action="invokeKrFunction('mainloadscene', 'pano237')"
+								titleID="pano237_title"
+								thumbnail="sv_otel biyskdata/pano_237/thumbnail.jpg"
+							cssClass="pano237">
+						
+								<option name="item_out_bg_color" value="808080" type="string" />
+								<option name="item_out_bg_alpha" value="1" type="float" />
+								<option name="item_hover_bg_color" value="9a9a9a" type="string" />
+								<option name="item_hover_bg_alpha" value="1" type="float" />
+						
+						</item>
+					
+						<option name="background_color" value="808080" type="string" />
+						<option name="background_alpha" value="1" type="float" />
+					
+				</group>
+	</internaldata>
+</ptplugin>
+
+<action name="kolorMenuJsReady_panoramaMenu">
+	set(ptplugin[panoramaMenu].jsready, true);
+</action>
+
+<action name="showKolorMenu_panoramaMenu">
+	
+	ifnot(ptplugin[panoramaMenu].isOpen,
+		stopdelayedcall(delay_panoramaMenu);
+		set(ptplugin[panoramaMenu].isOpen, true);
+		set(ptplugin[panoramaMenu].displayed, true);
+		js(openKolorMenu(panoramaMenu));
+	,
+		if(ptplugin[panoramaMenu].jsready,
+			stopdelayedcall(delay_panoramaMenu);
+			set(ptplugin[panoramaMenu].displayed, true);
+			js(invokePluginFunction(panoramaMenu, showKolorMenu));
+		,
+			delayedcall(delay_panoramaMenu, 0.1, showKolorMenu_panoramaMenu(););
+		);
+	);
+</action>
+
+<action name="hideKolorMenu_panoramaMenu">
+	if(ptplugin[panoramaMenu].jsready,
+		stopdelayedcall(delay_panoramaMenu);
+		set(ptplugin[panoramaMenu].displayed, false);
+		js(invokePluginFunction(panoramaMenu, hideKolorMenu));
+	,
+		delayedcall(delay_panoramaMenu, 0.1, hideKolorMenu_panoramaMenu(););
+	);
+</action>
+
+<action name="changeSelectedItem_panoramaMenu">
+	js(invokePluginFunction(panoramaMenu, changeSelectedItem, get(xml.scene)));
+</action>
+
+<action name="changeLanguage_panoramaMenu">
+	if(ptplugin[panoramaMenu].jsready,
+		stopdelayedcall(delay_panoramaMenu);
+		js(invokePluginFunction(panoramaMenu, changeLanguage));
+	,
+		delayedcall(delay_panoramaMenu, 0.1, changeLanguage_panoramaMenu(););
+	);
+</action>
+
+
+<events name="kolorMenuEvents_panoramaMenu" 
+	keep="true"
+	
+	
+	onTourStart="showKolorMenu_panoramaMenu();"
+	onnewpano="changeSelectedItem_panoramaMenu();"
+	changetourlanguage="changeLanguage_panoramaMenu"
+/>
+
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);js(setFullscreen(false));</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);js(setFullscreen(true));</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+  <action name="enterFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,true);events.dispatch(onenterfullscreen);</action>
+  <action name="exitFullScreenFallback">set(fullscreen,false);</action>
+  <action name="enterFullScreenFallback">set(fullscreen,true);</action>
+  
+  <action name="resizeFullScreenEvent">delayedcall(0,updatescreen(););</action>
+
+<action name="viewControlMoveUp">
+	if(%1,
+		if(%2,
+			set(isfullvertical, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewvfov, panoview.vmax, panoview.vmin);
+				if (viewvfov == 180,
+					set(isfullvertical, true);
+				);
+			);
+			if(isfullvertical == false AND calc(view.vlookat-%2) LT view.vlookatmin,
+				moveto(get(view.hlookat), get(view.vlookatmin));
+			,
+				moveto(get(view.hlookat), calc(view.vlookat-%2));
+			);
+		,
+			set(vlookat_moveforce, -1);
+			delayedcall(0.1, viewControlMoveVertStop());
+		);
+	,
+		set(vlookat_moveforce, -1);
+	);
+</action>
+<action name="viewControlMoveDown">
+	if(%1,
+		if(%2,
+			set(isfullvertical, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewvfov, panoview.vmax, panoview.vmin);
+				if (viewvfov == 180,
+					set(isfullvertical, true);
+				);
+			);
+			if(sceneisfull360 == false AND calc(view.vlookat+%2) GT view.vlookatmax,
+				moveto(get(view.hlookat), get(view.vlookatmax));
+			,
+				moveto(get(view.hlookat), calc(view.vlookat+%2));
+			);
+		,
+			set(vlookat_moveforce, +1);
+			delayedcall(0.1, viewControlMoveVertStop());
+		);
+	,
+		set(vlookat_moveforce, +1);
+	);
+</action>
+<action name="viewControlMoveLeft">
+	if(%1,
+		if(%2,
+			set(isfullhorizontal, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewhfov, panoview.hmax, panoview.hmin);
+				if (viewhfov == 360,
+					set(isfullhorizontal, true);
+				);
+			);
+			if(isfullhorizontal == false AND calc(view.hlookat-%2) LT view.hlookatmin,
+				moveto(get(view.hlookatmin), get(view.vlookat));
+			,
+				moveto(calc(view.hlookat-%2), get(view.vlookat));
+			);
+		,
+			set(hlookat_moveforce, -1);
+			delayedcall(0.1, viewControlMoveHoriStop());
+		);
+	,
+		set(hlookat_moveforce, -1);
+	);
+</action>
+<action name="viewControlMoveRight">
+	if(%1,
+		if(%2,
+			set(isfullhorizontal, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewhfov, panoview.hmax, panoview.hmin);
+				if (viewhfov == 360,
+					set(isfullhorizontal, true);
+				);
+			);
+			if(isfullhorizontal == false AND calc(view.hlookat+%2) GT view.hlookatmax,
+				moveto(get(view.hlookatmax), get(view.vlookat));
+			,
+				moveto(calc(view.hlookat+%2), get(view.vlookat));
+			);
+		,
+			set(hlookat_moveforce, +1);
+			delayedcall(0.1, viewControlMoveHoriStop());
+			
+		);
+	,
+		set(hlookat_moveforce, +1);
+	);
+</action>
+<action name="viewControlMoveHoriStop">
+	set(hlookat_moveforce, 0);
+</action>
+<action name="viewControlMoveVertStop">
+	set(vlookat_moveforce, 0);
+</action>
+
+<action name="viewControlZoomIn">
+	if(%1,
+		if(%2,
+			if(%2 LT view.fovmin,
+				zoomto(get(view.fovmin));
+			,
+				if(%2 LT view.fov,
+					zoomto(%2);
+				);
+			);
+		,
+			set(fov_moveforce, -1);
+			delayedcall(0.1, viewControlZoomStop());
+		);
+	,
+		set(fov_moveforce, -1);
+	);
+</action>
+<action name="viewControlZoomOut">
+	if(%1,
+		if(%2,
+			if(%2 GT view.fovmax,
+				zoomto(get(view.fovmax));
+			,
+				if(%2 GT view.fov,
+					zoomto(%2);
+				);
+			);
+		,
+			set(fov_moveforce, +1);
+			delayedcall(0.1, viewControlZoomStop());
+		);
+	,
+		set(fov_moveforce, +1);
+	);
+</action>
+<action name="viewControlZoomStop">
+	set(fov_moveforce, 0);
+</action>
+
+  <action name="displayImage">
+    if (layer[displayedStandardImage],
+      if(layer[displayedStandardImage].doNotDeleteMe,
+        set(layer[displayedStandardImage].currentCall, false);
+        set(layer[displayedStandardImage].doNotDeleteMe, false);
+        
+        if (%1 == layer[displayedStandardImage].url,
+          applyDisplayedImageObjectAnimation(%8);
+        ,
+          setDisplayedImageObjectParameters(%1, %2, %3, %4, %5, %6, %7, %8, %9, %10);
+        );
+      ,
+        set(layer[displayedStandardImage].currentCall, false);
+        set(layer[displayedStandardImage].doNotDeleteMe, true);
+        events.dispatch(onremovedisplayedobject);
+        delayedcall(0.2,displayImage(%1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12););
+      );
+    ,
+      if(%10,
+        addlayer(displayedStandardImageOverlay);
+        set(layer[displayedStandardImageOverlay].keep, false);
+        set(layer[displayedStandardImageOverlay].width, 100%);
+        set(layer[displayedStandardImageOverlay].height, 100%);
+        set(layer[displayedStandardImageOverlay].type, container);
+        set(layer[displayedStandardImageOverlay].zorder, 98);
+        set(layer[displayedStandardImageOverlay].visible, false);
+        set(layer[displayedStandardImageOverlay].onclick, applyDisplayedImageObjectAnimation(%8););
+        set(layer[displayedStandardImageOverlay].bgcolor, "0x%11");
+        set(layer[displayedStandardImageOverlay].bgalpha, %12);
+        set(layer[displayedStandardImageOverlay].bgcapture, true);
+      );
+      addlayer(displayedStandardImage);
+      set(layer[displayedStandardImage].keep, false);
+      set(layer[displayedStandardImage].onclick, applyDisplayedImageObjectAnimation(%8););
+      set(layer[displayedStandardImage].zorder , 99);
+      set(layer[displayedStandardImage].currentCall, true);
+      set(layer[displayedStandardImage].doNotDeleteMe, true);
+      set(layer[displayedStandardImage].onloaded, resizeDisplayedImageObject());
+      events.dispatch(onremovedisplayedobject);
+      delayedcall(0.2,displayImage(%1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12););
+      set(layer[displayedStandardImage].visible, false);
+    );
+  </action>
+  <action name="applyDisplayedImageObjectAnimation">resumeautorotation(forcehotspot);
+
+    if (%1,
+      stoptween(layer[displayedStandardImage].width, layer[displayedStandardImage].height);
+      tween(layer[displayedStandardImage].width|layer[displayedStandardImage].height, 1|1, 1, easeOutQuad, WAIT);
+      if(layer[displayedStandardImage].overlay,removelayer(displayedStandardImageOverlay););removelayer(displayedStandardImage);
+    ,
+      if(layer[displayedStandardImage].overlay,removelayer(displayedStandardImageOverlay););removelayer(displayedStandardImage);
+    );
+  </action>
+  <action name="setDisplayedImageObjectParameters">
+    set(layer[displayedStandardImage].url       , %1);
+    set(layer[displayedStandardImage].align     , %2);
+    set(layer[displayedStandardImage].x         , %3);
+    set(layer[displayedStandardImage].y         , %4);
+    set(layer[displayedStandardImage].imgwidth  , %5);
+    set(layer[displayedStandardImage].imgheight , %6);
+    set(layer[displayedStandardImage].animated  , %8);
+    set(layer[displayedStandardImage].applyratio, %9);
+    set(layer[displayedStandardImage].overlay   , %10);
+    if (%7,pauseautorotation(forcehotspot);
+);
+  </action>
+  <action name="resizeDisplayedImageObject">
+    if(layer[displayedStandardImage].url,
+    set(layer[displayedStandardImage].fullwidth, get(layer[displayedStandardImage].width));
+    set(layer[displayedStandardImage].fullheight, get(layer[displayedStandardImage].height));
+    if(layer[displayedStandardImage].animated,
+      set(layer[displayedStandardImage].width , 1);
+      set(layer[displayedStandardImage].height, 1);
+    );
+    if(layer[displayedStandardImage].imgwidth != "" AND layer[displayedStandardImage].imgheight != "",
+      if(layer[displayedStandardImage].imgwidth == "prop",
+        set(tempDisplayedImageObjectHeight, get(layer[displayedStandardImage].imgheight));
+        indexoftxt(tempDisplayedImageObjectHeightPercent, get(tempDisplayedImageObjectHeight), "%");
+        if(tempDisplayedImageObjectHeightPercent GT 0,
+          txtreplace(tempDisplayedImageObjectHeight, '%', '');
+          mul(tempDisplayedImageObjectHeight, get(stageheight));
+          div(tempDisplayedImageObjectHeight, 100);
+          Math.round(tempDisplayedImageObjectHeight);
+        );
+        mul(flyingImgWidth,get(layer[displayedStandardImage].fullwidth),get(tempDisplayedImageObjectHeight));
+        div(flyingImgWidth,get(layer[displayedStandardImage].fullheight));
+        Math.round(flyingImgWidth);
+        set(layer[displayedStandardImage].imgwidth , get(flyingImgWidth));
+        set(layer[displayedStandardImage].imgheight, get(tempDisplayedImageObjectHeight));
+      ,
+        if(layer[displayedStandardImage].imgheight == "prop",
+          set(tempDisplayedImageObjectWidth, get(layer[displayedStandardImage].imgwidth));
+          indexoftxt(tempDisplayedImageObjectWidthPercent, get(tempDisplayedImageObjectWidth), "%");
+          if(tempDisplayedImageObjectWidthPercent GT 0,
+            txtreplace(tempDisplayedImageObjectWidth, '%', '');
+            mul(tempDisplayedImageObjectWidth, get(stagewidth));
+            div(tempDisplayedImageObjectWidth, 100);
+            Math.round(tempDisplayedImageObjectWidth);
+          );
+          mul(flyingImgHeight,get(layer[displayedStandardImage].fullheight),get(tempDisplayedImageObjectWidth));
+          div(flyingImgHeight,get(layer[displayedStandardImage].fullwidth));
+          Math.round(flyingImgHeight);
+          set(layer[displayedStandardImage].imgwidth , get(tempDisplayedImageObjectWidth));
+          set(layer[displayedStandardImage].imgheight , get(flyingImgHeight));
+        ,
+          set(tempDisplayedImageObjectWidth, get(layer[displayedStandardImage].imgwidth));
+          set(tempDisplayedImageObjectHeight, get(layer[displayedStandardImage].imgheight));
+          indexoftxt(tempDisplayedImageObjectWidthPercent, get(tempDisplayedImageObjectWidth), "%");
+          indexoftxt(tempDisplayedImageObjectHeightPercent, get(tempDisplayedImageObjectHeight), "%");
+          if(tempDisplayedImageObjectWidthPercent GT 0,
+            txtreplace(tempDisplayedImageObjectWidth, '%', '');
+            mul(tempDisplayedImageObjectWidth, get(stagewidth));
+            div(tempDisplayedImageObjectWidth, 100);
+            Math.round(tempDisplayedImageObjectWidth);
+          );
+          if(tempDisplayedImageObjectHeightPercent GT 0,
+            txtreplace(tempDisplayedImageObjectHeight, '%', '');
+            mul(tempDisplayedImageObjectHeight, get(stageheight));
+            div(tempDisplayedImageObjectHeight, 100);
+            Math.round(tempDisplayedImageObjectHeight);
+          );
+          set(layer[displayedStandardImage].imgwidth , get(tempDisplayedImageObjectWidth));
+          set(layer[displayedStandardImage].imgheight, get(tempDisplayedImageObjectHeight));
+        );
+      );
+    ,
+      set(layer[displayedStandardImage].imgwidth , get(layer[displayedStandardImage].fullwidth));
+      set(layer[displayedStandardImage].imgheight, get(layer[displayedStandardImage].fullheight));
+    );
+    
+    set(resizedwidth, get(layer[displayedStandardImage].imgwidth));
+    set(resizedheight, get(layer[displayedStandardImage].imgheight));
+    if(layer[displayedStandardImage].applyratio,
+      sub(resizedstagewidth, get(stagewidth), get(layer[displayedStandardImage].x));
+      sub(resizedstageheight, get(stageheight), get(layer[displayedStandardImage].y));
+      Math.abs(resizedstagewidth);
+      Math.abs(resizedstageheight);
+      if(resizedwidth GT resizedstagewidth,
+        mul(tempresizedheight, get(resizedheight), get(resizedstagewidth));
+        div(tempresizedheight, get(resizedwidth));
+        Math.round(tempresizedheight);
+        set(resizedwidth, get(resizedstagewidth));
+        set(resizedheight, get(tempresizedheight));
+      );
+      if(resizedheight GT resizedstageheight,
+        mul(tempresizedwidth, get(resizedwidth), get(resizedstageheight));
+        div(tempresizedwidth, get(resizedheight));
+        Math.round(tempresizedwidth);
+        set(resizedheight, get(resizedstageheight));
+        set(resizedwidth, get(tempresizedwidth));
+      );
+    );
+    
+    if(layer[displayedStandardImage].animated,
+      set(layer[displayedStandardImage].animated, false);
+      tween(layer[displayedStandardImage].width , get(resizedwidth), 1, easeOutQuad);
+      tween(layer[displayedStandardImage].height, get(resizedheight), 1, easeOutQuad);
+    ,
+      set(layer[displayedStandardImage].width , get(resizedwidth));
+      set(layer[displayedStandardImage].height, get(resizedheight));
+    );
+    if(layer[displayedStandardImage].overlay,set(layer[displayedStandardImageOverlay].visible, true););
+    set(layer[displayedStandardImage].visible, true);
+    ,
+      delayedcall(0.2,resizeDisplayedImageObject(););
+    );
+  </action>
+  <events name="displayedImageObjectEvents" keep="true" onremovedisplayedobject="displayedImageObjectOnRemoveDisplayedObject" onresize="if(layer[displayedStandardImage],resizeDisplayedImageObject());" />
+  <action name="displayedImageObjectOnRemoveDisplayedObject">
+    ifnot(layer[displayedStandardImage].currentCall,if(layer[displayedStandardImage].visible,resumeautorotation(forcehotspot);
+
+      if(layer[displayedStandardImage].overlay,removelayer(displayedStandardImageOverlay););
+      removelayer(displayedStandardImage);
+    ););
+  </action>
+
+
+</krpano>
