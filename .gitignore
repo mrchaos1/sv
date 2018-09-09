@@ -17,5 +17,6 @@
 #/web/bundles/
 /web/uploads/images/*
 /web/uploads/media/*
+/web/uploads/3D/*
 /web/.htpasswd
 /web/.htaccess
